@@ -19,8 +19,11 @@ public class Student {
     private String name;
     private String surname;
     private String email;
+    private String university;
+    private int gradYear;
+    private String fieldOfStudy;
 
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date timeStamp;
 
     public String getName() {
@@ -45,6 +48,30 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public int getGradYear() {
+        return gradYear;
+    }
+
+    public void setGradYear(int gradYear) {
+        this.gradYear = gradYear;
+    }
+
+    public String getFieldOfStudy() {
+        return fieldOfStudy;
+    }
+
+    public void setFieldOfStudy(String fieldOfStudy) {
+        this.fieldOfStudy = fieldOfStudy;
     }
 
     public Long getId() {
