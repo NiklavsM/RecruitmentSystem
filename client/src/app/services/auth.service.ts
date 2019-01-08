@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 
@@ -15,9 +15,11 @@ export class AuthService {
     scope: 'openid recruiter admin'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+  }
 
   public login(): void {
+    console.log("ASKS for login");
     this.auth0.authorize();
   }
 
@@ -40,6 +42,13 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    console.log("Result ", authResult);
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      if (profile) {
+        console.log("Profile ", profile, profile.nickname);
+      }
+    })
+
   }
 
   public logout(): void {
@@ -55,6 +64,7 @@ export class AuthService {
     // Check whether the current time is past the
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    // console.log("Checks is authenticated " + new Date().getTime() ," ", expiresAt);
     return new Date().getTime() < expiresAt;
   }
 

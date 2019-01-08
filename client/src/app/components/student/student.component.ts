@@ -21,7 +21,7 @@ export class StudentComponent implements OnInit {
       email : new FormControl('', Validators.required),
       university : new FormControl('', Validators.required),
       gradYear : new FormControl('', Validators.required),
-      fieldOfStudy : new FormControl('', Validators.required)
+      course : new FormControl('', Validators.required)
     });
   }
 

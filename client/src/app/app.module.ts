@@ -12,6 +12,8 @@ import {AuthGuard} from "./services/auth.guard";
 import { StudentComponent } from './components/student/student.component';
 import {StudentService} from "./services/student.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ViewStudentsComponent } from './components/view-students/view-students.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
     LinkedinComponent,
     CallbackComponent,
     HomeComponent,
-    StudentComponent
+    StudentComponent,
+    ViewStudentsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

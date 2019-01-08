@@ -21,7 +21,7 @@ public class Student {
     private String email;
     private String university;
     private int gradYear;
-    private String fieldOfStudy;
+    private String course;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date timeStamp;
@@ -66,12 +66,12 @@ public class Student {
         this.gradYear = gradYear;
     }
 
-    public String getFieldOfStudy() {
-        return fieldOfStudy;
+    public String getCourse() {
+        return course;
     }
 
-    public void setFieldOfStudy(String fieldOfStudy) {
-        this.fieldOfStudy = fieldOfStudy;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     public Long getId() {

@@ -1,0 +1,19 @@
+<table class="table table-bordered table-inverse" *ngIf="students">
+  <tr>
+    <th>Id</th>
+    <th>Name, surname</th>
+    <th>email</th>
+    <th>University</th>
+    <th>Course</th>
+    <th>Year of graduation</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{student.id}}</td>
+    <td>{{student.name +", " + student.surname}}</td>
+
+    <td>{{student.email}}</td>
+    <td>{{student.university}}</td>
+    <td>{{student.course}}</td>
+    <td>{{student.gradYear}}</td>
+  </tr>
+</table>
