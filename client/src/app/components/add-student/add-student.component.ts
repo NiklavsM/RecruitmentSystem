@@ -5,10 +5,10 @@ import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.scss']
+  templateUrl: './add-student.component.html',
+  styleUrls: ['./add-student.component.scss']
 })
-export class StudentComponent implements OnInit {
+export class AddStudentComponent implements OnInit {
 
   studentForm: FormGroup;
 

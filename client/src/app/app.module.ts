@@ -9,7 +9,7 @@ import { CallbackComponent } from './components/callback/callback.component'
 import { AuthService} from "./services/auth.service";
 import { HomeComponent } from './components/home/home.component';
 import {AuthGuard} from "./services/auth.guard";
-import { StudentComponent } from './components/student/student.component';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 import {StudentService} from "./services/student.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ViewStudentsComponent } from './components/view-students/view-students.component';
@@ -21,7 +21,7 @@ import { AdminComponent } from './components/admin/admin.component';
     LinkedinComponent,
     CallbackComponent,
     HomeComponent,
-    StudentComponent,
+    AddStudentComponent,
     ViewStudentsComponent,
     AdminComponent
   ],

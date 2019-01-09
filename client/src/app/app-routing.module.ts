@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {CallbackComponent} from "./components/callback/callback.component";
 import {HomeComponent} from "./components/home/home.component";
 import {AuthGuard} from "./services/auth.guard";
-import {StudentComponent} from "./components/student/student.component";
+import {AddStudentComponent} from "./components/add-student/add-student.component";
 import {ViewStudentsComponent} from "./components/view-students/view-students.component";
 import {AdminComponent} from "./components/admin/admin.component";
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'addstudent',
-    component: StudentComponent,
+    component: AddStudentComponent,
     canActivate: [AuthGuard]
   },
   {
