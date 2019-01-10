@@ -6,6 +6,7 @@ import {AuthGuard} from "./services/auth.guard";
 import {AddStudentComponent} from "./components/add-student/add-student.component";
 import {ViewStudentsComponent} from "./components/view-students/view-students.component";
 import {AdminComponent} from "./components/admin/admin.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -31,8 +32,12 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard]
-  }
-];
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

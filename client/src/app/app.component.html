@@ -1,28 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link active" href="/addstudent" *ngIf="authService.isAuthenticated()">Add student <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/viewstudents" *ngIf="authService.isAuthenticated()">View students</a>
-      </li>
-      <li class="nav-item">
-        <!--TODO is admin-->
-        <a class="nav-link" href="/admin" *ngIf="authService.isAuthenticated()">Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Logout</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" *ngIf="authService.isAuthenticated()">Profile</a>
-      </li>
-    </ul>
-  <h1>
+  <app-navbar></app-navbar>
+  <div class="text-center font-weight-bold text-primary pb-2">
     {{ title }}
-  </h1>
+  </div>
   <router-outlet></router-outlet>
 </div>

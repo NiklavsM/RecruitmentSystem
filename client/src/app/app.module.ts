@@ -14,6 +14,8 @@ import {StudentService} from "./services/student.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ViewStudentsComponent } from './components/view-students/view-students.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AdminComponent } from './components/admin/admin.component';
     HomeComponent,
     AddStudentComponent,
     ViewStudentsComponent,
-    AdminComponent
+    AdminComponent,
+    NavbarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
