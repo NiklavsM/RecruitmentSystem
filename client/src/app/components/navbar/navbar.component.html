@@ -1,22 +1,29 @@
 <ul class="nav justify-content-center py-3">
   <li class="nav-item nav-pills">
-    <a class="nav-link active" href="/addstudent" *ngIf="authService.isAuthenticated()">Add student <span
+    <a class="nav-link" [routerLink]="['addstudent']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Add student <span
       class="sr-only">(current)</span></a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/viewstudents" *ngIf="authService.isAuthenticated()">View students</a>
+  <li class="nav-item nav-pills">
+    <a class="nav-link" [routerLink]="['viewstudents']" [routerLinkActive]="['active']"  *ngIf="authService.isAuthenticated()">View students</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item nav-pills">
     <!--TODO is admin-->
-    <a class="nav-link" href="/admin" *ngIf="authService.isAuthenticated()">Admin</a>
+    <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Admin</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Login</a>
+    <a class="nav-link" [routerLink]="['']" *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Login</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Logout</a>
+    <a class="nav-link" [routerLink]="['']" *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Logout</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/profile" *ngIf="authService.isAuthenticated()">Profile</a>
+  <li class="nav-item nav-pills">
+    <a class="nav-link" [routerLink]="['profile']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Profile</a>
   </li>
 </ul>
+<!--<nav class="navbar navbar-light bg-faded">-->
+  <!--<ul class="nav navbar-nav">-->
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" [routerLink]="['addstudent']">Add student</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</nav>-->

@@ -7,6 +7,7 @@ import {AddStudentComponent} from "./components/add-student/add-student.componen
 import {ViewStudentsComponent} from "./components/view-students/view-students.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {ViewStudentComponent} from "./components/view-student/view-student.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'addstudent',
     component: AddStudentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'viewstudents/student/:id',
+    component: ViewStudentComponent,
     canActivate: [AuthGuard]
   },
   {

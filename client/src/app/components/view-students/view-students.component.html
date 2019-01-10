@@ -8,7 +8,10 @@
     <th>Year of graduation</th>
   </tr>
   <tr *ngFor="let student of students">
-    <td>{{student.id}}</td>
+    <td>
+      <a [routerLink]="['/viewstudents/student',student.id]">{{student.id}}</a>
+
+    </td>
     <td>{{student.name +" " + student.surname}}</td>
 
     <td>{{student.email}}</td>

@@ -1,0 +1,25 @@
+<div class="row">
+  <a class="btn btn-primary" routerLink="/viewstudents">Back</a>
+</div>
+<div *ngIf="student">
+  <div class="form-group">
+    <label>Name</label>
+    <div class="form-control">{{student.name +  ", " + student.surname}}</div>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <div class="form-control">{{student.email}}</div>
+  </div>
+  <div class="form-group">
+    <label>University</label>
+    <div class="form-control">{{student.university}}</div>
+  </div>
+  <div class="form-group">
+    <label>Course</label>
+    <div class="form-control">{{student.course}}</div>
+  </div>
+  <div class="form-group">
+    <label>Year of graduation</label>
+    <div class="form-control">{{student.gradYear}}</div>
+  </div>
+</div>
