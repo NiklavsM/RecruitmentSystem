@@ -1,11 +1,11 @@
-<table class="table table-striped" *ngIf="students">
+<table class="table" *ngIf="students">
   <tr>
     <th>Id</th>
     <th>Name, surname</th>
     <th>Email</th>
     <th>University</th>
-    <th>Course</th>
-    <th>Year of graduation</th>
+    <!--<th>Course</th>-->
+    <!--<th>Year of graduation</th>-->
   </tr>
   <tr *ngFor="let student of students">
     <td>
@@ -16,7 +16,7 @@
 
     <td>{{student.email}}</td>
     <td>{{student.university}}</td>
-    <td>{{student.course}}</td>
-    <td>{{student.gradYear}}</td>
+    <!--<td>{{student.course}}</td>-->
+    <!--<td>{{student.gradYear}}</td>-->
   </tr>
 </table>
