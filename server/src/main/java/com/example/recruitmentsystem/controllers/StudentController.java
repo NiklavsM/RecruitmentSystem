@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/students")
+@RequestMapping("server/api/students")
 public class StudentController {
 
     @Autowired
@@ -29,12 +29,13 @@ public class StudentController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Student student) {
+        studentRepository.save(student);
         try {
             emailServiceImpl.sendEmail(student);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        studentRepository.save(student);
+
     }
 
     @GetMapping("/{id}")

@@ -11,7 +11,7 @@ export class AuthService {
     domain: 'niklavs.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'http://localhost:8080',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:8080/callback',
     scope: 'openid recruiter admin'
   });
 

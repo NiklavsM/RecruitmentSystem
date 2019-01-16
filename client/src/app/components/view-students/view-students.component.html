@@ -10,7 +10,6 @@
   <tr *ngFor="let student of students">
     <td>
       <a [routerLink]="['/viewstudents/student',student.id]">{{student.id}}</a>
-
     </td>
     <td>{{student.name +" " + student.surname}}</td>
 

@@ -23,7 +23,7 @@ public class EmailServiceImpl {
         mail.setTo(student.getEmail());
         mail.setFrom(emailFrom);
         mail.setSubject("Company A");
-        mail.setText("Thanks for sending your details");
+        mail.setText("Thanks for sending your details. To add CV, complete personality test or change details please follow the link: localhost:4200/profile/" + student.getLoginToken());
 
         javaMailSender.send(mail);
     }

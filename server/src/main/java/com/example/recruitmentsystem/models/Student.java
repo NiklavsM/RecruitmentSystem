@@ -1,5 +1,6 @@
 package com.example.recruitmentsystem.models;
 
+import com.example.recruitmentsystem.helper.RandomStringGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,6 +23,8 @@ public class Student {
     private String university;
     private int gradYear;
     private String course;
+    private byte[] cv;
+    private String loginToken = RandomStringGenerator.generateRandomString();
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date timeStamp;
@@ -88,5 +91,21 @@ public class Student {
 
     public void setTimestamp(Date timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public byte[] getCv() {
+        return cv;
+    }
+
+    public void setCv(byte[] cv) {
+        this.cv = cv;
+    }
+
+    public String getLoginToken() {
+        return loginToken;
+    }
+
+    public void setLoginToken(String loginToken) {
+        this.loginToken = loginToken;
     }
 }

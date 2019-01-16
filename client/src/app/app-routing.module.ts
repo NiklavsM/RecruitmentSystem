@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+   // canActivate: [AuthGuard]
   },
   {
     path: 'callback',
@@ -22,27 +22,27 @@ const routes: Routes = [
   {
     path: 'addstudent',
     component: AddStudentComponent,
-    canActivate: [AuthGuard]
+   // canActivate: [AuthGuard]
   },
   {
     path: 'viewstudents/student/:id',
     component: ViewStudentComponent,
-    canActivate: [AuthGuard]
+   // canActivate: [AuthGuard]
   },
   {
     path: 'viewstudents',
     component: ViewStudentsComponent,
-    canActivate: [AuthGuard]
+  //  canActivate: [AuthGuard]
   },
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuard]
+   // canActivate: [AuthGuard]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+   // canActivate: [AuthGuard]
   }];
 
 @NgModule({
