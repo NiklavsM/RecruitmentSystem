@@ -8,6 +8,7 @@ import {ViewStudentsComponent} from "./components/view-students/view-students.co
 import {AdminComponent} from "./components/admin/admin.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {ViewStudentComponent} from "./components/view-student/view-student.component";
+import {SendEmailComponent} from "./components/send-email/send-email.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
     component: CallbackComponent
   },
   {
+    path: 'login/callback',
+    component: CallbackComponent
+  }, // TODO for first time loggins
+  {
     path: 'addstudent',
     component: AddStudentComponent,
    // canActivate: [AuthGuard]
@@ -28,6 +33,11 @@ const routes: Routes = [
     path: 'viewstudents/student/:id',
     component: ViewStudentComponent,
    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'email/:email',
+    component: SendEmailComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'viewstudents',

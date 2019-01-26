@@ -3,14 +3,14 @@
 
   </div>
   <div class="col-sm-6">
-    <form [formGroup]="studentForm" (ngSubmit)="submitRegistration()" novalidate>
+    <form [formGroup]="studentForm" novalidate>
       <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" formControlName="name" required autofocus/>
+        <label>First name</label>
+        <input type="text" class="form-control" formControlName="firstName" required autofocus/>
       </div>
       <div class="form-group">
-        <label>Surname</label>
-        <input type="text" class="form-control" formControlName="surname" required/>
+        <label>Last name</label>
+        <input type="text" class="form-control" formControlName="lastName" required/>
       </div>
       <div class="form-group">
         <label>Email</label>

@@ -16,8 +16,8 @@ export class AddStudentComponent implements OnInit {
 
   ngOnInit() {
     this.studentForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      surname : new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName : new FormControl('', Validators.required),
       email : new FormControl('', Validators.required),
       university : new FormControl('', Validators.required),
       gradYear : new FormControl('', Validators.required),

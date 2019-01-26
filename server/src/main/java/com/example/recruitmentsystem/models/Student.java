@@ -3,6 +3,7 @@ package com.example.recruitmentsystem.models;
 import com.example.recruitmentsystem.helper.RandomStringGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang.RandomStringUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,32 +18,32 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String surname;
+    private String firstName;
+    private String lastName;
     private String email;
     private String university;
     private int gradYear;
     private String course;
     private byte[] cv;
-    private String loginToken = RandomStringGenerator.generateRandomString();
+    private String loginToken = RandomStringUtils.random(100, true, true);
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date timeStamp;
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

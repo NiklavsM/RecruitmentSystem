@@ -8,4 +8,4 @@
 # reg_date TIMESTAMP
 # );
 
-INSERT INTO Student (id,name, surname, email) values (1,'Niklavs', 'Meiers', 'niklavs.meiers@gmail.com')
+INSERT INTO Student (id,firstName, lastName, email) values (1,'Niklavs', 'Meiers', 'niklavs.meiers@gmail.com')

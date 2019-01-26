@@ -21,7 +21,6 @@ public class StudentController {
 
     @GetMapping
     public List<Student> list() {
-        System.out.println("HEREEE");
         return studentRepository.findAll();
     }
 

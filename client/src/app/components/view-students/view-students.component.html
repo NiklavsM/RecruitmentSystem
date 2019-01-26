@@ -1,7 +1,7 @@
 <table class="table" *ngIf="students">
   <tr>
     <th>Id</th>
-    <th>Name, surname</th>
+    <th>Name</th>
     <th>Email</th>
     <th>University</th>
     <!--<th>Course</th>-->
@@ -11,7 +11,7 @@
     <td>
       <a [routerLink]="['/viewstudents/student',student.id]">{{student.id}}</a>
     </td>
-    <td>{{student.name +" " + student.surname}}</td>
+    <td>{{student.firstName +" " + student.lastName}}</td>
 
     <td>{{student.email}}</td>
     <td>{{student.university}}</td>
