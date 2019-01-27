@@ -1,5 +1,6 @@
 package com.example.recruitmentsystem.services;
 
+import com.example.recruitmentsystem.models.Email;
 import com.example.recruitmentsystem.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,12 +19,12 @@ public class EmailServiceImpl {
         this.javaMailSender = javaMailSender;
     }
 
-    public void sendEmail(Student student){
+    public void sendEmail(Email email){
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo(student.getEmail());
+        mail.setTo(email.getEmailTo());
         mail.setFrom(emailFrom);
         mail.setSubject("Company A");
-        mail.setText("Thanks for sending your details. To add CV, complete personality test or change details please follow the link: http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/profile/" + student.getLoginToken());
+        mail.setText(email.getEmailText());
 
         javaMailSender.send(mail);
     }
