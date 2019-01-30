@@ -8,36 +8,10 @@ import {Observable} from "rxjs";
   templateUrl: './add-student.component.html',
   styleUrls: ['./add-student.component.scss']
 })
-export class AddStudentComponent implements OnInit {
+export class AddStudentComponent {
 
-  studentForm: FormGroup;
 
-  constructor(private studentService: StudentService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.studentForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName : new FormControl('', Validators.required),
-      email : new FormControl('', Validators.required),
-      university : new FormControl('', Validators.required),
-      gradYear : new FormControl('', Validators.required),
-      course : new FormControl('', Validators.required)
-    });
-  }
-
-  submitRegistration(){
-    if(this.studentForm.valid){
-      this.studentService.createStudent(this.studentForm.value).subscribe(
-        data => {this.studentForm.reset();
-        return true;
-        },
-        error => {
-          return Observable.throw(error); //TODO
-        }
-      )
-    }else{
-      //TODO change message
-    }
-  }
 
 }

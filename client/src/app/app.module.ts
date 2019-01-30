@@ -18,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ViewStudentComponent } from './components/view-student/view-student.component';
 import { SendEmailComponent } from './components/send-email/send-email.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SendEmailComponent } from './components/send-email/send-email.component
     NavbarComponent,
     ProfileComponent,
     ViewStudentComponent,
-    SendEmailComponent
+    SendEmailComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,

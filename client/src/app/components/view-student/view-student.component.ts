@@ -10,6 +10,8 @@ import {ActivatedRoute} from "@angular/router";
 export class ViewStudentComponent implements OnInit {
 
   public student;
+  public editMode = false;
+  public emailMode = false;
 
   constructor(private studentService : StudentService, private route: ActivatedRoute) { }
 
@@ -27,4 +29,11 @@ export class ViewStudentComponent implements OnInit {
     )
   }
 
+  editSwitch(){
+    this.editMode = !this.editMode;
+  }
+
+  emailSwitch() {
+    this.emailMode = !this.emailMode;
+  }
 }
