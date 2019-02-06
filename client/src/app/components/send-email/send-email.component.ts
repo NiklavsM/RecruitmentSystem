@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
-import {EmailService} from "../../services/email.service";
+import {ActivatedRoute} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {EmailService} from '../../services/email.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-send-email',
@@ -15,7 +16,7 @@ export class SendEmailComponent implements OnInit {
 
   emailForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private emailService: EmailService) {
+  constructor(private route: ActivatedRoute, private emailService: EmailService, public activeModal: NgbActiveModal) {
   }
 
   ngOnInit() {
@@ -26,20 +27,20 @@ export class SendEmailComponent implements OnInit {
   }
 
   sendEmail() {
-    console.log("HEREEE0", this.emailForm, this.emailForm.valid);
+    console.log('HEREEE0', this.emailForm, this.emailForm.valid);
     if (this.emailForm.valid) {
-      console.log("HEREEE");
+      console.log('HEREEE');
       this.emailService.sendEmail(this.emailForm.value).subscribe(
         data => {
           this.emailForm.reset();
           return true;
         },
         error => {
-          return Observable.throw(error); //TODO
+          return Observable.throw(error); // TODO
         }
-      )
+      );
     } else {
-      //TODO change message
+      // TODO change message
     }
   }
 
