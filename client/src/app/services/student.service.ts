@@ -17,7 +17,13 @@ export class StudentService {
   getStudent(id: number) {
     return this.http.get('server/api/students/' + id,
       {headers: StudentService.getAuthHeader()}
-      );
+    );
+  }
+
+  deleteStudent(id: number) {
+    return this.http.post('server/api/students/delete/' + id,
+      {headers: StudentService.getAuthHeader()}
+    );
   }
 
   createStudent(student) {

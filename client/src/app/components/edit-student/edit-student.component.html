@@ -13,6 +13,12 @@
     <input type="text" class="form-control" formControlName="email" required value="{{student.email}}" [attr.disabled]="editMode ? null : true"/>
   </div>
   <div class="form-group">
+    <label>Gender</label>
+    <select class="form-control" formControlName="gender" required [value]="student.gender" [attr.disabled]="editMode ? null : true">
+      <option *ngFor="let g of genders" [value]="g">{{g}}</option>
+    </select>
+  </div>
+  <div class="form-group">
     <label>University</label>
     <input type="text" class="form-control" formControlName="university" required value="{{student.university}}" [attr.disabled]="editMode ? null : true"/>
   </div>

@@ -27,13 +27,10 @@ export class SendEmailComponent implements OnInit {
   }
 
   sendEmail() {
-    console.log('HEREEE0', this.emailForm, this.emailForm.valid);
     if (this.emailForm.valid) {
-      console.log('HEREEE');
       this.emailService.sendEmail(this.emailForm.value).subscribe(
         data => {
-          this.emailForm.reset();
-          return true;
+          this.activeModal.close();
         },
         error => {
           return Observable.throw(error); // TODO

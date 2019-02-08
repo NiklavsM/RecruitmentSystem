@@ -44,8 +44,15 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Student get(@PathVariable("id") long id) {
         return studentRepository.getOne(id);
+    }
+
+    @PostMapping("delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") long id) {
+        studentRepository.deleteById(id);
     }
 
 }

@@ -22,10 +22,14 @@ import {EditStudentComponent} from './components/edit-student/edit-student.compo
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { ChartsModule } from 'ng2-charts';
+import { SignupGraphComponent } from './components/signup-graph/signup-graph.component';
+import { GenderChartComponent } from './components/gender-chart/gender-chart.component';
 
 @NgModule({
-  entryComponents: [SendEmailComponent],
+  entryComponents: [SendEmailComponent, ConfirmModalComponent],
   declarations: [
     AppComponent,
     LinkedinComponent,
@@ -38,7 +42,10 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     ProfileComponent,
     ViewStudentComponent,
     SendEmailComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    ConfirmModalComponent,
+    SignupGraphComponent,
+    GenderChartComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +55,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     NgbModalModule,
     MatDatepickerModule,
     NoopAnimationsModule,
-    MatNativeDateModule
-
-
+    MatNativeDateModule,
+    ChartsModule
   ],
   exports: [
     MatDatepickerModule

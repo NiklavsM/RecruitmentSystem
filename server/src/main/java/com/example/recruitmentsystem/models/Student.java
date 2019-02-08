@@ -20,6 +20,7 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
+    private String gender;
     private String email;
     private String university;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -45,6 +46,22 @@ public class Student {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public String getEmail() {
@@ -110,4 +127,5 @@ public class Student {
     public void setLoginToken(String loginToken) {
         this.loginToken = loginToken;
     }
+
 }
