@@ -1,15 +1,14 @@
-<div class="row">
-  <a class="btn btn-primary" routerLink="/viewstudents">Back</a>
-</div>
+<div class="btn btn-primary btn-sm" routerLink="/viewstudents"><i class="far fa-arrow-alt-circle-left"></i> Back</div>
 <div *ngIf="student" class="row">
-  <div class="col-sm-10">
+  <div class="col-sm-9">
     <app-edit-student [student]="student" [editMode]="editMode"></app-edit-student>
     <app-send-email [student]="student" *ngIf="emailMode"></app-send-email>
   </div>
-  <div class="col-sm-2">
-    <div class="btn-toolbar" style="border: 0.1rem solid black; border-radius: 0.5rem">
-      <button class="btn btn-primary m-3" (click)="open()">Send email</button>
-      <button class="btn btn-info m-3" (click)="editSwitch()" >Edit</button>
+  <div class="col-sm-3">
+    <div class="btn-toolbar option-box">
+      <button class="btn btn-primary m-1" (click)="open()">Send email</button>
+      <button class="btn btn-info m-1" (click)="editSwitch()">Edit</button>
+      <button class="btn btn-danger m-1" (click)="editSwitch()">Delete</button>
     </div>
   </div>
 </div>

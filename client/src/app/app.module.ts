@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -19,11 +19,13 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {ViewStudentComponent} from './components/view-student/view-student.component';
 import {SendEmailComponent} from './components/send-email/send-email.component';
 import {EditStudentComponent} from './components/edit-student/edit-student.component';
-import {ModalComponent, NgbdModalContent} from './components/modal/modal.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
-  entryComponents: [NgbdModalContent, SendEmailComponent],
+  entryComponents: [SendEmailComponent],
   declarations: [
     AppComponent,
     LinkedinComponent,
@@ -36,20 +38,28 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
     ProfileComponent,
     ViewStudentComponent,
     SendEmailComponent,
-    EditStudentComponent,
-    ModalComponent,
-    NgbdModalContent
-
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModalModule
+    NgbModalModule,
+    MatDatepickerModule,
+    NoopAnimationsModule,
+    MatNativeDateModule
+
+
+  ],
+  exports: [
+    MatDatepickerModule
   ],
   providers: [StudentService, AuthService, AuthGuard, {provide: 'apiKey', useValue: '86bofoe4nwku0q'}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ],
 })
 export class AppModule {
 }

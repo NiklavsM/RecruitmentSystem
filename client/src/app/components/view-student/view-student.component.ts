@@ -3,7 +3,6 @@ import {StudentService} from '../../services/student.service';
 import {ActivatedRoute} from '@angular/router';
 import {SendEmailComponent} from '../send-email/send-email.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalComponent} from '../modal/modal.component';
 
 @Component({
   selector: 'app-view-student',

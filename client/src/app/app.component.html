@@ -1,12 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style=" min-height: 100%;">
-  <div class="container" style="background: white; min-height: 100%;">
+<div style="background-color: rgb(0,64,128); padding: 1rem">
+  <div class="container container-custom" style="; min-height: 100vh;">
 
     <div class="text-center font-weight-bold text-primary pb-2">
       <!--TODO all images ALT tag-->
       <img src="assets/img/SRSLogo.png" alt="Logo" style="height: 100%; width: 100%; object-fit: contain"/>
     </div>
-    <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
+    <div class="row">
+      <div class="col-md-2">
+        <app-navbar></app-navbar>
+      </div>
+      <div class="col-md-10 box">
+        <div class="m-2">
+        <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

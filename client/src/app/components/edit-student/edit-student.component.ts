@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
-import {StudentService} from "../../services/student.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {StudentService} from '../../services/student.service';
 
 @Component({
   selector: 'app-edit-student',
@@ -24,7 +24,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
       this.student = {};
     }
     this.studentForm = new FormGroup({
-      id: new FormControl(this.student.id, Validators.required),
+      id: new FormControl(this.student.id),
       firstName: new FormControl(this.student.firstName, Validators.required),
       lastName: new FormControl(this.student.lastName, Validators.required),
       email: new FormControl(this.student.email, Validators.required),
@@ -35,6 +35,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
   }
 
   submitRegistration() {
+    console.log('Student ', this.student);
     if (this.studentForm.valid) {
       this.studentService.createStudent(this.studentForm.value).subscribe(
         data => {
@@ -42,11 +43,11 @@ export class EditStudentComponent implements OnInit, OnChanges {
           return true;
         },
         error => {
-          return Observable.throw(error); //TODO
+          return Observable.throw(error); // TODO
         }
-      )
+      );
     } else {
-      //TODO change message
+      // TODO change message
     }
   }
 

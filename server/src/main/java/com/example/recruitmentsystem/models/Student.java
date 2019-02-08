@@ -22,7 +22,8 @@ public class Student {
     private String lastName;
     private String email;
     private String university;
-    private int gradYear;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date gradYear;
     private String course;
     private byte[] cv;
     private String loginToken = RandomStringUtils.random(100, true, true);
@@ -62,11 +63,11 @@ public class Student {
         this.university = university;
     }
 
-    public int getGradYear() {
+    public Date getGradYear() {
         return gradYear;
     }
 
-    public void setGradYear(int gradYear) {
+    public void setGradYear(Date gradYear) {
         this.gradYear = gradYear;
     }
 

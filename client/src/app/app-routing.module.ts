@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {CallbackComponent} from "./components/callback/callback.component";
-import {HomeComponent} from "./components/home/home.component";
-import {AuthGuard} from "./services/auth.guard";
-import {AddStudentComponent} from "./components/add-student/add-student.component";
-import {ViewStudentsComponent} from "./components/view-students/view-students.component";
-import {AdminComponent} from "./components/admin/admin.component";
-import {ProfileComponent} from "./components/profile/profile.component";
-import {ViewStudentComponent} from "./components/view-student/view-student.component";
-import {SendEmailComponent} from "./components/send-email/send-email.component";
+import {CallbackComponent} from './components/callback/callback.component';
+import {HomeComponent} from './components/home/home.component';
+import {AuthGuard} from './services/auth.guard';
+import {AddStudentComponent} from './components/add-student/add-student.component';
+import {ViewStudentsComponent} from './components/view-students/view-students.component';
+import {AdminComponent} from './components/admin/admin.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {ViewStudentComponent} from './components/view-student/view-student.component';
+import {SendEmailComponent} from './components/send-email/send-email.component';
 
 const routes: Routes = [
   {

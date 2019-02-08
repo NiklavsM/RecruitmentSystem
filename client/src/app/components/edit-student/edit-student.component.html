@@ -18,12 +18,15 @@
   </div>
   <div class="form-group">
     <label>Year of graduation</label>
-    <input type="text" class="form-control" formControlName="gradYear" required value="{{student.gradYear}}" [attr.disabled]="editMode ? null : true"/>
+    <input type="date" class="form-control" formControlName="gradYear" required value="{{student.gradYear}}" [attr.disabled]="editMode ? null : true"/>
   </div>
   <div class="form-group">
     <label>Course</label>
-    <input type="text" class="form-control" formControlName="course" required value="{{student.firstName}}" [attr.disabled]="editMode ? null : true"/>
+    <input type="text" class="form-control" formControlName="course" required value="{{student.course}}" [attr.disabled]="editMode ? null : true"/>
   </div>
+  <div class="btn btn-warning m-1" (click)="studentForm.reset(student)" *ngIf="studentForm.dirty">
+    <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset</div>
   <div *ngIf="editMode" class="btn btn-info float-right" (click)="submitRegistration()">Submit</div>
 </form>
+
 
