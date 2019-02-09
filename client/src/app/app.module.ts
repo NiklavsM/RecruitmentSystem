@@ -21,12 +21,14 @@ import {SendEmailComponent} from './components/send-email/send-email.component';
 import {EditStudentComponent} from './components/edit-student/edit-student.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { ChartsModule } from 'ng2-charts';
 import { SignupGraphComponent } from './components/signup-graph/signup-graph.component';
 import { GenderChartComponent } from './components/gender-chart/gender-chart.component';
+import {MatTableModule} from '@angular/material/table';
+import { StatsComponent } from './components/stats/stats.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],
@@ -45,7 +47,8 @@ import { GenderChartComponent } from './components/gender-chart/gender-chart.com
     EditStudentComponent,
     ConfirmModalComponent,
     SignupGraphComponent,
-    GenderChartComponent
+    GenderChartComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,10 @@ import { GenderChartComponent } from './components/gender-chart/gender-chart.com
     MatDatepickerModule,
     NoopAnimationsModule,
     MatNativeDateModule,
-    ChartsModule
+    ChartsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   exports: [
     MatDatepickerModule

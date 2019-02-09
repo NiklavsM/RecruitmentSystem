@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StudentService} from "../../services/student.service";
+import {MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-view-students',
@@ -8,6 +9,10 @@ import {StudentService} from "../../services/student.service";
 })
 export class ViewStudentsComponent implements OnInit {
   students: any;
+  displayedColumns: string[] = ['id', 'firstName', 'email', 'university'];
+  dataSource: any;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private studentService: StudentService) {
   }
@@ -15,11 +20,16 @@ export class ViewStudentsComponent implements OnInit {
   ngOnInit() {
     this.studentService.getStudents().subscribe(data => {
         this.students = data;
-        console.log("Students " + this.students);
+        this.dataSource = new MatTableDataSource(this.students);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       err => console.error(err),
       () => console.log('students loaded'));
+  }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

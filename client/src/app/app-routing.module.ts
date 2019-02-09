@@ -9,6 +9,7 @@ import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ViewStudentComponent} from './components/view-student/view-student.component';
 import {SendEmailComponent} from './components/send-email/send-email.component';
+import {StatsComponent} from "./components/stats/stats.component";
 
 const routes: Routes = [
   {
@@ -47,7 +48,12 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-   // canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'stats',
+    component: StatsComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'profile',

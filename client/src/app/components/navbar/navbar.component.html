@@ -10,6 +10,9 @@
     <!--TODO is admin-->
     <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Admin</a>
   </li>
+  <li class="nav-item nav-pills">
+    <a class="nav-link" [routerLink]="['stats']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Stats</a>
+  </li>
   <li class="nav-item">
     <a class="nav-link" [routerLink]="['']" *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Login</a>
   </li>
