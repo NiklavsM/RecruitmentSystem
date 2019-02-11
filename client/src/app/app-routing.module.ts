@@ -10,6 +10,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {ViewStudentComponent} from './components/view-student/view-student.component';
 import {SendEmailComponent} from './components/send-email/send-email.component';
 import {StatsComponent} from "./components/stats/stats.component";
+import {ExtraInfoComponent} from "./components/extra-info/extra-info.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,11 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'extrainfo',
+    component: ExtraInfoComponent,
+    // canActivate: [AuthGuard]
   }];
 
 @NgModule({

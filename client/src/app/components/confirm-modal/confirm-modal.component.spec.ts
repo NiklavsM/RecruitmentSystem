@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewStudentComponent } from './view-student.component';
+import { ConfirmModalComponent } from './confirm-modal.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "../../app-routing.module";
@@ -25,9 +25,9 @@ import {ViewStudentsComponent} from "../view-students/view-students.component";
 import {AdminComponent} from "../admin/admin.component";
 import {NavbarComponent} from "../navbar/navbar.component";
 import {ProfileComponent} from "../profile/profile.component";
+import {ViewStudentComponent} from "../view-student/view-student.component";
 import {SendEmailComponent} from "../send-email/send-email.component";
 import {EditStudentComponent} from "../edit-student/edit-student.component";
-import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
 import {SignupGraphComponent} from "../signup-graph/signup-graph.component";
 import {GenderChartComponent} from "../gender-chart/gender-chart.component";
 import {StatsComponent} from "../stats/stats.component";
@@ -37,9 +37,9 @@ import {AuthGuard} from "../../services/auth.guard";
 import {APP_BASE_HREF} from "@angular/common";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
-describe('ViewStudentComponent', () => {
-  let component: ViewStudentComponent;
-  let fixture: ComponentFixture<ViewStudentComponent>;
+describe('ConfirmModalComponent', () => {
+  let component: ConfirmModalComponent;
+  let fixture: ComponentFixture<ConfirmModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -84,7 +84,7 @@ describe('ViewStudentComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewStudentComponent);
+    fixture = TestBed.createComponent(ConfirmModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -92,10 +92,4 @@ describe('ViewStudentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('edit switch enables edit mode', () => {
-    component.editSwitch();
-    expect(component.editMode).toBe(true);
-  })
-
 });

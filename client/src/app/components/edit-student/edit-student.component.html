@@ -1,4 +1,4 @@
-<form [formGroup]="studentForm" novalidate>
+<form [formGroup]="studentForm" novalidate (ngSubmit)="submitRegistration()">
   <div class="form-group">
     <label>First name</label>
     <input type="text" class="form-control" formControlName="firstName" required value="{{student.firstName}}"
@@ -32,7 +32,7 @@
   </div>
   <div class="btn btn-warning m-1" (click)="studentForm.reset(student)" *ngIf="studentForm.dirty">
     <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset</div>
-  <div *ngIf="editMode" class="btn btn-info float-right" (click)="submitRegistration()">Submit</div>
+  <button type="submit" *ngIf="editMode" class="btn btn-info float-right" (click)="submitRegistration()" [disabled]="studentForm.invalid">Submit</button>
 </form>
 
 

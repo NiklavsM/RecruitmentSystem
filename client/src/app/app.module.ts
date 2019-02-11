@@ -29,6 +29,7 @@ import { SignupGraphComponent } from './components/signup-graph/signup-graph.com
 import { GenderChartComponent } from './components/gender-chart/gender-chart.component';
 import {MatTableModule} from '@angular/material/table';
 import { StatsComponent } from './components/stats/stats.component';
+import { ExtraInfoComponent } from './components/extra-info/extra-info.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],
@@ -48,7 +49,8 @@ import { StatsComponent } from './components/stats/stats.component';
     ConfirmModalComponent,
     SignupGraphComponent,
     GenderChartComponent,
-    StatsComponent
+    StatsComponent,
+    ExtraInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,7 @@ import { StatsComponent } from './components/stats/stats.component';
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-  ],
+  ]
 })
 export class AppModule {
 }
