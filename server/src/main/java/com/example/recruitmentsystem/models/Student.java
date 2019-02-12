@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.RandomStringUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -26,7 +23,9 @@ public class Student {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date gradYear;
     private String course;
-    private byte[] cv;
+    @OneToOne
+    @JoinColumn(name="id")
+    private DBFile cv;
     private String loginToken = RandomStringUtils.random(100, true, true);
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
@@ -112,11 +111,11 @@ public class Student {
         this.timeStamp = timeStamp;
     }
 
-    public byte[] getCv() {
+    public DBFile getCv() {
         return cv;
     }
 
-    public void setCv(byte[] cv) {
+    public void setCv(DBFile cv) {
         this.cv = cv;
     }
 

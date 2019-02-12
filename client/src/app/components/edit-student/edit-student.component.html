@@ -32,7 +32,7 @@
   </div>
   <div class="btn btn-warning m-1" (click)="studentForm.reset(student)" *ngIf="studentForm.dirty">
     <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset</div>
-  <button type="submit" *ngIf="editMode" class="btn btn-info float-right" (click)="submitRegistration()" [disabled]="studentForm.invalid">Submit</button>
+  <button type="submit" *ngIf="editMode" class="btn btn-info float-right" [disabled]="studentForm.invalid">Submit</button>
 </form>
 
 

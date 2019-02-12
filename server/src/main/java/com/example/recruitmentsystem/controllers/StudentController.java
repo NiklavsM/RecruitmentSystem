@@ -1,14 +1,16 @@
 package com.example.recruitmentsystem.controllers;
 
+import com.example.recruitmentsystem.models.DBFile;
 import com.example.recruitmentsystem.models.Email;
 import com.example.recruitmentsystem.models.Student;
 import com.example.recruitmentsystem.repositories.StudentRepository;
+import com.example.recruitmentsystem.services.DBFileStorageService;
 import com.example.recruitmentsystem.services.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,6 +19,8 @@ public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private DBFileStorageService DBFileStorageService;
     @Autowired
     private EmailServiceImpl emailServiceImpl;
 
@@ -53,6 +57,18 @@ public class StudentController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") long id) {
         studentRepository.deleteById(id);
+    }
+
+    @PostMapping("cv/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateCv(@PathVariable("id") long id, @RequestParam("cv") MultipartFile cv){
+      //  dbfileRepository.save(cv);
+        DBFile file = DBFileStorageService.storeFile(cv);
+        Student student = studentRepository.getOne(id);
+        student.setCv(file);
+        System.out.println(file.getFileName() +"   " + student.getFirstName() + "   " + student.getCv().getFileName());
+        studentRepository.save(student);
+        System.out.println(studentRepository.getOne(id).getCv().getFileName());
     }
 
 }
