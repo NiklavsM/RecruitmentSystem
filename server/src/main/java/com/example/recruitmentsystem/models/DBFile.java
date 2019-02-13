@@ -1,11 +1,12 @@
 package com.example.recruitmentsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "files")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DBFile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // TODO make IDs nicer Maybe longer
@@ -15,12 +16,11 @@ public class DBFile {
 
     private String fileType;
 
+    @OneToOne(mappedBy="cv",cascade=CascadeType.ALL)
+    private Student student;
+
     @Lob
     private byte[] data;
-
-    public DBFile() {
-
-    }
 
     public DBFile(String fileName, String fileType, byte[] data) {
         this.fileName = fileName;
@@ -60,5 +60,11 @@ public class DBFile {
         this.data = data;
     }
 
-    // Getters and Setters (Omitted for brevity)
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }

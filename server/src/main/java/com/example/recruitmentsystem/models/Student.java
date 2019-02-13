@@ -4,6 +4,8 @@ import com.example.recruitmentsystem.helper.RandomStringGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.RandomStringUtils;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,6 +29,12 @@ public class Student {
     @JoinColumn(name="id")
     private DBFile cv;
     private String loginToken = RandomStringUtils.random(100, true, true);
+    @CreatedDate
+    private Date createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false)
+    @LastModifiedDate
+    private Date updatedAt;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date timeStamp;

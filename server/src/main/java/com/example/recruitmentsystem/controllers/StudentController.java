@@ -6,6 +6,8 @@ import com.example.recruitmentsystem.models.Student;
 import com.example.recruitmentsystem.repositories.StudentRepository;
 import com.example.recruitmentsystem.services.DBFileStorageService;
 import com.example.recruitmentsystem.services.EmailServiceImpl;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ public class StudentController {
     private DBFileStorageService DBFileStorageService;
     @Autowired
     private EmailServiceImpl emailServiceImpl;
+
 
     @GetMapping
     public List<Student> list() {
@@ -64,11 +67,14 @@ public class StudentController {
     public void updateCv(@PathVariable("id") long id, @RequestParam("cv") MultipartFile cv){
       //  dbfileRepository.save(cv);
         DBFile file = DBFileStorageService.storeFile(cv);
-        Student student = studentRepository.getOne(id);
-        student.setCv(file);
+        Student s = new Student();
+        s.setFirstName("Whaat");
+        Student student = studentRepository.save(s);
+        student.setCv(DBFileStorageService.getFile(file.getId()));
         System.out.println(file.getFileName() +"   " + student.getFirstName() + "   " + student.getCv().getFileName());
-        studentRepository.save(student);
-        System.out.println(studentRepository.getOne(id).getCv().getFileName());
+        Student s2 = studentRepository.saveAndFlush(student);
+        System.out.println(s2.getId() +  s2.getCv().getFileName());
+//        System.out.println("WHAAT " + studentRepository.getOne(id).getCv().getFileName());
     }
 
 }
