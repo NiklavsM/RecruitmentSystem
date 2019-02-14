@@ -70,5 +70,17 @@ export class StudentService {
     );
   }
 
+  downloadFile(file:String){
+    var body = {filename:file};
+
+    // return this.http.post('/server/api/students/attachments/201',body,{
+    //   responseType : 'blob',
+    //   headers:new HttpHeaders().append('Content-Type','application/json')
+    // });
+    return this.http.get('server/api/students/attachments/201' ,
+        {headers: StudentService.getAuthHeader()}
+      );
+  }
+
 }
 

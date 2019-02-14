@@ -30,6 +30,8 @@ import { GenderChartComponent } from './components/gender-chart/gender-chart.com
 import {MatTableModule} from '@angular/material/table';
 import { StatsComponent } from './components/stats/stats.component';
 import { ExtraInfoComponent } from './components/extra-info/extra-info.component';
+import {FileUploadModule} from "ng2-file-upload";
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],
@@ -50,7 +52,8 @@ import { ExtraInfoComponent } from './components/extra-info/extra-info.component
     SignupGraphComponent,
     GenderChartComponent,
     StatsComponent,
-    ExtraInfoComponent
+    ExtraInfoComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { ExtraInfoComponent } from './components/extra-info/extra-info.component
     ChartsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FileUploadModule
   ],
   exports: [
     MatDatepickerModule

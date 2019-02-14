@@ -10,12 +10,15 @@ import com.example.recruitmentsystem.services.EmailServiceImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("server/api/students")
@@ -66,33 +69,41 @@ public class StudentController {
         studentRepository.deleteById(id);
     }
 
-    @PostMapping("cv/{id}")
+    @PostMapping("attachments/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCv(@PathVariable("id") long id, @RequestParam("cv") MultipartFile cv) {
+    public void updateCv(@PathVariable("id") long id, @RequestParam("file") MultipartFile file) {
         //  dbfileRepository.save(cv);
-        DBFile file = null;
+        DBFile dbfile = null;
         try {
-            file = new DBFile(cv.getName(), cv.getContentType(), cv.getBytes());
-            file.setStudent(studentRepository.getOne(id));
-            dbFileRepository.save(file);
+            dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+            dbfile.setStudent(studentRepository.getOne(id));
+            dbFileRepository.save(dbfile);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-//        Student s = new Student();
-//        s.setFirstName("Whaat");
-//        Student student = studentRepository.save(s);
-//        student.setCv(DBFileStorageService.getFile(file.getId()));
-//        System.out.println(file.getFileName() +"   " + student.getFirstName() + "   " + student.getCv().getFileName());
-//        Student s2 = studentRepository.saveAndFlush(student);
-//        System.out.println(s2.getId() +  s2.getCv().getFileName());
-//        System.out.println("WHAAT " + studentRepository.getOne(id).getCv().getFileName());
     }
 
-    @GetMapping("attachments/{id}")
+    @GetMapping("attachments/{studentid}")
     @ResponseStatus(HttpStatus.OK)
-    public List<DBFile> getAttachments(@PathVariable("id") long id) {
-        return dbFileRepository.findByStudentId(id);
+    public List<DBFile> getAttachments(@PathVariable("studentid") long studentid) {
+        return dbFileRepository.findByStudentId(studentid);
+       // return dbFileRepository.findByStudentId(id);
+    }
+
+    @GetMapping("attachment/{id}")
+    public ResponseEntity getAttachment(@PathVariable("id") long id) {
+        Optional<DBFile> fileOptional = dbFileRepository.findById(id);
+
+        if(fileOptional.isPresent()) {
+        DBFile file = fileOptional.get();
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
+                    .body(file.getData());
+        }
+
+        return ResponseEntity.status(404).body(null);
+
     }
 
 }

@@ -27,7 +27,7 @@ public class DBFile {
     private byte[] data;
 
     public DBFile() {
-    
+
     }
 
     public DBFile(String fileName, String fileType, byte[] data) {

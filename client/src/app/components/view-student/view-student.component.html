@@ -3,6 +3,9 @@
   <div class="col-sm-9">
     <app-edit-student [student]="student" [editMode]="editMode"></app-edit-student>
     <app-send-email [student]="student" *ngIf="emailMode"></app-send-email>
+    <div *ngFor="let attachment of attachments">
+      <a href="server/api/students/attachment/{{attachment.id}}">{{attachment.fileName}} </a>
+    </div>
   </div>
   <div class="col-sm-3">
     <div class="btn-toolbar option-box">

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SendEmailComponent} from '../send-email/send-email.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-view-student',
@@ -16,6 +17,7 @@ export class ViewStudentComponent implements OnInit {
   public editMode = false;
   public emailMode = false;
   private studentId: number;
+  private attachments: any;
 
 
   constructor(private studentService: StudentService,private router: Router, private route: ActivatedRoute, private modalService: NgbModal) {
@@ -37,8 +39,8 @@ export class ViewStudentComponent implements OnInit {
     );
     this.studentService.getAttachments(id).subscribe(
       data => {
-
-        console.log("DATA: ", data);
+        this.attachments = data;
+        console.log("Attachments: ", this.attachments);
       },
       err => console.error(err),
       () => console.log('student loaded')
