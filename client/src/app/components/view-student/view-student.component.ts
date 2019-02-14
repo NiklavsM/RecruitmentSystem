@@ -35,6 +35,14 @@ export class ViewStudentComponent implements OnInit {
       err => console.error(err),
       () => console.log('student loaded')
     );
+    this.studentService.getAttachments(id).subscribe(
+      data => {
+
+        console.log("DATA: ", data);
+      },
+      err => console.error(err),
+      () => console.log('student loaded')
+    );
   }
 
   deleteStudent(){

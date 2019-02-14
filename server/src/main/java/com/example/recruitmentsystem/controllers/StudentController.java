@@ -3,6 +3,7 @@ package com.example.recruitmentsystem.controllers;
 import com.example.recruitmentsystem.models.DBFile;
 import com.example.recruitmentsystem.models.Email;
 import com.example.recruitmentsystem.models.Student;
+import com.example.recruitmentsystem.repositories.DBFileRepository;
 import com.example.recruitmentsystem.repositories.StudentRepository;
 import com.example.recruitmentsystem.services.DBFileStorageService;
 import com.example.recruitmentsystem.services.EmailServiceImpl;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -22,7 +24,9 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
     @Autowired
-    private DBFileStorageService DBFileStorageService;
+    private DBFileStorageService dbFileStorageService;
+    @Autowired
+    private DBFileRepository dbFileRepository;
     @Autowired
     private EmailServiceImpl emailServiceImpl;
 
@@ -64,17 +68,31 @@ public class StudentController {
 
     @PostMapping("cv/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCv(@PathVariable("id") long id, @RequestParam("cv") MultipartFile cv){
-      //  dbfileRepository.save(cv);
-        DBFile file = DBFileStorageService.storeFile(cv);
-        Student s = new Student();
-        s.setFirstName("Whaat");
-        Student student = studentRepository.save(s);
-        student.setCv(DBFileStorageService.getFile(file.getId()));
-        System.out.println(file.getFileName() +"   " + student.getFirstName() + "   " + student.getCv().getFileName());
-        Student s2 = studentRepository.saveAndFlush(student);
-        System.out.println(s2.getId() +  s2.getCv().getFileName());
+    public void updateCv(@PathVariable("id") long id, @RequestParam("cv") MultipartFile cv) {
+        //  dbfileRepository.save(cv);
+        DBFile file = null;
+        try {
+            file = new DBFile(cv.getName(), cv.getContentType(), cv.getBytes());
+            file.setStudent(studentRepository.getOne(id));
+            dbFileRepository.save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        Student s = new Student();
+//        s.setFirstName("Whaat");
+//        Student student = studentRepository.save(s);
+//        student.setCv(DBFileStorageService.getFile(file.getId()));
+//        System.out.println(file.getFileName() +"   " + student.getFirstName() + "   " + student.getCv().getFileName());
+//        Student s2 = studentRepository.saveAndFlush(student);
+//        System.out.println(s2.getId() +  s2.getCv().getFileName());
 //        System.out.println("WHAAT " + studentRepository.getOne(id).getCv().getFileName());
+    }
+
+    @GetMapping("attachments/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DBFile> getAttachments(@PathVariable("id") long id) {
+        return dbFileRepository.findByStudentId(id);
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.recruitmentsystem.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -16,11 +18,17 @@ public class DBFile {
 
     private String fileType;
 
-    @OneToOne(mappedBy="cv",cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "student_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Student student;
 
     @Lob
     private byte[] data;
+
+    public DBFile() {
+    
+    }
 
     public DBFile(String fileName, String fileType, byte[] data) {
         this.fileName = fileName;

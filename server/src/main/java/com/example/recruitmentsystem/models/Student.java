@@ -25,16 +25,16 @@ public class Student {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date gradYear;
     private String course;
-    @OneToOne
-    @JoinColumn(name="id")
-    private DBFile cv;
+//    @OneToOne
+//    @JoinColumn(name="id")
+//    private DBFile cv;
     private String loginToken = RandomStringUtils.random(100, true, true);
-    @CreatedDate
-    private Date createdAt;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
-    @LastModifiedDate
-    private Date updatedAt;
+//    @CreatedDate
+//    private Date createdAt;
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "updated_at", nullable = false)
+//    @LastModifiedDate
+//    private Date updatedAt;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date timeStamp;
@@ -119,13 +119,13 @@ public class Student {
         this.timeStamp = timeStamp;
     }
 
-    public DBFile getCv() {
-        return cv;
-    }
-
-    public void setCv(DBFile cv) {
-        this.cv = cv;
-    }
+//    public DBFile getCv() {
+//        return cv;
+//    }
+//
+//    public void setCv(DBFile cv) {
+//        this.cv = cv;
+//    }
 
     public String getLoginToken() {
         return loginToken;

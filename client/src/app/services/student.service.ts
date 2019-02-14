@@ -63,6 +63,12 @@ export class StudentService {
 
     return this.http.request(req);
   }
+  getAttachments(id) {
+    id = 201;
+    return this.http.get('server/api/students/attachments/' + id,
+      {headers: StudentService.getAuthHeader()}
+    );
+  }
 
 }
 
