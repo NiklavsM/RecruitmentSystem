@@ -69,14 +69,13 @@ public class StudentController {
         studentRepository.deleteById(id);
     }
 
-    @PostMapping("attachments/{id}")
+    @PostMapping("attachments")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCv(@PathVariable("id") long id, @RequestParam("file") MultipartFile file) {
-        //  dbfileRepository.save(cv);
-        DBFile dbfile = null;
+    public void updateCv(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) {
+
         try {
-            dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
-            dbfile.setStudent(studentRepository.getOne(id));
+            DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+            dbfile.setStudent(studentRepository.findByLoginToken(loginToken));
             dbFileRepository.save(dbfile);
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,15 +87,15 @@ public class StudentController {
     @ResponseStatus(HttpStatus.OK)
     public List<DBFile> getAttachments(@PathVariable("studentid") long studentid) {
         return dbFileRepository.findByStudentId(studentid);
-       // return dbFileRepository.findByStudentId(id);
+        // return dbFileRepository.findByStudentId(id);
     }
 
     @GetMapping("attachment/{id}")
     public ResponseEntity getAttachment(@PathVariable("id") long id) {
         Optional<DBFile> fileOptional = dbFileRepository.findById(id);
 
-        if(fileOptional.isPresent()) {
-        DBFile file = fileOptional.get();
+        if (fileOptional.isPresent()) {
+            DBFile file = fileOptional.get();
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                     .body(file.getData());
