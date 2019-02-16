@@ -1,0 +1,24 @@
+<form [formGroup]="personalityForm" novalidate (ngSubmit)="submitSurvey()">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Question</th>
+      <th>Disagree</th>
+      <th>Slightly disagree</th>
+      <th>Neutral</th>
+      <th>Slightly agree</th>
+      <th>Agree</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let statement of statements;let i = index">
+      <td>{{statement}}</td>
+      <td *ngFor="let k of [1,2,3,4,5]">
+        <input formControlName="s{{i+1}}" required type="radio" value="{{k}}"/>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-info float-right">Submit</button>
+</form>

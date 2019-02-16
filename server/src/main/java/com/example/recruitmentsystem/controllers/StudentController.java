@@ -3,8 +3,10 @@ package com.example.recruitmentsystem.controllers;
 import com.example.recruitmentsystem.models.DBFile;
 import com.example.recruitmentsystem.models.Email;
 import com.example.recruitmentsystem.models.Student;
+import com.example.recruitmentsystem.models.Survey;
 import com.example.recruitmentsystem.repositories.DBFileRepository;
 import com.example.recruitmentsystem.repositories.StudentRepository;
+import com.example.recruitmentsystem.repositories.SurveyRepository;
 import com.example.recruitmentsystem.services.DBFileStorageService;
 import com.example.recruitmentsystem.services.EmailServiceImpl;
 import org.hibernate.Session;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -30,6 +34,8 @@ public class StudentController {
     private DBFileStorageService dbFileStorageService;
     @Autowired
     private DBFileRepository dbFileRepository;
+    @Autowired
+    private SurveyRepository surveyRepository;
     @Autowired
     private EmailServiceImpl emailServiceImpl;
 
@@ -69,9 +75,32 @@ public class StudentController {
         studentRepository.deleteById(id);
     }
 
+    @GetMapping("student/survey/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String,Integer> getSurvey(@PathVariable("id") long id) {
+        Map<String,Integer> traits = new HashMap<>();
+        List<Survey> surveys = surveyRepository.findByStudentId(id); // TODO get one instead of List
+        if(!surveys.isEmpty()) {
+            Survey survey = surveys.get(0);
+            traits.put("Agreeableness", survey.getAgreeableness());
+            traits.put("Conscientiousness", survey.getConscientiousness());
+            traits.put("Extroversion", survey.getExtroversion());
+            traits.put("Neuroticism", survey.getNeuroticism());
+            traits.put("Openness", survey.getOpenness());
+        }
+        return traits;
+    }
+
+    @PostMapping("survey")
+    @ResponseStatus(HttpStatus.OK)
+    public void uploadSurvey(@RequestHeader("Authorization") String loginToken, @RequestBody Survey survey) {
+        survey.setStudent(studentRepository.findByLoginToken(loginToken));
+        surveyRepository.save(survey);
+    }
+
     @PostMapping("attachments")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCv(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) {
+    public void uploadAttachments(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) {
 
         try {
             DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());

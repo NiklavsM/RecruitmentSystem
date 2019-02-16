@@ -15,7 +15,7 @@
   <div class="form-group">
     <label>Gender</label>
     <select class="form-control" formControlName="gender" required [value]="student.gender" [attr.disabled]="editMode ? null : true">
-      <option *ngFor="let g of genders" [value]="g">{{g}}</option>
+      <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
     </select>
   </div>
   <div class="form-group">

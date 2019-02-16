@@ -32,6 +32,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { ExtraInfoComponent } from './components/extra-info/extra-info.component';
 import {FileUploadModule} from "ng2-file-upload";
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { PersonalityTestComponent } from './components/extra-info/personality-test/personality-test.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],
@@ -53,7 +54,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     GenderChartComponent,
     StatsComponent,
     ExtraInfoComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    PersonalityTestComponent
   ],
   imports: [
     BrowserModule,

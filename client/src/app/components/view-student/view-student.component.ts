@@ -18,6 +18,7 @@ export class ViewStudentComponent implements OnInit {
   public emailMode = false;
   private studentId: number;
   private attachments: any;
+  private survey : any;
 
 
   constructor(private studentService: StudentService,private router: Router, private route: ActivatedRoute, private modalService: NgbModal) {
@@ -41,6 +42,14 @@ export class ViewStudentComponent implements OnInit {
       data => {
         this.attachments = data;
         console.log("Attachments: ", this.attachments);
+      },
+      err => console.error(err),
+      () => console.log('student loaded')
+    );
+    this.studentService.getSurvey(id).subscribe(
+      data => {
+        this.survey = data;
+        console.log("survey: ", this.survey);
       },
       err => console.error(err),
       () => console.log('student loaded')
