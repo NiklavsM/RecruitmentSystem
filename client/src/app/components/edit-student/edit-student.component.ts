@@ -34,7 +34,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
       gradYear: new FormControl(this.student.gradYear, Validators.required),
       course: new FormControl(this.student.course, Validators.required)
     });
-    this.genders = ['Male', 'Female', 'Other', 'Prefer not to say'];
+    this.genders = ['male', 'female', 'other', 'prefer not to say'];
   }
 
   submitRegistration() {

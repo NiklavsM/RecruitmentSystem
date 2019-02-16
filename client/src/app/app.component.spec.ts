@@ -13,8 +13,8 @@ import {ViewStudentComponent} from "./components/view-student/view-student.compo
 import {SendEmailComponent} from "./components/send-email/send-email.component";
 import {EditStudentComponent} from "./components/edit-student/edit-student.component";
 import {ConfirmModalComponent} from "./components/confirm-modal/confirm-modal.component";
-import {SignupGraphComponent} from "./components/signup-graph/signup-graph.component";
-import {GenderChartComponent} from "./components/gender-chart/gender-chart.component";
+import {SignupGraphComponent} from "./components/stats/signup-graph/signup-graph.component";
+import {GenderChartComponent} from "./components/stats/gender-chart/gender-chart.component";
 import {StatsComponent} from "./components/stats/stats.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "./app-routing.module";

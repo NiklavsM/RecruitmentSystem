@@ -25,14 +25,15 @@ import {MatNativeDateModule, MatPaginatorModule, MatSortModule} from '@angular/m
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { ChartsModule } from 'ng2-charts';
-import { SignupGraphComponent } from './components/signup-graph/signup-graph.component';
-import { GenderChartComponent } from './components/gender-chart/gender-chart.component';
+import { SignupGraphComponent } from './components/stats/signup-graph/signup-graph.component';
+import { GenderChartComponent } from './components/stats/gender-chart/gender-chart.component';
 import {MatTableModule} from '@angular/material/table';
 import { StatsComponent } from './components/stats/stats.component';
 import { ExtraInfoComponent } from './components/extra-info/extra-info.component';
 import {FileUploadModule} from "ng2-file-upload";
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { PersonalityTestComponent } from './components/extra-info/personality-test/personality-test.component';
+import {StatsService} from "./services/stats.service";
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],
@@ -75,7 +76,7 @@ import { PersonalityTestComponent } from './components/extra-info/personality-te
   exports: [
     MatDatepickerModule
   ],
-  providers: [StudentService, AuthService, AuthGuard, {provide: 'apiKey', useValue: '86bofoe4nwku0q'}],
+  providers: [StudentService, StatsService, AuthService, AuthGuard, {provide: 'apiKey', useValue: '86bofoe4nwku0q'}],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
