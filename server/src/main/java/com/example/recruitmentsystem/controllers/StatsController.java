@@ -22,9 +22,9 @@ public class StatsController {
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Integer> getGenderChartInfo() {
         Map<String, Integer> genderMap = new HashMap<>();
-        genderMap.put("male", studentRepository.findByGender("male").size());
-        genderMap.put("female", studentRepository.findByGender("female").size());
-        genderMap.put("other", studentRepository.findByGender("other").size());
+        genderMap.put("Male", studentRepository.findByGender("male").size());
+        genderMap.put("Female", studentRepository.findByGender("female").size());
+        genderMap.put("Other", studentRepository.findByGender("other").size());
         return genderMap;
     }
 

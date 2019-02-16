@@ -1,5 +1,5 @@
 <h3>Gender chart</h3>
-<div style="display: block">
+<div style="display: block" *ngIf="pieChartData">
   <canvas baseChart
           [data]="pieChartData"
           [labels]="pieChartLabels"

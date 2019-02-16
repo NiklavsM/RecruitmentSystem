@@ -7,6 +7,6 @@ export class StatsService {
   }
 
   public getGenderChart(){
-    return this.http.get('server/api/survey/genderchart');
+    return this.http.get('server/api/stats/genderchart');
   }
 }
