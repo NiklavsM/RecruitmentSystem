@@ -42,7 +42,8 @@ export class EditStudentComponent implements OnInit, OnChanges {
     if (this.studentForm.valid) {
       this.studentService.createStudent(this.studentForm.value).subscribe(
         data => {
-          this.studentForm.reset();
+          //this.studentForm.reset();
+          console.log("Student submitted "); // TODO make a popup
           return true;
         },
         error => {

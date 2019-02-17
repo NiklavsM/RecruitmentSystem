@@ -28,5 +28,15 @@ public class StatsController {
         return genderMap;
     }
 
+    @GetMapping("/signupchart")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Integer> getSignupChartInfo() {
+        Map<String, Integer> genderMap = new HashMap<>();
+        genderMap.put("Male", studentRepository.findByGender("male").size());
+        genderMap.put("Female", studentRepository.findByGender("female").size());
+        genderMap.put("Other", studentRepository.findByGender("other").size());
+        return genderMap;
+    }
+
 
 }

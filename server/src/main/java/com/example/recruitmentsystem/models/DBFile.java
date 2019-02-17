@@ -26,6 +26,8 @@ public class DBFile {
     @Lob
     private byte[] data;
 
+    private int size;
+
     public DBFile() {
 
     }
@@ -34,6 +36,7 @@ public class DBFile {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.size = data.length;
     }
 
     public Long getId() {
@@ -66,6 +69,7 @@ public class DBFile {
 
     public void setData(byte[] data) {
         this.data = data;
+        size = data.length;
     }
 
     public Student getStudent() {
@@ -74,5 +78,13 @@ public class DBFile {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

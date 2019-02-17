@@ -34,6 +34,7 @@ import {FileUploadModule} from "ng2-file-upload";
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { PersonalityTestComponent } from './components/extra-info/personality-test/personality-test.component';
 import {StatsService} from "./services/stats.service";
+import { PeronalityChartComponent } from './components/view-student/peronality-chart/peronality-chart.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],
@@ -56,7 +57,8 @@ import {StatsService} from "./services/stats.service";
     StatsComponent,
     ExtraInfoComponent,
     FileUploadComponent,
-    PersonalityTestComponent
+    PersonalityTestComponent,
+    PeronalityChartComponent
   ],
   imports: [
     BrowserModule,

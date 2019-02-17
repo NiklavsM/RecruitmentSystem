@@ -9,8 +9,6 @@ import com.example.recruitmentsystem.repositories.StudentRepository;
 import com.example.recruitmentsystem.repositories.SurveyRepository;
 import com.example.recruitmentsystem.services.DBFileStorageService;
 import com.example.recruitmentsystem.services.EmailServiceImpl;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -114,13 +112,12 @@ public class StudentController {
 
     @GetMapping("attachments/{studentid}")
     @ResponseStatus(HttpStatus.OK)
-    public List<DBFile> getAttachments(@PathVariable("studentid") long studentid) {
+    public List<DBFile> getAttachments(@PathVariable("studentid") Long studentid) {
         return dbFileRepository.findByStudentId(studentid);
-        // return dbFileRepository.findByStudentId(id);
     }
 
     @GetMapping("attachment/{id}")
-    public ResponseEntity getAttachment(@PathVariable("id") long id) {
+    public ResponseEntity getAttachment(@PathVariable("id") Long id) {
         Optional<DBFile> fileOptional = dbFileRepository.findById(id);
 
         if (fileOptional.isPresent()) {

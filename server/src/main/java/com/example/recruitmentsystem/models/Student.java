@@ -4,6 +4,8 @@ import com.example.recruitmentsystem.helper.RandomStringGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.RandomStringUtils;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -25,19 +27,11 @@ public class Student {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date gradYear;
     private String course;
-//    @OneToOne
-//    @JoinColumn(name="id")
-//    private DBFile cv;
     private String loginToken = RandomStringUtils.random(100, true, true);
-//    @CreatedDate
-//    private Date createdAt;
-//    @Temporal(TemporalType.TIMESTAMP)
-//    @Column(name = "updated_at", nullable = false)
-//    @LastModifiedDate
-//    private Date updatedAt;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private Date timeStamp;
+    @CreationTimestamp
+    private Date createdAt;
+    @UpdateTimestamp
+    private Date updatedAt;
 
     public String getFirstName() {
         return firstName;
@@ -61,14 +55,6 @@ public class Student {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Date getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
     }
 
     public String getEmail() {
@@ -111,22 +97,6 @@ public class Student {
         this.id = id;
     }
 
-    public Date getTimestamp() {
-        return timeStamp;
-    }
-
-    public void setTimestamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-//    public DBFile getCv() {
-//        return cv;
-//    }
-//
-//    public void setCv(DBFile cv) {
-//        this.cv = cv;
-//    }
-
     public String getLoginToken() {
         return loginToken;
     }
@@ -135,4 +105,19 @@ public class Student {
         this.loginToken = loginToken;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

@@ -1,17 +1,51 @@
-<div class="btn btn-primary btn-sm" routerLink="/viewstudents"><i class="far fa-arrow-alt-circle-left"></i> Back</div>
-<div *ngIf="student" class="row">
-  <div class="col-sm-9">
-    <app-edit-student [student]="student" [editMode]="editMode"></app-edit-student>
-    <app-send-email [student]="student" *ngIf="emailMode"></app-send-email>
-    <div *ngFor="let attachment of attachments">
-      <a href="server/api/students/attachment/{{attachment.id}}">{{attachment.fileName}} </a>
-    </div>
+<div class="row">
+  <div class="col-sm-2">
+    <button class="btn btn-primary btn-sm m-1" routerLink="/viewstudents"><i class="far fa-arrow-alt-circle-left"></i>
+      Back
+    </button>
   </div>
-  <div class="col-sm-3">
-    <div class="btn-toolbar option-box">
+  <div class="col-sm-12">
+    <div class=" option-box">
       <button class="btn btn-primary m-1" (click)="open('email')">Send email</button>
       <button class="btn btn-info m-1" (click)="editSwitch()">Edit</button>
       <button class="btn btn-danger m-1" (click)="open('delete')">Delete</button>
     </div>
   </div>
 </div>
+<div *ngIf="student" class="row">
+  <div class="col-sm-5">
+    <app-edit-student [student]="student" [editMode]="editMode"></app-edit-student>
+
+  </div>
+  <div class="col-sm-7 p-0">
+    <div class="row">
+      <div class="col-sm-12 p-0">
+        <app-peronality-chart></app-peronality-chart>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>File name</th>
+            <th>File size</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let attachment of attachments">
+            <td>
+              <a href="server/api/students/attachment/{{attachment.id}}">{{attachment.fileName}} </a>
+            </td>
+            <td>
+              {{attachment.size/1024 | number:'1.1-1'}} KB
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-send-email [student]="student" *ngIf="emailMode"></app-send-email>
