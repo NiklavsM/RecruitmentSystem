@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StatsService} from "../../../services/stats.service";
 
 @Component({
   selector: 'app-signup-graph',
@@ -7,18 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupGraphComponent implements OnInit {
 
-  constructor() { }
+  constructor(private statsService: StatsService) {
+  }
 
   ngOnInit() {
+    this.statsService.getSignupStats(this.getYearAsDateArray(new Date())).subscribe(data => {
+      this.lineChartData = [{data: this.flipArray(data), label: 'Number of student data collected'}];
+      console.log("GOT DATA ", data)
+    })
   }
-  public lineChartData:Array<any> = [
-    {data: [40, 59, 80, 81, 56, 55, 90], label: 'Number of student data collected'}
-  ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions:any = {
-    responsive: true
+
+  private dates = [];
+  public lineChartData: Array<any> = [{data: []}];
+  public lineChartLabels = this.getChartLabels();
+  public lineChartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
   };
-  public lineChartColors:Array<any> = [
+  public lineChartColors: Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
@@ -28,27 +41,54 @@ export class SignupGraphComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend:boolean = true;
-  public lineChartType:string = 'line';
-
-  public randomize():void {
-    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-    for (let i = 0; i < this.lineChartData.length; i++) {
-      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-      }
-    }
-    this.lineChartData = _lineChartData;
-  }
+  public lineChartLegend: boolean = true;
+  public lineChartType: string = 'line';
+  public optionsChart = {};
 
   // events
-  public chartClicked(e:any):void {
+  public chartClicked(e: any): void {
     console.log(e);
   }
 
-  public chartHovered(e:any):void {
+  public chartHovered(e: any): void {
     console.log(e);
+  }
+
+  //
+  private getYearAsDateArray(today: Date) {
+    let dates = [];
+    for (let i = 0; i < 12; i++) {
+      let tempDate = new Date(today);
+      tempDate.setMonth(today.getMonth() - i);
+      dates.push({
+        fromDate: tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-01',
+        toDate: tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-31'
+      })
+    }
+    console.log("dates ", dates);
+    return dates
+
+  }
+
+  // flips array [1,2,3] - > [3,2,1]
+  private flipArray(array: any) {
+    let newArray = [];
+    for (let i = array.length - 1; i >= 0; i--) {
+      newArray.push(array[i]);
+    }
+    return newArray;
+  }
+
+  // Create labels so they start at current month
+  private getChartLabels() {
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let lineChartLabels = [];
+    let firstMonth = new Date().getMonth() + 1;
+    for (let i = 0; i < months.length; i++) {
+      lineChartLabels[i] = months[(firstMonth + i) % 12];
+    }
+    console.log("lineChartLabels ", lineChartLabels);
+    return lineChartLabels;
   }
 
 }

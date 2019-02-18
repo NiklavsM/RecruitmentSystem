@@ -1,4 +1,4 @@
-package com.example.recruitmentsystem.controllers;
+package recruitmentsystem.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

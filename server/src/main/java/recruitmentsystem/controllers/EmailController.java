@@ -1,8 +1,7 @@
-package com.example.recruitmentsystem.controllers;
+package recruitmentsystem.controllers;
 
-import com.example.recruitmentsystem.models.Email;
-import com.example.recruitmentsystem.models.Student;
-import com.example.recruitmentsystem.services.EmailServiceImpl;
+import recruitmentsystem.models.Email;
+import recruitmentsystem.services.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

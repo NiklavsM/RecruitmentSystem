@@ -1,4 +1,4 @@
-package com.example.recruitmentsystem.models;
+package recruitmentsystem.models;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;

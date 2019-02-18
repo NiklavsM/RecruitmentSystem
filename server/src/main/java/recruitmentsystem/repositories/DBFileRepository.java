@@ -1,6 +1,6 @@
-package com.example.recruitmentsystem.repositories;
+package recruitmentsystem.repositories;
 
-import com.example.recruitmentsystem.models.DBFile;
+import recruitmentsystem.models.DBFile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

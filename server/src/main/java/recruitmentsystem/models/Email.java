@@ -1,4 +1,4 @@
-package com.example.recruitmentsystem.models;
+package recruitmentsystem.models;
 
 public class Email {
     private String emailTo;

@@ -1,6 +1,6 @@
-package com.example.recruitmentsystem.repositories;
+package recruitmentsystem.repositories;
 
-import com.example.recruitmentsystem.models.Survey;
+import recruitmentsystem.models.Survey;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

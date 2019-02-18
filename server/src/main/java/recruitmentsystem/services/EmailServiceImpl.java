@@ -1,7 +1,6 @@
-package com.example.recruitmentsystem.services;
+package recruitmentsystem.services;
 
-import com.example.recruitmentsystem.models.Email;
-import com.example.recruitmentsystem.models.Student;
+import recruitmentsystem.models.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;

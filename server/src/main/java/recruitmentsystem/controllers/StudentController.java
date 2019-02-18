@@ -1,14 +1,14 @@
-package com.example.recruitmentsystem.controllers;
+package recruitmentsystem.controllers;
 
-import com.example.recruitmentsystem.models.DBFile;
-import com.example.recruitmentsystem.models.Email;
-import com.example.recruitmentsystem.models.Student;
-import com.example.recruitmentsystem.models.Survey;
-import com.example.recruitmentsystem.repositories.DBFileRepository;
-import com.example.recruitmentsystem.repositories.StudentRepository;
-import com.example.recruitmentsystem.repositories.SurveyRepository;
-import com.example.recruitmentsystem.services.DBFileStorageService;
-import com.example.recruitmentsystem.services.EmailServiceImpl;
+import recruitmentsystem.models.DBFile;
+import recruitmentsystem.models.Email;
+import recruitmentsystem.models.Student;
+import recruitmentsystem.models.Survey;
+import recruitmentsystem.repositories.DBFileRepository;
+import recruitmentsystem.repositories.StudentRepository;
+import recruitmentsystem.repositories.SurveyRepository;
+import recruitmentsystem.services.DBFileStorageService;
+import recruitmentsystem.services.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

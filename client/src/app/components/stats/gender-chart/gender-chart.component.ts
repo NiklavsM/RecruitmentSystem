@@ -17,7 +17,7 @@ export class GenderChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.statsService.getGenderChart().subscribe(data => {
+    this.statsService.getGenderStats().subscribe(data => {
         this.populateChert(data);
       },
       error => {

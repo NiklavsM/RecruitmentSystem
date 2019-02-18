@@ -1,4 +1,4 @@
-package com.example.recruitmentsystem.exceptions;
+package recruitmentsystem.exceptions;
 
 public class FileStorageException extends RuntimeException {
     public FileStorageException(String message) {

@@ -1,9 +1,9 @@
-package com.example.recruitmentsystem.services;
+package recruitmentsystem.services;
 
-import com.example.recruitmentsystem.exceptions.FileStorageException;
-import com.example.recruitmentsystem.exceptions.MyFileNotFoundException;
-import com.example.recruitmentsystem.models.DBFile;
-import com.example.recruitmentsystem.repositories.DBFileRepository;
+import recruitmentsystem.exceptions.FileStorageException;
+import recruitmentsystem.exceptions.MyFileNotFoundException;
+import recruitmentsystem.models.DBFile;
+import recruitmentsystem.repositories.DBFileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -34,7 +34,6 @@ public class DBFileStorageService {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
-
 
 
     public DBFile getFile(Long fileId) {

@@ -18,10 +18,10 @@ export class ViewStudentComponent implements OnInit {
   public emailMode = false;
   private studentId: number;
   private attachments: any;
-  private survey : any;
+  private survey: any;
 
 
-  constructor(private studentService: StudentService,private router: Router, private route: ActivatedRoute, private modalService: NgbModal) {
+  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute, private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class ViewStudentComponent implements OnInit {
     );
   }
 
-  deleteStudent(){
+  deleteStudent() {
     this.studentService.deleteStudent(this.studentId).subscribe();
   }
 
@@ -65,16 +65,17 @@ export class ViewStudentComponent implements OnInit {
   }
 
   open(name: string) {
-    if(name == 'email') {
+    if (name == 'email') {
       const modalRef = this.modalService.open(SendEmailComponent);
       modalRef.componentInstance.student = this.student;
     }
-    if(name == 'delete'){
+    if (name == 'delete') {
       const modalRef = this.modalService.open(ConfirmModalComponent);
       modalRef.result.then(result => {
         this.deleteStudent();
         this.router.navigateByUrl('/viewstudents');
-      },reason => {});
+      }, reason => {
+      });
       modalRef.componentInstance.student = this.student;
     }
   }

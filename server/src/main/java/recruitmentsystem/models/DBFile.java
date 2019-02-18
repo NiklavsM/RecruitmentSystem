@@ -1,7 +1,6 @@
-package com.example.recruitmentsystem.models;
+package recruitmentsystem.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
