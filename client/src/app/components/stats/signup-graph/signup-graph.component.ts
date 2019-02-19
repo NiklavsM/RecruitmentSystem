@@ -14,11 +14,9 @@ export class SignupGraphComponent implements OnInit {
   ngOnInit() {
     this.statsService.getSignupStats(this.getYearAsDateArray(new Date())).subscribe(data => {
       this.lineChartData = [{data: this.flipArray(data), label: 'Number of student data collected'}];
-      console.log("GOT DATA ", data)
     })
   }
 
-  private dates = [];
   public lineChartData: Array<any> = [{data: []}];
   public lineChartLabels = this.getChartLabels();
   public lineChartOptions = {
@@ -43,7 +41,6 @@ export class SignupGraphComponent implements OnInit {
   ];
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
-  public optionsChart = {};
 
   // events
   public chartClicked(e: any): void {

@@ -1,13 +1,10 @@
-<div class="row header-section">
-  <span>Please upload your CV and any other relevant documents. Max file size: 10MB. Allowed file types: '.pdf', '.docx'</span>
-</div>
-
 <div class="row">
-
-  <div class="col-sm-12">
-    <h4>Upload Section</h4>
-      <input type="file" name="fileUpload" id="fileUpload"
-             multiple ng2FileSelect [uploader]="uploader">
+  <div class="col-sm-12 mb-3">
+    <div class="header-section">
+      <span>Please upload your CV and any other relevant documents. Max file size: 10MB. Allowed file types: '.pdf', '.docx'</span>
+    </div>
+    <input type="file" name="fileUpload" id="fileUpload"
+           multiple ng2FileSelect [uploader]="uploader">
     <div>
       <div class="row uploadList" *ngFor="let item of uploader.queue">
         <div class="col-sm-4">{{item.file.name}}</div>
@@ -27,6 +24,10 @@
       <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Upload All</button>
     </div>
   </div>
-  <app-personality-test></app-personality-test>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <app-personality-test></app-personality-test>
+  </div>
 
 </div>

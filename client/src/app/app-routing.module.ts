@@ -7,7 +7,7 @@ import {AddStudentComponent} from './components/add-student/add-student.componen
 import {ViewStudentsComponent} from './components/view-students/view-students.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {ViewStudentComponent} from './components/view-student/view-student.component';
+import {ViewStudentComponent} from './components/view-students/view-student/view-student.component';
 import {SendEmailComponent} from './components/send-email/send-email.component';
 import {StatsComponent} from "./components/stats/stats.component";
 import {ExtraInfoComponent} from "./components/extra-info/extra-info.component";
@@ -29,23 +29,24 @@ const routes: Routes = [
   {
     path: 'addstudent',
     component: AddStudentComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'viewstudents/:id',
+    component: ViewStudentComponent,
    // canActivate: [AuthGuard]
   },
   {
-    path: 'viewstudents/student/:id',
-    component: ViewStudentComponent,
-   // canActivate: [AuthGuard]
+    path: 'viewstudents',
+    component: ViewStudentsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'email/:email',
     component: SendEmailComponent,
     // canActivate: [AuthGuard]
   },
-  {
-    path: 'viewstudents',
-    component: ViewStudentsComponent,
-  //  canActivate: [AuthGuard]
-  },
+
   {
     path: 'admin',
     component: AdminComponent,

@@ -16,7 +16,7 @@ import {ViewStudentsComponent} from './components/view-students/view-students.co
 import {AdminComponent} from './components/admin/admin.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {ViewStudentComponent} from './components/view-student/view-student.component';
+import {ViewStudentComponent} from './components/view-students/view-student/view-student.component';
 import {SendEmailComponent} from './components/send-email/send-email.component';
 import {EditStudentComponent} from './components/edit-student/edit-student.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
@@ -34,7 +34,7 @@ import {FileUploadModule} from "ng2-file-upload";
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { PersonalityTestComponent } from './components/extra-info/personality-test/personality-test.component';
 import {StatsService} from "./services/stats.service";
-import { PeronalityChartComponent } from './components/view-student/peronality-chart/peronality-chart.component';
+import { PeronalityChartComponent } from './components/view-students/view-student/peronality-chart/peronality-chart.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent],

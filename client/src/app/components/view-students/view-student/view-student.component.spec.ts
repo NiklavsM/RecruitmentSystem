@@ -1,9 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ViewStudentComponent } from './view-student.component';
+import {ViewStudentComponent} from './view-student.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {BrowserModule} from "@angular/platform-browser";
-import {AppRoutingModule} from "../../app-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
@@ -16,26 +15,27 @@ import {
 } from "@angular/material";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ChartsModule} from "ng2-charts";
-import {AppComponent} from "../../app.component";
-import {LinkedinComponent} from "../linkedin/linkedin.component";
-import {CallbackComponent} from "../callback/callback.component";
-import {HomeComponent} from "../home/home.component";
-import {AddStudentComponent} from "../add-student/add-student.component";
-import {ViewStudentsComponent} from "../view-students/view-students.component";
-import {AdminComponent} from "../admin/admin.component";
-import {NavbarComponent} from "../navbar/navbar.component";
-import {ProfileComponent} from "../profile/profile.component";
-import {SendEmailComponent} from "../send-email/send-email.component";
-import {EditStudentComponent} from "../edit-student/edit-student.component";
-import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
-import {SignupGraphComponent} from "../stats/signup-graph/signup-graph.component";
-import {GenderChartComponent} from "../stats/gender-chart/gender-chart.component";
-import {StatsComponent} from "../stats/stats.component";
-import {StudentService} from "../../services/student.service";
-import {AuthService} from "../../services/auth.service";
-import {AuthGuard} from "../../services/auth.guard";
 import {APP_BASE_HREF} from "@angular/common";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {AppComponent} from "../../../app.component";
+import {LinkedinComponent} from "../../linkedin/linkedin.component";
+import {CallbackComponent} from "../../callback/callback.component";
+import {HomeComponent} from "../../home/home.component";
+import {AddStudentComponent} from "../../add-student/add-student.component";
+import {ViewStudentsComponent} from "../view-students.component";
+import {AdminComponent} from "../../admin/admin.component";
+import {NavbarComponent} from "../../navbar/navbar.component";
+import {ProfileComponent} from "../../profile/profile.component";
+import {SendEmailComponent} from "../../send-email/send-email.component";
+import {EditStudentComponent} from "../../edit-student/edit-student.component";
+import {ConfirmModalComponent} from "../../confirm-modal/confirm-modal.component";
+import {SignupGraphComponent} from "../../stats/signup-graph/signup-graph.component";
+import {GenderChartComponent} from "../../stats/gender-chart/gender-chart.component";
+import {StatsComponent} from "../../stats/stats.component";
+import {StudentService} from "../../../services/student.service";
+import {AuthService} from "../../../services/auth.service";
+import {AuthGuard} from "../../../services/auth.guard";
+import {AppRoutingModule} from "../../../app-routing.module";
 
 describe('ViewStudentComponent', () => {
   let component: ViewStudentComponent;

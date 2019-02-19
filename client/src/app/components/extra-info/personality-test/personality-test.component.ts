@@ -26,9 +26,9 @@ export class PersonalityTestComponent implements OnInit {
       s5: new FormControl(),
       s6: new FormControl(),
     });
-    this.statements = ["Am the life of the party", "Feel little concern for others",
+    this.statements = ["Feel little concern for others",
       "Am always prepared", "Get stressed out easily",
-      "Have a rich vocabulary", "Don't talk a lot"]
+      "Have a rich vocabulary","Am the life of the party", "Don't talk a lot"]
   }
 
   submitSurvey() {

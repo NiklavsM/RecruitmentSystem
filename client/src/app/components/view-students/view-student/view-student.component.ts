@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {StudentService} from '../../services/student.service';
+import {StudentService} from '../../../services/student.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SendEmailComponent} from '../send-email/send-email.component';
+import {SendEmailComponent} from '../../send-email/send-email.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
+import {ConfirmModalComponent} from "../../confirm-modal/confirm-modal.component";
 import {saveAs} from 'file-saver';
 
 @Component({
