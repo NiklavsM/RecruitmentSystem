@@ -1,22 +1,31 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Globals} from "../globals";
 
 @Injectable()
 export class StatsService {
-  constructor(private http: HttpClient) {
+
+  private token = localStorage.getItem('access_token');
+  private httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+      .set('Authorization', 'Bearer ' + this.token)
+  };
+
+  constructor(private http: HttpClient, private gl: Globals) {
   }
 
   public getGenderStats() {
-    return this.http.get('server/api/stats/genderstats');
+    let body = JSON.stringify(this.gl.genders);
+    return this.http.post('server/api/stats/genderstats', body, this.httpOptions);
   }
 
   public getSignupStats(dates: any) {
-    let token = localStorage.getItem('access_token');
-    let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-        .set('Authorization', 'Bearer ' + token)
-    };
     let body = JSON.stringify(dates);
-    return this.http.post('server/api/stats/signupstats', body, httpOptions);
+    return this.http.post('server/api/stats/signupstats', body, this.httpOptions);
+  }
+
+  public getEthnicityStats() {
+    let body = JSON.stringify(this.gl.ethnicities);
+    return this.http.post('server/api/stats/ethnicitystats', body, this.httpOptions);
   }
 }

@@ -10,7 +10,7 @@ import {AdminComponent} from "./components/admin/admin.component";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {ViewStudentComponent} from "./components/view-students/view-student/view-student.component";
-import {SendEmailComponent} from "./components/send-email/send-email.component";
+import {SendEmailComponent} from "./components/view-students/view-student/send-email/send-email.component";
 import {EditStudentComponent} from "./components/edit-student/edit-student.component";
 import {ConfirmModalComponent} from "./components/confirm-modal/confirm-modal.component";
 import {SignupGraphComponent} from "./components/stats/signup-graph/signup-graph.component";

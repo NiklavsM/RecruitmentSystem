@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {EmailService} from '../../services/email.service';
+import {EmailService} from '../../../../services/email.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

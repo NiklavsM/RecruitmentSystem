@@ -17,27 +17,30 @@ import {AdminComponent} from './components/admin/admin.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ViewStudentComponent} from './components/view-students/view-student/view-student.component';
-import {SendEmailComponent} from './components/send-email/send-email.component';
+import {SendEmailComponent} from './components/view-students/view-student/send-email/send-email.component';
 import {EditStudentComponent} from './components/edit-student/edit-student.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
-import { ChartsModule } from 'ng2-charts';
-import { SignupGraphComponent } from './components/stats/signup-graph/signup-graph.component';
-import { GenderChartComponent } from './components/stats/gender-chart/gender-chart.component';
+import {ConfirmModalComponent} from './components/confirm-modal/confirm-modal.component';
+import {ChartsModule} from 'ng2-charts';
+import {SignupGraphComponent} from './components/stats/signup-graph/signup-graph.component';
+import {GenderChartComponent} from './components/stats/gender-chart/gender-chart.component';
 import {MatTableModule} from '@angular/material/table';
-import { StatsComponent } from './components/stats/stats.component';
-import { ExtraInfoComponent } from './components/extra-info/extra-info.component';
+import {StatsComponent} from './components/stats/stats.component';
+import {ExtraInfoComponent} from './components/extra-info/extra-info.component';
 import {FileUploadModule} from "ng2-file-upload";
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { PersonalityTestComponent } from './components/extra-info/personality-test/personality-test.component';
+import {FileUploadComponent} from './components/file-upload/file-upload.component';
+import {PersonalityTestComponent} from './components/extra-info/personality-test/personality-test.component';
 import {StatsService} from "./services/stats.service";
-import { PeronalityChartComponent } from './components/view-students/view-student/peronality-chart/peronality-chart.component';
+import {PeronalityChartComponent} from './components/view-students/view-student/peronality-chart/peronality-chart.component';
+import {PersonalityTraitDescriptionComponent} from './components/view-students/view-student/peronality-chart/personality-trait-description/personality-trait-description.component';
+import {Globals} from "./globals";
+import { EthnicityChartComponent } from './components/stats/ethnicity-chart/ethnicity-chart.component';
 
 @NgModule({
-  entryComponents: [SendEmailComponent, ConfirmModalComponent],
+  entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent],
   declarations: [
     AppComponent,
     LinkedinComponent,
@@ -58,7 +61,9 @@ import { PeronalityChartComponent } from './components/view-students/view-studen
     ExtraInfoComponent,
     FileUploadComponent,
     PersonalityTestComponent,
-    PeronalityChartComponent
+    PeronalityChartComponent,
+    PersonalityTraitDescriptionComponent,
+    EthnicityChartComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,10 @@ import { PeronalityChartComponent } from './components/view-students/view-studen
   exports: [
     MatDatepickerModule
   ],
-  providers: [StudentService, StatsService, AuthService, AuthGuard, {provide: 'apiKey', useValue: '86bofoe4nwku0q'}],
+  providers: [Globals, StudentService, StatsService, AuthService, AuthGuard, {
+    provide: 'apiKey',
+    useValue: '86bofoe4nwku0q'
+  }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

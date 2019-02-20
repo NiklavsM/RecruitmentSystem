@@ -12,7 +12,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let statement of statements;let i = index">
-      <td>{{statement}}</td>
+      <td>{{ i + 1 + '. ' + statement}}</td>
       <td *ngFor="let k of [1,2,3,4,5]">
         <input formControlName="s{{i+1}}" required type="radio" value="{{k}}"/>
       </td>

@@ -26,7 +26,7 @@ import {ViewStudentsComponent} from "../view-students.component";
 import {AdminComponent} from "../../admin/admin.component";
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {ProfileComponent} from "../../profile/profile.component";
-import {SendEmailComponent} from "../../send-email/send-email.component";
+import {SendEmailComponent} from "./send-email/send-email.component";
 import {EditStudentComponent} from "../../edit-student/edit-student.component";
 import {ConfirmModalComponent} from "../../confirm-modal/confirm-modal.component";
 import {SignupGraphComponent} from "../../stats/signup-graph/signup-graph.component";

@@ -5,7 +5,7 @@
     </button>
   </div>
   <div class="col-sm-12">
-    <div class=" option-box">
+    <div class="option-box">
       <button class="btn btn-primary m-1" (click)="open('email')">Send email</button>
       <button class="btn btn-info m-1" (click)="editSwitch()">Edit</button>
       <button class="btn btn-danger m-1" (click)="open('delete')">Delete</button>
@@ -40,7 +40,7 @@
               <a href="server/api/students/attachment/{{attachment.id}}">{{attachment.fileName}} </a>
             </td>
             <td>
-              {{attachment.size/1024 | number:'1.1-1'}} KB
+              {{attachment.size / 1024 | number:'1.1-1'}} KB
             </td>
           </tr>
           </tbody>
@@ -49,4 +49,3 @@
     </div>
   </div>
 </div>
-<app-send-email [student]="student" *ngIf="emailMode"></app-send-email>

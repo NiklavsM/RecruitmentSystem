@@ -6,10 +6,10 @@
   <li class="nav-item nav-pills">
     <a class="nav-link" [routerLink]="['viewstudents']" [routerLinkActive]="['active']"  *ngIf="authService.isAuthenticated()">View students</a>
   </li>
-  <!--<li class="nav-item nav-pills">-->
-    <!--&lt;!&ndash;TODO is admin&ndash;&gt;-->
-    <!--<a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Admin</a>-->
-  <!--</li>-->
+  <li class="nav-item nav-pills">
+    <!--TODO is admin-->
+    <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Admin</a>
+  </li>
   <li class="nav-item nav-pills">
     <a class="nav-link" [routerLink]="['stats']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Stats</a>
   </li>

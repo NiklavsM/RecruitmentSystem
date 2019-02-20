@@ -19,6 +19,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String gender;
+    private String ethnicity;
     private String email;
     private String university;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -116,5 +117,13 @@ public class Student {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getEthnicity() {
+        return ethnicity;
+    }
+
+    public void setEthnicity(String ethnicity) {
+        this.ethnicity = ethnicity;
     }
 }

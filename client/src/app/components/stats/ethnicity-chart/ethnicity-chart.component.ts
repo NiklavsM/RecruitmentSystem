@@ -2,20 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {StatsService} from "../../../services/stats.service";
 
 @Component({
-  selector: 'app-gender-chart',
-  templateUrl: './gender-chart.component.html',
-  styleUrls: ['./gender-chart.component.scss']
+  selector: 'app-ethnicity-chart',
+  templateUrl: './ethnicity-chart.component.html',
+  styleUrls: ['./ethnicity-chart.component.scss']
 })
-export class GenderChartComponent implements OnInit {
+export class EthnicityChartComponent implements OnInit {
+
   public pieChartLabels: string[] = [];
   public pieChartData: number[] = [];
-  public pieChartType: string = 'pie'; // TODO maybe allow user to change this?
+  public pieChartType: string = 'doughnut'; // TODO maybe allow user to change this?
 
   constructor(private statsService: StatsService) {
   }
 
   ngOnInit() {
-    this.statsService.getGenderStats().subscribe(data => {
+    this.statsService.getEthnicityStats().subscribe(data => {
         this.populateChart(data);
       },
       error => {

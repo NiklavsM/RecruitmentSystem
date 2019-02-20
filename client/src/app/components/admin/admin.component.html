@@ -1,1 +1,11 @@
-<p>Admin section</p>
+<form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
+  <div class="form-group">
+    <label>Company name</label>
+    <input type="text" class="form-control" formControlName="companyName" required value="{{settings.companyName}}"
+           autofocus/>
+  </div>
+    <button type="submit" class="btn btn-success m-1">Save</button>
+    <button class="btn btn-warning m-1" (click)="settingsForm.reset(settings)" *ngIf="settingsForm.dirty">
+      <i class="fas fa-redo-alt"></i> Reset
+    </button>
+</form>

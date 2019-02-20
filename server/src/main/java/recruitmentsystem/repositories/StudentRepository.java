@@ -11,6 +11,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findByGender(String gender);
 
+    List<Student> findByEthnicity(String ethnicity);
+
     @Query(value = "SELECT s FROM Student s WHERE first_name = ?1")
     List<Student> findByFirstName(String name);
 

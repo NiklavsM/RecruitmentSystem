@@ -16,13 +16,13 @@ public class StatsController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @GetMapping("/genderstats")
+    @PostMapping("/genderstats")
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, Integer> getGenderChartInfo() {
+    public Map<String, Integer> getGenderChartInfo(@RequestBody List<String> genders) {
         Map<String, Integer> genderMap = new HashMap<>();
-        genderMap.put("Male", studentRepository.findByGender("male").size());
-        genderMap.put("Female", studentRepository.findByGender("female").size());
-        genderMap.put("Other", studentRepository.findByGender("other").size());
+        for (String gender : genders) {
+            genderMap.put(gender, studentRepository.findByGender(gender).size());
+        }
         return genderMap;
     }
 
@@ -30,11 +30,20 @@ public class StatsController {
     @ResponseStatus(HttpStatus.OK)
     public List<Integer> getSignupChartInfo(@RequestBody List<DatePair> dates) {
         List<Integer> stats = new LinkedList<>();
-        for(DatePair datePair: dates){
-            stats.add(studentRepository.getByDate(datePair.getFromDate(),datePair.getToDate()).size());
+        for (DatePair datePair : dates) {
+            stats.add(studentRepository.getByDate(datePair.getFromDate(), datePair.getToDate()).size());
         }
         return stats;
     }
 
+    @PostMapping("/ethnicitystats")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Integer> getEthnicityInfo(@RequestBody List<String> ethnicities) {
+        Map<String, Integer> stats = new HashMap<>();
+        for (String ethnicity : ethnicities) {
+            stats.put(ethnicity, studentRepository.findByEthnicity(ethnicity).size());
+        }
+        return stats;
+    }
 
 }
