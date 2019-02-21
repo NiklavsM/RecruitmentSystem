@@ -38,9 +38,10 @@ import {PeronalityChartComponent} from './components/view-students/view-student/
 import {PersonalityTraitDescriptionComponent} from './components/view-students/view-student/peronality-chart/personality-trait-description/personality-trait-description.component';
 import {Globals} from "./globals";
 import { EthnicityChartComponent } from './components/stats/ethnicity-chart/ethnicity-chart.component';
+import { UniversalModalComponent } from './components/universal-modal/universal-modal.component';
 
 @NgModule({
-  entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent],
+  entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent, UniversalModalComponent],
   declarations: [
     AppComponent,
     LinkedinComponent,
@@ -63,7 +64,8 @@ import { EthnicityChartComponent } from './components/stats/ethnicity-chart/ethn
     PersonalityTestComponent,
     PeronalityChartComponent,
     PersonalityTraitDescriptionComponent,
-    EthnicityChartComponent
+    EthnicityChartComponent,
+    UniversalModalComponent
   ],
   imports: [
     BrowserModule,

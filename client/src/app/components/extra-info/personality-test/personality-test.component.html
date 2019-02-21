@@ -1,24 +1,37 @@
-<form [formGroup]="personalityForm" novalidate (ngSubmit)="submitSurvey()">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Question</th>
-      <th>Disagree</th>
-      <th>Slightly disagree</th>
-      <th>Neutral</th>
-      <th>Slightly agree</th>
-      <th>Agree</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let statement of statements;let i = index">
-      <td>{{ i + 1 + '. ' + statement}}</td>
-      <td *ngFor="let k of [1,2,3,4,5]">
-        <input formControlName="s{{i+1}}" required type="radio" value="{{k}}"/>
-      </td>
-
-    </tr>
-    </tbody>
-  </table>
-  <button type="submit" class="btn btn-info float-right">Submit</button>
-</form>
+<div *ngIf="!thankYou">
+  <div class="header-section">
+    <h3>Please complete personality test (2/2)</h3>
+    <p> Describe yourself, as you honestly see yourself, in relation to other people of the same sex and of roughly
+      the same age. Your spontaneous answer is usually the most accurate.</p>
+    <p> Describe yourself as you generally are now, not as you wish to be in the future.</p>
+    <p>Try not to use the 'Neutral' option too often.</p>
+  </div>
+  <form [formGroup]="personalityForm" novalidate (ngSubmit)="submitSurvey()">
+    <div class="table-responsive">
+      <table class="table table-fixed">
+        <thead>
+        <tr>
+          <th>Question</th>
+          <th>Disagree</th>
+          <th>Slightly disagree</th>
+          <th>Neutral</th>
+          <th>Slightly agree</th>
+          <th>Agree</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let statement of statements;let i = index">
+          <td>{{ i + 1 + '. ' + statement}}</td>
+          <td *ngFor="let k of [1,2,3,4,5]">
+            <input formControlName="s{{i+1}}" required type="radio" value="{{k}}" [checked]="k === 3"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="submit" class="btn btn-info float-right">Submit</button>
+  </form>
+</div>
+<h3 *ngIf="thankYou">
+  Thank you for your time!
+</h3>

@@ -75,10 +75,10 @@ public class StudentController {
 
     @GetMapping("student/survey/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Map<String,Integer> getSurvey(@PathVariable("id") long id) {
-        Map<String,Integer> traits = new HashMap<>();
+    public Map<String, Integer> getSurvey(@PathVariable("id") long id) {
+        Map<String, Integer> traits = new HashMap<>();
         List<Survey> surveys = surveyRepository.findByStudentId(id); // TODO get one instead of List
-        if(!surveys.isEmpty()) {
+        if (!surveys.isEmpty()) {
             Survey survey = surveys.get(0);
             traits.put("Agreeableness", survey.getAgreeableness());
             traits.put("Conscientiousness", survey.getConscientiousness());
@@ -91,9 +91,14 @@ public class StudentController {
 
     @PostMapping("survey")
     @ResponseStatus(HttpStatus.OK)
-    public void uploadSurvey(@RequestHeader("Authorization") String loginToken, @RequestBody Survey survey) {
-        survey.setStudent(studentRepository.findByLoginToken(loginToken));
-        surveyRepository.save(survey);
+    public ResponseEntity uploadSurvey(@RequestHeader("Authorization") String loginToken, @RequestBody Survey survey) {
+        Student student = studentRepository.findByLoginToken(loginToken);
+        if (surveyRepository.findByStudentId(student.getId()).isEmpty()) {
+            survey.setStudent(student);
+            surveyRepository.save(survey);
+            return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Survey submitted");
+        }
+        return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Submission failed: survey already submitted");
     }
 
     @PostMapping("attachments")
@@ -101,9 +106,12 @@ public class StudentController {
     public void uploadAttachments(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) {
 
         try {
-            DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
-            dbfile.setStudent(studentRepository.findByLoginToken(loginToken));
-            dbFileRepository.save(dbfile);
+            Student student = studentRepository.findByLoginToken(loginToken);
+            if (dbFileRepository.findByStudentId(student.getId()).size() < 5) { // allow only 5 files per student
+                DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+                dbfile.setStudent(studentRepository.findByLoginToken(loginToken));
+                dbFileRepository.save(dbfile);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

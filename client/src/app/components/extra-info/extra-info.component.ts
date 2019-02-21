@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FileUploader} from "ng2-file-upload";
-import {saveAs} from 'file-saver';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -10,7 +9,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ExtraInfoComponent {
 
-  uploader: FileUploader = new FileUploader({url: "/server/api/students/attachments"});
+  public uploader: FileUploader = new FileUploader({url: "/server/api/students/attachments"});
+  private survey = true;
 
 
   constructor(private route: ActivatedRoute) {
@@ -18,7 +18,7 @@ export class ExtraInfoComponent {
       authToken: this.route.snapshot.params.token,
       maxFileSize: 10485760, // 10 MB
       allowedFileType: ['pdf', 'docx']
-    })
+    });
   }
 
 }

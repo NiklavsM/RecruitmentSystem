@@ -42,7 +42,8 @@ export class StudentService {
 
   uploadSurvey(survey: any, authToken: string) {
     let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}).set('Authorization', authToken)
+      headers: new HttpHeaders({'Content-Type': 'application/json',}).set('Authorization', authToken),
+      responseType: 'text' as 'text'
     };
     let body = JSON.stringify(survey);
     return this.http.post('/server/api/students/survey/', body, httpOptions)
