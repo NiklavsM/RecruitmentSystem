@@ -3,7 +3,7 @@ import {StudentService} from '../../../services/student.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SendEmailComponent} from './send-email/send-email.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ConfirmModalComponent} from "../../confirm-modal/confirm-modal.component";
+import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
 import {saveAs} from 'file-saver';
 
 @Component({
@@ -15,7 +15,6 @@ export class ViewStudentComponent implements OnInit {
 
   public student;
   public editMode = false;
-  public emailMode = false;
   private studentId: number;
   private attachments: any;
   private survey: any;
@@ -46,14 +45,6 @@ export class ViewStudentComponent implements OnInit {
       err => console.error(err),
       () => console.log('student loaded')
     );
-    this.studentService.getSurvey(id).subscribe(
-      data => {
-        this.survey = data;
-        console.log("survey: ", this.survey);
-      },
-      err => console.error(err),
-      () => console.log('student loaded')
-    );
   }
 
   deleteStudent() {
@@ -76,7 +67,7 @@ export class ViewStudentComponent implements OnInit {
         this.router.navigateByUrl('/viewstudents');
       }, reason => {
       });
-      modalRef.componentInstance.student = this.student;
+      modalRef.componentInstance.students = [this.student];
     }
   }
 

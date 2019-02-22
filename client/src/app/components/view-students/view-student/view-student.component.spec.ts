@@ -28,7 +28,7 @@ import {NavbarComponent} from "../../navbar/navbar.component";
 import {ProfileComponent} from "../../profile/profile.component";
 import {SendEmailComponent} from "./send-email/send-email.component";
 import {EditStudentComponent} from "../../edit-student/edit-student.component";
-import {ConfirmModalComponent} from "../../confirm-modal/confirm-modal.component";
+import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
 import {SignupGraphComponent} from "../../stats/signup-graph/signup-graph.component";
 import {GenderChartComponent} from "../../stats/gender-chart/gender-chart.component";
 import {StatsComponent} from "../../stats/stats.component";

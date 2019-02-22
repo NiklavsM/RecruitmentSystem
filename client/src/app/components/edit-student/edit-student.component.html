@@ -35,14 +35,14 @@
   <hr>
   <div class="form-group">
     <label>Please choose one option that best describes your ethnic group or background</label>
-    <select type="text" class="form-control" formControlName="course" required [value]="student.ethnicity"
+    <select type="text" class="form-control" formControlName="course" [value]="student.ethnicity"
             [attr.disabled]="editMode ? null : true">
       <option *ngFor="let ethnicity of gl.ethnicities" [value]="ethnicity">{{ethnicity}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Gender</label>
-    <select class="form-control" formControlName="gender" required [value]="student.gender"
+    <select class="form-control" formControlName="gender" [value]="student.gender"
             [attr.disabled]="editMode ? null : true">
       <option *ngFor="let gender of gl.genders" [value]="gender">{{gender}}</option>
     </select>

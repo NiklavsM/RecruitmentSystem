@@ -12,7 +12,7 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {ViewStudentComponent} from "./components/view-students/view-student/view-student.component";
 import {SendEmailComponent} from "./components/view-students/view-student/send-email/send-email.component";
 import {EditStudentComponent} from "./components/edit-student/edit-student.component";
-import {ConfirmModalComponent} from "./components/confirm-modal/confirm-modal.component";
+import {ConfirmModalComponent} from "./components/view-students/confirm-modal/confirm-modal.component";
 import {SignupGraphComponent} from "./components/stats/signup-graph/signup-graph.component";
 import {GenderChartComponent} from "./components/stats/gender-chart/gender-chart.component";
 import {StatsComponent} from "./components/stats/stats.component";

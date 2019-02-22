@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {PersonalityTraitDescriptionComponent} from "./personality-trait-description/personality-trait-description.component";
+import {StudentService} from "../../../../services/student.service";
 
 @Component({
   selector: 'app-peronality-chart',
@@ -9,35 +10,43 @@ import {PersonalityTraitDescriptionComponent} from "./personality-trait-descript
 })
 export class PeronalityChartComponent implements OnInit {
 
+  @Input()
+  studentId: number;
   public radarChartLabels: string[] = ['Extroversion', 'Agreeableness', 'Conscientiousness', 'Neuroticism', 'Openness'];
 
-  public radarChartData: any = [
-    {data: [65, 59, 90, 81, 56], label: 'Personality'}
-  ];
+  public radarChartData = [];
   public radarChartType: string = 'radar';
   public radarChartOptions = {
     scale: {
       ticks: {
         beginAtZero: true,
         min: 0,
-        max: 100
+        max: 50
       }
     }
   };
 
-  constructor(private modalService: NgbModal) {
+  constructor(private studentService: StudentService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
+    this.studentService.getSurvey(this.studentId).subscribe(data => {
+      if (Object.keys(data).length > 0) {
+        this.populateChart(data);
+      }
+    }, error => {
+
+    })
   }
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
+  private populateChart(data) {
+    let dataArray = [];
+    this.radarChartLabels = Object.keys(data).sort();
 
-  public chartHovered(e: any): void {
-    console.log(e);
+    for (let key of this.radarChartLabels) {
+      dataArray.push(data[key])
+    }
+    this.radarChartData.push({data: dataArray, label: 'Personality'})
   }
 
   public openInfo() {

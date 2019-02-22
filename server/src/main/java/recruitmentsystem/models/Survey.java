@@ -39,23 +39,23 @@ public class Survey {
 
 
     public int getExtroversion() {
-        return 1;
+        return 20 + s1 - s6 + s11 - s16 + s21 - s26 + s31 - s36 + s41 - s46;
     }
 
     public int getAgreeableness() {
-        return 2;
+        return 14 - s2 + s7 - s12 + s17 - s22 + s27 - s32 + s37 + s42 + s47;
     }
 
     public int getConscientiousness() {
-        return 3;
+        return 14 + s3 - s8 + s13 - s18 + s23 - s28 + s33 - s38 + s43 + s48;
     }
 
     public int getNeuroticism() {
-        return 4;
+        return 38 - s4 + s9 - s14 + s19 - s24 - s29 - s34 - s39 - s44 - s49;
     }
 
     public int getOpenness() {
-        return 5;
+        return 8 + s5 - s10 + s15 - s20 + s25 - s30 + s35 + s40 + s45 + s50;
     }
 
     public int getS1() {

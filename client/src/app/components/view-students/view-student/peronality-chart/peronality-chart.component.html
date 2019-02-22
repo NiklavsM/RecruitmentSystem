@@ -1,11 +1,11 @@
-<div style="display: block">
-  <i (click)="openInfo()" class="btn fas fa-info-circle float-right"></i>
-  <canvas baseChart
-          [datasets]="radarChartData"
-          [labels]="radarChartLabels"
-          [chartType]="radarChartType"
-          [options]="radarChartOptions"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-
+<div style="display: block" class="custom-box">
+  <div *ngIf="radarChartData.length>0">
+    <i (click)="openInfo()" class="btn fas fa-info-circle float-right"></i>
+    <canvas baseChart
+            [datasets]="radarChartData"
+            [labels]="radarChartLabels"
+            [chartType]="radarChartType"
+            [options]="radarChartOptions"
+    ></canvas>
+  </div>
 </div>

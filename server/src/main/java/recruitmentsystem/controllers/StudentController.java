@@ -69,17 +69,25 @@ public class StudentController {
 
     @PostMapping("delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    public void deleteStudent(@PathVariable("id") long id) {
         studentRepository.deleteById(id);
+    }
+
+    @PostMapping("delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteStudents(@RequestBody List<Long> students) {
+        for (Long studentID : students) {
+            studentRepository.deleteById(studentID);
+        }
     }
 
     @GetMapping("student/survey/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Integer> getSurvey(@PathVariable("id") long id) {
         Map<String, Integer> traits = new HashMap<>();
-        List<Survey> surveys = surveyRepository.findByStudentId(id); // TODO get one instead of List
+        List<Survey> surveys = surveyRepository.findByStudentId(id);
         if (!surveys.isEmpty()) {
-            Survey survey = surveys.get(0);
+            Survey survey = surveys.get(0); // TODO get one instead of List
             traits.put("Agreeableness", survey.getAgreeableness());
             traits.put("Conscientiousness", survey.getConscientiousness());
             traits.put("Extroversion", survey.getExtroversion());

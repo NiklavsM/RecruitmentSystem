@@ -24,7 +24,7 @@ export class PersonalityTestComponent implements OnInit {
   private buildControlsObject() {
     let controlsObject = {};
     for (let i = 0; i < 50; i++) {
-      controlsObject['s' + (i + 1)] = new FormControl(Validators.required);
+      controlsObject['s' + (i + 1)] = new FormControl("3", Validators.required);
     }
     return controlsObject;
   }

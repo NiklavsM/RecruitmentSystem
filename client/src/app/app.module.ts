@@ -21,9 +21,9 @@ import {SendEmailComponent} from './components/view-students/view-student/send-e
 import {EditStudentComponent} from './components/edit-student/edit-student.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import {MatCheckboxModule, MatNativeDateModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {ConfirmModalComponent} from './components/confirm-modal/confirm-modal.component';
+import {ConfirmModalComponent} from './components/view-students/confirm-modal/confirm-modal.component';
 import {ChartsModule} from 'ng2-charts';
 import {SignupGraphComponent} from './components/stats/signup-graph/signup-graph.component';
 import {GenderChartComponent} from './components/stats/gender-chart/gender-chart.component';
@@ -37,8 +37,8 @@ import {StatsService} from "./services/stats.service";
 import {PeronalityChartComponent} from './components/view-students/view-student/peronality-chart/peronality-chart.component';
 import {PersonalityTraitDescriptionComponent} from './components/view-students/view-student/peronality-chart/personality-trait-description/personality-trait-description.component';
 import {Globals} from "./globals";
-import { EthnicityChartComponent } from './components/stats/ethnicity-chart/ethnicity-chart.component';
-import { UniversalModalComponent } from './components/universal-modal/universal-modal.component';
+import {EthnicityChartComponent} from './components/stats/ethnicity-chart/ethnicity-chart.component';
+import {UniversalModalComponent} from './components/universal-modal/universal-modal.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent, UniversalModalComponent],
@@ -80,10 +80,12 @@ import { UniversalModalComponent } from './components/universal-modal/universal-
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FileUploadModule
+    FileUploadModule,
+    MatCheckboxModule
   ],
   exports: [
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCheckboxModule
   ],
   providers: [Globals, StudentService, StatsService, AuthService, AuthGuard, {
     provide: 'apiKey',

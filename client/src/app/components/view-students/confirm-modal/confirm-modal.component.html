@@ -5,8 +5,19 @@
   </div>
 </div>
 <div class="modal-body">
-  <p><strong>Are you sure you want to delete <span
-    class="text-primary">{{student.firstName + " " + student.lastName}}</span> profile?</strong></p>
+  <p class="font-weight-bold">
+    Are you sure you want to delete <br>
+    <span *ngFor="let student of students" class="text-primary">
+      {{student.firstName + " " + student.lastName}}
+      <br>
+    </span>
+    <ng-container *ngIf="students.length==1">
+      profile?
+    </ng-container>
+    <ng-container *ngIf="students.length>1">
+      profiles?
+    </ng-container>
+  </p>
   <p>All information associated to this user profile will be permanently deleted.
     <span class="text-danger">This operation can not be undone.</span>
   </p>

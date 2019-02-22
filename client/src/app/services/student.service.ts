@@ -30,6 +30,12 @@ export class StudentService {
     );
   }
 
+  deleteStudents(ids: number[]) {
+    let body = JSON.stringify(ids);
+    return this.http.post('server/api/students/delete', body, this.httpOptions
+    );
+  }
+
   createStudent(student: any) {
     let body = JSON.stringify(student);
     return this.http.post('/server/api/students', body, this.httpOptions)
