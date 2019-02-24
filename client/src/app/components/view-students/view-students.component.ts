@@ -13,7 +13,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ViewStudentsComponent implements OnInit {
 
-  displayedColumns = ['select', 'id', 'firstName', 'lastName', 'email', 'university'];
+  displayedColumns = ['select', 'firstName', 'lastName', 'university', 'course'];
   dataSource: any;
   selection = new SelectionModel<Element>(true, []);
   advancedSearchForm: FormGroup;

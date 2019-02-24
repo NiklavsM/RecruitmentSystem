@@ -1,57 +1,49 @@
 <form [formGroup]="studentForm" novalidate (ngSubmit)="submitRegistration()" [attr.disabled]="editMode ? null : true">
-  <div class="form-group">
-    <label>First name</label>
-    <input type="text" class="form-control" formControlName="firstName" required value="{{student.firstName}}"
-           autofocus [attr.disabled]="editMode ? null : true"/>
+  <div class="form-row mb-3">
+    <div class="col">
+      <input type="text" class="form-control" formControlName="firstName" required value="{{student.firstName}}"
+             autofocus placeholder="First name"/>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" formControlName="lastName" required value="{{student.lastName}}"
+             placeholder="Last name"/>
+    </div>
   </div>
   <div class="form-group">
-    <label>Last name</label>
-    <input type="text" class="form-control" formControlName="lastName" required value="{{student.lastName}}"
-           [attr.disabled]="editMode ? null : true"/>
-  </div>
-  <div class="form-group">
-    <label>Email</label>
     <input type="text" class="form-control" formControlName="email" required value="{{student.email}}"
-           [attr.disabled]="editMode ? null : true"/>
+           placeholder="Email"/>
   </div>
-
   <div class="form-group">
-    <label>University</label>
     <input type="text" class="form-control" formControlName="university" required value="{{student.university}}"
-           [attr.disabled]="editMode ? null : true"/>
+           placeholder="University"/>
   </div>
   <div class="form-group">
     <label>Year of graduation</label>
-    <input type="date" class="form-control" formControlName="gradYear" required value="{{student.gradYear}}"
-           [attr.disabled]="editMode ? null : true"/>
+    <input type="date" class="form-control" formControlName="gradYear" required value="{{student.gradYear}}"/>
   </div>
   <div class="form-group">
-    <label>Course</label>
-    <input type="text" class="form-control" formControlName="course" required value="{{student.course}}"
-           [attr.disabled]="editMode ? null : true"/>
+    <ng-select [items]="gl.courses" formControlName="course" required bindValue="student.course"
+               placeholder="Select course"></ng-select>
   </div>
   <hr>
   <div>Optional fields</div>
   <hr>
   <div class="form-group">
     <label>Please choose one option that best describes your ethnic group or background</label>
-    <select type="text" class="form-control" formControlName="ethnicity" [value]="student.ethnicity"
-            [attr.disabled]="editMode ? null : true">
-      <option *ngFor="let ethnicity of gl.ethnicities" [value]="ethnicity">{{ethnicity}}</option>
-    </select>
+    <ng-select formControlName="ethnicity" bindValue="student.ethnicity" [items]="gl.ethnicities"></ng-select>
   </div>
   <div class="form-group">
-    <label>Gender</label>
-    <select class="form-control" formControlName="gender" [value]="student.gender"
-            [attr.disabled]="editMode ? null : true">
-      <option *ngFor="let gender of gl.genders" [value]="gender">{{gender}}</option>
-    </select>
+    <ng-select formControlName="gender" bindValue="student.gender" [items]="gl.genders"></ng-select>
   </div>
-  <div class="btn btn-warning m-1" (click)="studentForm.reset(student)" *ngIf="studentForm.dirty">
-    <i class="fas fa-redo-alt"></i> Reset
+  <div class="mt-1">
+    <div class="btn btn-warning" (click)="studentForm.reset(student)" *ngIf="studentForm.dirty">
+      <i class="fas fa-redo-alt"></i> Reset
+    </div>
+    <button type="submit" *ngIf="editMode && studentForm.dirty" class="btn btn-info float-right"
+            [disabled]="studentForm.invalid">
+      <i class="fas fa-check"></i> Submit
+    </button>
   </div>
-  <button type="submit" *ngIf="editMode" class="btn btn-info float-right" [disabled]="studentForm.invalid">Submit
-  </button>
 </form>
 
 

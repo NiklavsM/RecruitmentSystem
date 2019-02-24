@@ -5,9 +5,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
 import {LinkedinComponent} from './components/linkedin/linkedin.component';
-import {CallbackComponent} from './components/callback/callback.component'
+import {LoginCallbackComponent} from './components/login-callback/login-callback.component'
 import {AuthService} from './services/auth.service';
-import {HomeComponent} from './components/home/home.component';
 import {AuthGuard} from './services/auth.guard';
 import {AddStudentComponent} from './components/add-student/add-student.component';
 import {StudentService} from './services/student.service';
@@ -21,7 +20,14 @@ import {SendEmailComponent} from './components/view-students/view-student/send-e
 import {EditStudentComponent} from './components/edit-student/edit-student.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatCheckboxModule, MatNativeDateModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import {
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatSortModule
+} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ConfirmModalComponent} from './components/view-students/confirm-modal/confirm-modal.component';
 import {ChartsModule} from 'ng2-charts';
@@ -40,14 +46,15 @@ import {Globals} from "./globals";
 import {EthnicityChartComponent} from './components/stats/ethnicity-chart/ethnicity-chart.component';
 import {UniversalModalComponent} from './components/universal-modal/universal-modal.component';
 import {ConfirmationPopoverModule} from "angular-confirmation-popover";
+import {NgSelectModule} from "@ng-select/ng-select";
+import {LogoutCallbackComponent} from './components/logout-callback/logout-callback.component';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent, UniversalModalComponent],
   declarations: [
     AppComponent,
     LinkedinComponent,
-    CallbackComponent,
-    HomeComponent,
+    LoginCallbackComponent,
     AddStudentComponent,
     ViewStudentsComponent,
     AdminComponent,
@@ -66,7 +73,8 @@ import {ConfirmationPopoverModule} from "angular-confirmation-popover";
     PeronalityChartComponent,
     PersonalityTraitDescriptionComponent,
     EthnicityChartComponent,
-    UniversalModalComponent
+    UniversalModalComponent,
+    LogoutCallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -83,9 +91,12 @@ import {ConfirmationPopoverModule} from "angular-confirmation-popover";
     MatSortModule,
     FileUploadModule,
     MatCheckboxModule,
+    MatInputModule,
+    MatFormFieldModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // defaults
-    })
+    }),
+    NgSelectModule
   ],
   exports: [
     MatDatepickerModule,

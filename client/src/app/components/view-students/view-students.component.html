@@ -1,85 +1,80 @@
-
 <div class="row">
-  <div class="col-sm-3 pl-0">
+  <div class="col-sm-6 filter">
+    <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Search..."
+           autocomplete="off">
+  </div>
+  <div class="col-sm-3">
     <button class="btn btn-info" (click)="advancedOptionsSwitch()">Advanced filter
       <i *ngIf="!advancedOptions" class="fas fa-angle-down"></i>
       <i *ngIf="advancedOptions" class="fas fa-angle-up"></i>
     </button>
   </div>
-  <mat-form-field class="col-sm-6 filter">
-    <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Search...">
-  </mat-form-field>
-  <div class="col-sm-2 offset-sm-1">
+  <div class="col-sm-3">
     <button *ngIf="selection.hasValue()" class="btn btn-danger" (click)="tryToDelete()">
       Delete <i class="fas fa-trash-alt"></i>
     </button>
   </div>
 </div>
-  <div class="row advancedFilter" *ngIf="advancedOptions">
-    <form [formGroup]="advancedSearchForm" class="form-inline" (ngSubmit)="advancedSearch()">
-      <div class="form-group">
-        <label>Created: </label>
-        <input type="date" class="form-control" formControlName="createdFrom"/>
-        <label>-</label>
-        <input type="date" class="form-control" formControlName="createdTo"/>
-      </div>
-
-      <div class="form-group mr-2">
-        <label>Personality test:</label>
-        <input type="checkbox" class="form-control" formControlName="personalityTest"/>
-      </div>
-      <div class="form-group mr-2">
-        <label>Attachments:</label>
-        <input type="checkbox" class="form-control" formControlName="attachments"/>
-      </div>
-      <button type="submit" class="btn btn-info">
-        Filter <i class="fas fa-search"></i>
-      </button>
-    </form>
-  </div>
+<div class="row advancedFilter" *ngIf="advancedOptions">
+  <form [formGroup]="advancedSearchForm" class="form-inline" (ngSubmit)="advancedSearch()">
+    <mat-form-field class="ml-3">
+      <input matInput [matDatepicker]="pickerFrom" formControlName="createdFrom" placeholder="Created from">
+      <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="ml-3">
+      <input matInput [matDatepicker]="pickerTo" formControlName="createdTo" placeholder="Created to">
+      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+    <div class="form-group ml-3">
+      <mat-checkbox formControlName="personalityTest">Personality test</mat-checkbox>
+    </div>
+    <div class="form-group ml-3">
+      <mat-checkbox formControlName="attachments">Attachments</mat-checkbox>
+    </div>
+    <button type="submit" class="btn btn-info ml-3">
+      Filter <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
 <div class="table-responsive">
   <table mat-table [dataSource]="dataSource" matSort class="table">
 
     <ng-container matColumnDef="select">
-      <mat-header-cell *matHeaderCellDef class="col-sm-1">
+      <mat-header-cell *matHeaderCellDef>
         <mat-checkbox (change)="$event ? masterToggle() : null"
                       [checked]="selection.hasValue() && allSelected()"
                       [indeterminate]="selection.hasValue() && !allSelected()">
         </mat-checkbox>
       </mat-header-cell>
-      <mat-cell *matCellDef="let row" class="col-sm-1">
-        <mat-checkbox (click)="$event.stopPropagation()"
+      <mat-cell *matCellDef="let row; let student">
+        <mat-checkbox (click)="$event.stopPropagation()" class="mr-3"
                       (change)="$event ? selection.toggle(row) : null"
                       [checked]="selection.isSelected(row)">
         </mat-checkbox>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1">ID</mat-header-cell>
-      <mat-cell *matCellDef="let student" class="col-sm-1"><a
-        [routerLink]="['/viewstudents/',student.id]">{{student.id}}</a>
+        <button class="btn btn-success" [routerLink]="['/viewstudents/',student.id]">Open</button>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">First name</mat-header-cell>
-      <mat-cell *matCellDef="let student" class="col-sm-2"> {{student.firstName}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>First name</mat-header-cell>
+      <mat-cell *matCellDef="let student"> {{student.firstName}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Last name</mat-header-cell>
-      <mat-cell *matCellDef="let student" class="col-sm-2"> {{student.lastName}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3">Email</mat-header-cell>
-      <mat-cell *matCellDef="let student" class="col-sm-3"> {{student.email}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last name</mat-header-cell>
+      <mat-cell *matCellDef="let student"> {{student.lastName}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="university">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3">University</mat-header-cell>
-      <mat-cell *matCellDef="let student" class="col-sm-3"> {{student.university}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>University</mat-header-cell>
+      <mat-cell *matCellDef="let student"> {{student.university}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Course</mat-header-cell>
+      <mat-cell *matCellDef="let student"> {{student.course}} </mat-cell>
     </ng-container>
 
     <mat-header-row class="row" *matHeaderRowDef="displayedColumns"></mat-header-row>

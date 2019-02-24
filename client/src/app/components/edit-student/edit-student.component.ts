@@ -35,6 +35,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
       gender: new FormControl(this.student.gender),
       ethnicity: new FormControl(this.student.ethnicity)
     });
+    this.enableEdit(this.editMode);
   }
 
   submitRegistration() {
@@ -54,9 +55,21 @@ export class EditStudentComponent implements OnInit, OnChanges {
     }
   }
 
+  enableEdit(enable: boolean) {
+    if (this.studentForm) {
+      for (let key of Object.keys(this.studentForm.controls)) {
+        if (enable) {
+          this.studentForm.controls[key].enable();
+        } else {
+          this.studentForm.controls[key].disable();
+        }
+      }
+    }
+  }
+
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.editMode = changes.editMode.currentValue;
+    this.enableEdit(changes.editMode.currentValue);
   }
 
 }

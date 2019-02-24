@@ -18,7 +18,11 @@
       profiles?
     </ng-container>
   </p>
-  <p>All information associated to this user profile will be permanently deleted.
+  <p>
+    All information associated with
+    <ng-container *ngIf="students.length==1">this user profile</ng-container>
+    <ng-container *ngIf="students.length>1">these user profiles</ng-container>
+    will be permanently deleted.
     <span class="text-danger">This operation can not be undone.</span>
   </p>
 </div>

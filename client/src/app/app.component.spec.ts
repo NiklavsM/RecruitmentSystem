@@ -2,8 +2,7 @@ import {TestBed, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {LinkedinComponent} from "./components/linkedin/linkedin.component";
-import {CallbackComponent} from "./components/callback/callback.component";
-import {HomeComponent} from "./components/home/home.component";
+import {LoginCallbackComponent} from "./components/login-callback/login-callback.component";
 import {AddStudentComponent} from "./components/add-student/add-student.component";
 import {ViewStudentsComponent} from "./components/view-students/view-students.component";
 import {AdminComponent} from "./components/admin/admin.component";
@@ -57,8 +56,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         LinkedinComponent,
-        CallbackComponent,
-        HomeComponent,
+        LoginCallbackComponent,
         AddStudentComponent,
         ViewStudentsComponent,
         AdminComponent,

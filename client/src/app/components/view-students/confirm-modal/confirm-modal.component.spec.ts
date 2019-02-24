@@ -18,8 +18,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ChartsModule} from "ng2-charts";
 import {AppComponent} from "../../../app.component";
 import {LinkedinComponent} from "../../linkedin/linkedin.component";
-import {CallbackComponent} from "../../callback/callback.component";
-import {HomeComponent} from "../../home/home.component";
+import {LoginCallbackComponent} from "../../login-callback/login-callback.component";
 import {AddStudentComponent} from "../../add-student/add-student.component";
 import {ViewStudentsComponent} from "../view-students.component";
 import {AdminComponent} from "../../admin/admin.component";
@@ -61,8 +60,7 @@ describe('ConfirmModalComponent', () => {
       declarations: [
         AppComponent,
         LinkedinComponent,
-        CallbackComponent,
-        HomeComponent,
+        LoginCallbackComponent,
         AddStudentComponent,
         ViewStudentsComponent,
         AdminComponent,
