@@ -13,9 +13,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findByEthnicity(String ethnicity);
 
-    @Query(value = "SELECT s FROM Student s WHERE first_name = ?1")
-    List<Student> findByFirstName(String name);
-
     @Query(value = "SELECT s FROM Student s WHERE created_at BETWEEN ?1 AND ?2")
     List<Student> getByDate(String from, String to);
 }

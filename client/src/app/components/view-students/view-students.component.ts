@@ -4,6 +4,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ConfirmModalComponent} from "./confirm-modal/confirm-modal.component";
 import {SelectionModel} from "@angular/cdk/collections";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-view-students',
@@ -11,10 +12,13 @@ import {SelectionModel} from "@angular/cdk/collections";
   styleUrls: ['./view-students.component.scss']
 })
 export class ViewStudentsComponent implements OnInit {
-  students: any;
+
   displayedColumns = ['select', 'id', 'firstName', 'lastName', 'email', 'university'];
   dataSource: any;
   selection = new SelectionModel<Element>(true, []);
+  advancedSearchForm: FormGroup;
+  advancedOptions = false;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -22,22 +26,33 @@ export class ViewStudentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studentService.getStudents().subscribe(data => {
-        this.students = data;
-        this.dataSource = new MatTableDataSource(this.students);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+    let today = new Date();
+    let fromDate = new Date(today.getFullYear() - 1, today.getMonth(), 0).toISOString().slice(0, 10);
+    let toDate = new Date().toISOString().slice(0, 10);
+    this.advancedSearchForm = new FormGroup({
+      createdFrom: new FormControl(fromDate),
+      createdTo: new FormControl(toDate),
+      attachments: new FormControl(false),
+      personalityTest: new FormControl(false)
+    });
+    this.studentService.getStudents(this.advancedSearchForm.value).subscribe(data => {
+        this.initDataSource(data);
       },
       err => console.error(err),
       () => console.log('students loaded'));
   }
 
-  private applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log("Filter ", this.dataSource);
+  private initDataSource(data: any) {
+    this.dataSource = new MatTableDataSource(data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  private isAllSelected() {
+  private applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  private allSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
@@ -48,8 +63,7 @@ export class ViewStudentsComponent implements OnInit {
     let filter = this.dataSource.filter;
     this.selection.selected.forEach(item => {
       if (this.filteredDataContains(item.id)) {
-        let index: number = this.students.findIndex(d => d === item);
-        console.log(this.students.findIndex(d => d === item));
+        let index: number = this.dataSource.data.findIndex(d => d === item);
         this.dataSource.data.splice(index, 1);
         studentsToDelete.push(item.id);
       }
@@ -57,20 +71,19 @@ export class ViewStudentsComponent implements OnInit {
     this.studentService.deleteStudents(studentsToDelete).subscribe(data => {
     }, error => {
     });
-    console.log(" new this.dataSource ", this.dataSource);
     this.dataSource = new MatTableDataSource<Element>(this.dataSource.data);
     this.dataSource.filter = filter;
     this.selection = new SelectionModel<Element>(true, []);
   }
 
   private tryToDelete() {
-    let studentsToDelete = [];
+    let tryToDelete = [];
     this.selection.selected.forEach(item => {
       if (this.filteredDataContains(item.id)) {
-        studentsToDelete.push(item);
+        tryToDelete.push(item);
       }
     });
-    this.confirmDeletion(studentsToDelete);
+    this.confirmDeletion(tryToDelete);
   }
 
   private confirmDeletion(students: any[]) {
@@ -83,9 +96,6 @@ export class ViewStudentsComponent implements OnInit {
   }
 
   private filteredDataContains(id: any) {
-    // for(let filteredStudent in this.dataSource.filteredData){
-    //   if(student.id === filteredStudent.id) return true;
-    // }
     let contains = false;
     this.dataSource.filteredData.filter(s => s.id == id).forEach(student => {
       contains = true;
@@ -93,27 +103,22 @@ export class ViewStudentsComponent implements OnInit {
     return contains;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  // Selects all students if they are not all selected, otherwise clear all.
   private masterToggle() {
-    console.log("this.selection ", this.selection);
-    this.isAllSelected() ?
+    this.allSelected() ?
       this.selection.clear() :
       this.dataSource.filteredData.forEach(row => this.selection.select(row));
   }
 
-
-  private deleteConformation(student) {
-    console.log("HERE studentId", student);
-    const modalRef = this.modalService.open(ConfirmModalComponent);
-    modalRef.componentInstance.student = student;
-    modalRef.result.then(result => {
-      this.deleteStudent(student.id);
-      // this.router.navigateByUrl('/viewstudents');
-    }, reason => {
-    });
+  private advancedSearch() {
+    this.studentService.getStudents(this.advancedSearchForm.value).subscribe(data => {
+      this.initDataSource(data);
+    }, error => {
+    })
   }
 
-  private deleteStudent(studentId) {
-    this.studentService.deleteStudent(studentId).subscribe();
+  private advancedOptionsSwitch() {
+    this.advancedOptions = !this.advancedOptions;
   }
+
 }

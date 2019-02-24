@@ -9,11 +9,14 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class UniversalModalComponent implements OnInit {
 
   @Input()
+  private headerText;
+  @Input()
   private bodyText;
   @Input()
   private footerText;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal) {
+  }
 
   ngOnInit() {
 

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {StudentService} from "../../services/student.service";
-import {Observable} from "rxjs";
+import {Component} from '@angular/core';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
 
 @Component({
   selector: 'app-student',
@@ -11,7 +10,13 @@ import {Observable} from "rxjs";
 export class AddStudentComponent {
 
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {
+  }
+
+  private openModal() {
+    const modal = this.modalService.open(UniversalModalComponent);
+    modal.componentInstance.bodyText = "Details successfully saved";
+  }
 
 
 }

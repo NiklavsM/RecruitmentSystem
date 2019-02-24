@@ -1,21 +1,50 @@
+
 <div class="row">
+  <div class="col-sm-3 pl-0">
+    <button class="btn btn-info" (click)="advancedOptionsSwitch()">Advanced filter
+      <i *ngIf="!advancedOptions" class="fas fa-angle-down"></i>
+      <i *ngIf="advancedOptions" class="fas fa-angle-up"></i>
+    </button>
+  </div>
   <mat-form-field class="col-sm-6 filter">
-    <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Filter">
+    <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Search...">
   </mat-form-field>
-  <div class="col-sm-2 offset-sm-4">
+  <div class="col-sm-2 offset-sm-1">
     <button *ngIf="selection.hasValue()" class="btn btn-danger" (click)="tryToDelete()">
       Delete <i class="fas fa-trash-alt"></i>
     </button>
   </div>
 </div>
+  <div class="row advancedFilter" *ngIf="advancedOptions">
+    <form [formGroup]="advancedSearchForm" class="form-inline" (ngSubmit)="advancedSearch()">
+      <div class="form-group">
+        <label>Created: </label>
+        <input type="date" class="form-control" formControlName="createdFrom"/>
+        <label>-</label>
+        <input type="date" class="form-control" formControlName="createdTo"/>
+      </div>
+
+      <div class="form-group mr-2">
+        <label>Personality test:</label>
+        <input type="checkbox" class="form-control" formControlName="personalityTest"/>
+      </div>
+      <div class="form-group mr-2">
+        <label>Attachments:</label>
+        <input type="checkbox" class="form-control" formControlName="attachments"/>
+      </div>
+      <button type="submit" class="btn btn-info">
+        Filter <i class="fas fa-search"></i>
+      </button>
+    </form>
+  </div>
 <div class="table-responsive">
   <table mat-table [dataSource]="dataSource" matSort class="table">
 
     <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef class="col-sm-1">
         <mat-checkbox (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+                      [checked]="selection.hasValue() && allSelected()"
+                      [indeterminate]="selection.hasValue() && !allSelected()">
         </mat-checkbox>
       </mat-header-cell>
       <mat-cell *matCellDef="let row" class="col-sm-1">
@@ -45,7 +74,7 @@
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3">Email</mat-header-cell>
-      <mat-cell *matCellDef="let student" class="col-sm-2"> {{student.email}} </mat-cell>
+      <mat-cell *matCellDef="let student" class="col-sm-3"> {{student.email}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="university">

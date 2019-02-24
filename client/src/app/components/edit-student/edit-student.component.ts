@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {StudentService} from '../../services/student.service';
@@ -13,6 +13,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
 
   @Input() student: any;
   @Input() editMode: boolean;
+  @Output() onSubmit = new EventEmitter();
 
   studentForm: FormGroup;
 
@@ -42,8 +43,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
       this.studentService.createStudent(this.studentForm.value).subscribe(
         data => {
           //this.studentForm.reset();
-          console.log("Student submitted "); // TODO make a popup
-          return true;
+          this.onSubmit.emit();
         },
         error => {
           return Observable.throw(error); // TODO

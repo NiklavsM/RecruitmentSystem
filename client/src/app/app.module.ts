@@ -39,6 +39,7 @@ import {PersonalityTraitDescriptionComponent} from './components/view-students/v
 import {Globals} from "./globals";
 import {EthnicityChartComponent} from './components/stats/ethnicity-chart/ethnicity-chart.component';
 import {UniversalModalComponent} from './components/universal-modal/universal-modal.component';
+import {ConfirmationPopoverModule} from "angular-confirmation-popover";
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent, UniversalModalComponent],
@@ -81,7 +82,10 @@ import {UniversalModalComponent} from './components/universal-modal/universal-mo
     MatPaginatorModule,
     MatSortModule,
     FileUploadModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // defaults
+    })
   ],
   exports: [
     MatDatepickerModule,

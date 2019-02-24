@@ -10,14 +10,14 @@ import {ActivatedRoute} from "@angular/router";
 export class ExtraInfoComponent {
 
   public uploader: FileUploader = new FileUploader({url: "/server/api/students/attachments"});
-  private survey = true;
+  private survey = false;
 
 
   constructor(private route: ActivatedRoute) {
     this.uploader.setOptions({
       authToken: this.route.snapshot.params.token,
       maxFileSize: 10485760, // 10 MB
-      allowedFileType: ['pdf', 'docx']
+      allowedFileType: ['pdf', 'docx', 'doc']
     });
   }
 

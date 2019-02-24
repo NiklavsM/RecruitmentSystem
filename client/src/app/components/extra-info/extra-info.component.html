@@ -2,12 +2,19 @@
   <div class="col-sm-12 mb-3">
     <div class="header-section">
       <h3>Please upload attachments (1/2)</h3>
-      <p>Max file size: 10MB. Allowed file types: '.pdf', '.docx'</p>
+      <ul>
+        <li>Max file size: 10MB.</li>
+        <li>Allowed file types: '.pdf', '.doc' and '.docx'.</li>
+        <li> Maximum of 5 files allowed</li>
+      </ul>
     </div>
+    <label for="fileUpload" class="btn btn-info">
+      Select files <i class="far fa-file"></i>
+    </label>
     <input type="file" name="fileUpload" id="fileUpload"
-           multiple ng2FileSelect [uploader]="uploader">
-    <div>
-      <div class="row uploadList" *ngFor="let item of uploader.queue">
+           multiple ng2FileSelect [uploader]="uploader" hidden>
+    <div class="upload-box" *ngIf="uploader.queue.length>0">
+      <div class="row p-1" *ngFor="let item of uploader.queue">
         <div class="col-sm-4">{{item.file.name}}</div>
         <div class="col-sm-4">
           <div class="progress">
@@ -15,17 +22,21 @@
                  [ngStyle]="{'width':item.progress+'%'}"></div>
           </div>
         </div>
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-danger" (click)="item.remove()">Delete</button>
+        <div class="col-sm-4" *ngIf="item.progress<100">
+          <button type="button" class="btn btn-danger" (click)="item.remove()"><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="uploader?.queue?.length > 0">
-      <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Upload All</button>
-    </div>
     <div class="row">
-      <div class="col-sm-3 offset-md-10" *ngIf="uploader.getNotUploadedItems().length===0 && uploader.queue.length>0">
-        <button class="btn btn-success" (click)="survey = !survey">Take test</button>
+      <div class="col-sm-3">
+        <button *ngIf=" uploader.getNotUploadedItems().length!==0 && uploader?.queue?.length > 0" type="button"
+                class="btn btn-primary" (click)="uploader.uploadAll()" [disabled]="uploader.queue.length>5">
+          Upload <i class="fas fa-upload"></i>
+        </button>
+        <button *ngIf="uploader.getNotUploadedItems().length===0 && uploader.queue.length>0"
+                class="btn btn-success" (click)="survey = !survey">
+          Take test <i class="fas fa-check-circle"></i>
+        </button>
       </div>
     </div>
   </div>

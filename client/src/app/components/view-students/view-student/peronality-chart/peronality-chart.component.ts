@@ -11,7 +11,7 @@ import {StudentService} from "../../../../services/student.service";
 export class PeronalityChartComponent implements OnInit {
 
   @Input()
-  studentId: number;
+  studentId: string;
   public radarChartLabels: string[] = ['Extroversion', 'Agreeableness', 'Conscientiousness', 'Neuroticism', 'Openness'];
 
   public radarChartData = [];

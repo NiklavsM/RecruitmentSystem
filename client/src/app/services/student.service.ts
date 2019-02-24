@@ -15,22 +15,31 @@ export class StudentService {
   constructor(private http: HttpClient) {
   }
 
-  getStudents() {
-    return this.http.get('server/api/students', this.httpOptions
-    );
+  getStudents(filters?: any) {
+    console.log("Filters ", filters)
+    if (filters) {
+      let body = JSON.stringify(filters);
+      return this.http.post('server/api/students', body, this.httpOptions);
+    }
+    return this.http.get('server/api/students', this.httpOptions)
   }
 
-  getStudent(id: number) {
+  getStudent(id: string) {
     return this.http.get('server/api/students/' + id, this.httpOptions
     );
   }
 
-  deleteStudent(id: number) {
+  deleteStudent(id: string) {
     return this.http.post('server/api/students/delete/' + id, this.httpOptions
     );
   }
 
-  deleteStudents(ids: number[]) {
+  deleteAttachment(id: string) {
+    return this.http.post('server/api/students/attachments/delete/' + id, this.httpOptions
+    );
+  }
+
+  deleteStudents(ids: string[]) {
     let body = JSON.stringify(ids);
     return this.http.post('server/api/students/delete', body, this.httpOptions
     );
@@ -38,10 +47,10 @@ export class StudentService {
 
   createStudent(student: any) {
     let body = JSON.stringify(student);
-    return this.http.post('/server/api/students', body, this.httpOptions)
+    return this.http.post('/server/api/students/create', body, this.httpOptions)
   }
 
-  getAttachments(id: number) {
+  getAttachments(id: string) {
     return this.http.get('server/api/students/attachments/' + id, this.httpOptions
     );
   }
@@ -55,7 +64,7 @@ export class StudentService {
     return this.http.post('/server/api/students/survey/', body, httpOptions)
   }
 
-  getSurvey(id: number) {
+  getSurvey(id: string) {
     return this.http.get('server/api/students/student/survey/' + id, this.httpOptions
     );
   }

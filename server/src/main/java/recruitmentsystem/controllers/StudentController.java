@@ -1,13 +1,9 @@
 package recruitmentsystem.controllers;
 
-import recruitmentsystem.models.DBFile;
-import recruitmentsystem.models.Email;
-import recruitmentsystem.models.Student;
-import recruitmentsystem.models.Survey;
+import recruitmentsystem.models.*;
 import recruitmentsystem.repositories.DBFileRepository;
 import recruitmentsystem.repositories.StudentRepository;
 import recruitmentsystem.repositories.SurveyRepository;
-import recruitmentsystem.services.DBFileStorageService;
 import recruitmentsystem.services.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("server/api/students")
@@ -29,22 +22,44 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
     @Autowired
-    private DBFileStorageService dbFileStorageService;
-    @Autowired
     private DBFileRepository dbFileRepository;
     @Autowired
     private SurveyRepository surveyRepository;
     @Autowired
     private EmailServiceImpl emailServiceImpl;
 
-
     @GetMapping
     public List<Student> list() {
         return studentRepository.findAll();
     }
 
-    //Creates student entry and sends a sign-up email
+
+    //Returns list of filtered students
     @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Student> list(@RequestBody Filter filter) {
+        List<Student> students = new ArrayList<>();
+        for (Student student : studentRepository.getByDate(filter.getCreatedFrom() + " 00:00:00", filter.getCreatedTo() + " 23:59:59")) {
+            boolean addStudent = true;
+            if (filter.hasAttachments()) {
+                if (dbFileRepository.findByStudentId(student.getId()).isEmpty()) {
+                    addStudent = false;
+                }
+            }
+            if (filter.hasPersonalityTest()) {
+                if (surveyRepository.findByStudentId(student.getId()).isEmpty()) {
+                    addStudent = false;
+                }
+            }
+            if (addStudent) {
+                students.add(student);
+            }
+        }
+        return students;
+    }
+
+    //Creates student entry and sends a sign-up email
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Student student) {
         studentRepository.save(student);
@@ -53,7 +68,7 @@ public class StudentController {
             emailServiceImpl.sendEmail(
                     new Email(
                             student.getEmail(),
-                            "Thanks for sending your details. To add CV, complete personality test or change details please follow the link: " +
+                            "Dear " + student.getFirstName() + ",\nThanks for sending your details. To add CV and complete  a personality test please follow the link: " +
                                     "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/profile/" + student.getLoginToken()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -146,5 +161,12 @@ public class StudentController {
         return ResponseEntity.status(404).body(null);
 
     }
+
+    @PostMapping("attachments/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteAttachments(@PathVariable("id") long id) {
+        dbFileRepository.deleteById(id);
+    }
+
 
 }
