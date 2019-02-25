@@ -20,35 +20,29 @@ export class AuthService {
   }
 
   public login(): void {
-    console.log("ASKS for login");
     this.auth0.authorize();
   }
 
   public handleAuthentication(): void {
- //   console.log("HERE 1");
     this.auth0.parseHash((err, authResult) => {
-  //    console.log("HERE 1");
       if (authResult && authResult.accessToken && authResult.idToken) {
-    //    console.log("HERE 2");
         window.location.hash = '';
         this.setSession(authResult);
-    //    console.log("HERE 4");
-        // this.router.navigate(['/home']);
       } else if (err) {
-        // this.router.navigate(['/home']);
         console.log(err);
       }
     });
   }
 
   private setSession(authResult): void {
-  //  console.log("HERE 3");
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-   // console.log("localStorage " , localStorage , " HEREEE", authResult);
+    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
+      localStorage.setItem('roles', user["https://recruitmentapp.com/roles"]);
+    });
     console.log("Result ", authResult);
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
@@ -63,17 +57,26 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('roles');
     this.auth0.logout();
     // Go back to the home route
     this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
+    // Check whether the current time is past the access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    // console.log("Checks is authenticated " + new Date().getTime() ," ", expiresAt);
+
     return new Date().getTime() < expiresAt;
+  }
+
+  public hasAccess(role: string): boolean {
+    let roles = localStorage.getItem('roles');
+    if (roles) {
+      return roles.indexOf(role) > -1 && this.isAuthenticated();
+    } else {
+      return false;
+    }
   }
 
 }

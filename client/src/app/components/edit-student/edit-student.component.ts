@@ -13,6 +13,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
 
   @Input() student: any;
   @Input() editMode: boolean;
+  @Input() clearOnSubmit = false;
   @Output() onSubmit = new EventEmitter();
 
   studentForm: FormGroup;
@@ -43,7 +44,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
     if (this.studentForm.valid) {
       this.studentService.createStudent(this.studentForm.value).subscribe(
         data => {
-          //this.studentForm.reset();
+          if (this.clearOnSubmit) this.studentForm.reset();
           this.onSubmit.emit();
         },
         error => {

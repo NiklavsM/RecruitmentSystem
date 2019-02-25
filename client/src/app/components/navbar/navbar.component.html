@@ -1,25 +1,29 @@
 <ul class="nav flex-column justify-content-center py-3 vertical-menu">
   <li class="nav-item nav-pills">
-    <a class="nav-link" [routerLink]="['addstudent']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Add student <span
+    <a class="nav-link" [routerLink]="['addstudent']" [routerLinkActive]="['active']">Add student <span
       class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item nav-pills">
-    <a class="nav-link" [routerLink]="['viewstudents']" [routerLinkActive]="['active']"  *ngIf="authService.isAuthenticated()">View students</a>
+    <a class="nav-link" [routerLink]="['viewstudents']" [routerLinkActive]="['active']"
+       *ngIf="authService.hasAccess('recruiter')">View students</a>
   </li>
   <li class="nav-item nav-pills">
     <!--TODO is admin-->
-    <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Admin</a>
+    <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.hasAccess('admin')">Admin</a>
   </li>
   <li class="nav-item nav-pills">
-    <a class="nav-link" [routerLink]="['stats']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Stats</a>
+    <a class="nav-link" [routerLink]="['stats']" [routerLinkActive]="['active']"
+       *ngIf="authService.hasAccess('recruiter')">Stats</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLink]="['']" *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Login</a>
+    <a class="nav-link" [routerLink]="['']" *ngIf="!authService.isAuthenticated()"
+       (click)="authService.login()">Login</a>
   </li>
   <!--<li class="nav-item nav-pills">-->
-    <!--<a class="nav-link" [routerLink]="['profile']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Profile</a>-->
+  <!--<a class="nav-link" [routerLink]="['profile']" [routerLinkActive]="['active']" *ngIf="authService.isAuthenticated()">Profile</a>-->
   <!--</li>-->
   <li class="nav-item">
-    <a class="nav-link" [routerLink]="['']" *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Logout</a>
+    <a class="nav-link" [routerLink]="['']" *ngIf="authService.isAuthenticated()"
+       (click)="authService.logout()">Logout</a>
   </li>
 </ul>
