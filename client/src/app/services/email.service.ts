@@ -16,6 +16,6 @@ export class EmailService {
         .set('Authorization', 'Bearer ' + "TOKEN ") // TODO Token
     };
     let body = JSON.stringify(email);
-    return this.http.post('/server/api/email', body, httpOptions)
+    return this.http.post('/server/secure/email', body, httpOptions)
   }
 }

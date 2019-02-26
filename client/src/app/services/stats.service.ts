@@ -16,16 +16,16 @@ export class StatsService {
 
   public getGenderStats() {
     let body = JSON.stringify(this.gl.genders);
-    return this.http.post('server/api/stats/genderstats', body, this.httpOptions);
+    return this.http.post('server/secure/stats/genderstats', body, this.httpOptions);
   }
 
   public getSignupStats(dates: any) {
     let body = JSON.stringify(dates);
-    return this.http.post('server/api/stats/signupstats', body, this.httpOptions);
+    return this.http.post('server/secure/stats/signupstats', body, this.httpOptions);
   }
 
   public getEthnicityStats() {
     let body = JSON.stringify(this.gl.ethnicities);
-    return this.http.post('server/api/stats/ethnicitystats', body, this.httpOptions);
+    return this.http.post('server/secure/stats/ethnicitystats', body, this.httpOptions);
   }
 }

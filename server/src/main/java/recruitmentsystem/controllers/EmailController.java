@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("server/api/email")
+@RequestMapping("server/secure/email")
 public class EmailController {
 
     @Autowired

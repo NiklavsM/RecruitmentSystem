@@ -6,21 +6,21 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class SettingsService {
 
+  private token = localStorage.getItem('access_token');
+  private httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+      .set('Authorization', 'Bearer ' + this.token)
+  };
+
   constructor(private http: HttpClient) {
   }
 
   public getSettings() {
-    return this.http.get('/server/api/settings')
+    return this.http.get('/server/public/settings', this.httpOptions)
   }
 
   public setSettings(settings: any) {
-    let token = localStorage.getItem('access_token');
-    let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-        .set('Authorization', 'Bearer ' + token)
-    };
-
     let body = JSON.stringify(settings);
-    return this.http.post('/server/api/settings', body, httpOptions)
+    return this.http.post('/server/secure/settings', body, this.httpOptions)
   }
 }

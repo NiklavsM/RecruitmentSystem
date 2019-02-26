@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import java.util.*;
 
 @RestController
-@RequestMapping("server/api/stats")
+@RequestMapping("server/secure/stats")
 public class StatsController {
 
     @Autowired

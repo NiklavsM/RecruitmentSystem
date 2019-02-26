@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ExtraInfoComponent {
 
-  public uploader: FileUploader = new FileUploader({url: "/server/api/students/attachments"});
+  public uploader: FileUploader = new FileUploader({url: "/server/public/students/attachments"}); // TODO move to service
   private survey = false;
 
 

@@ -55,11 +55,6 @@ const routes: Routes = [
     component: StatsComponent,
     canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'profile',
-  //   component: ProfileComponent,
-  //   // canActivate: [AuthGuard]
-  // },
   {
     path: 'extrainfo/:token',
     component: ExtraInfoComponent,

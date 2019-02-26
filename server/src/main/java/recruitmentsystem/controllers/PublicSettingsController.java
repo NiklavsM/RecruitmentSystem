@@ -9,8 +9,8 @@ import recruitmentsystem.repositories.SettingsRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("server/secure/settings")
-public class SettingsController {
+@RequestMapping("server/public/settings")
+public class PublicSettingsController {
     @Autowired
     SettingsRepository settingsRepository;
 
@@ -22,11 +22,5 @@ public class SettingsController {
             return s.get(0);
         }
         return null;
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void setSettings(@RequestBody Settings settings){
-        settingsRepository.save(settings);
     }
 }

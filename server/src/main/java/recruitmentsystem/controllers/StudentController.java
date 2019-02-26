@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.*;
 
 @RestController
-@RequestMapping("server/api/students")
+@RequestMapping("server/secure/students")
 public class StudentController {
 
     @Autowired
@@ -25,14 +25,11 @@ public class StudentController {
     private DBFileRepository dbFileRepository;
     @Autowired
     private SurveyRepository surveyRepository;
-    @Autowired
-    private EmailServiceImpl emailServiceImpl;
 
     @GetMapping
     public List<Student> list() {
         return studentRepository.findAll();
     }
-
 
     //Returns list of filtered students
     @PostMapping
@@ -56,24 +53,6 @@ public class StudentController {
             }
         }
         return students;
-    }
-
-    //Creates student entry and sends a sign-up email
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.OK)
-    public void create(@RequestBody Student student) {
-        studentRepository.save(student);
-
-        try {
-            emailServiceImpl.sendEmail(
-                    new Email(
-                            student.getEmail(),
-                            "Dear " + student.getFirstName() + ",\nThanks for sending your details. To add CV and complete  a personality test please follow the link: " +
-                                    "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/profile/" + student.getLoginToken()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
     @GetMapping("/{id}")
@@ -110,35 +89,6 @@ public class StudentController {
             traits.put("Openness", survey.getOpenness());
         }
         return traits;
-    }
-
-    @PostMapping("survey")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity uploadSurvey(@RequestHeader("Authorization") String loginToken, @RequestBody Survey survey) {
-        Student student = studentRepository.findByLoginToken(loginToken);
-        if (surveyRepository.findByStudentId(student.getId()).isEmpty()) {
-            survey.setStudent(student);
-            surveyRepository.save(survey);
-            return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Survey submitted");
-        }
-        return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Submission failed: survey already submitted");
-    }
-
-    @PostMapping("attachments")
-    @ResponseStatus(HttpStatus.OK)
-    public void uploadAttachments(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) {
-
-        try {
-            Student student = studentRepository.findByLoginToken(loginToken);
-            if (dbFileRepository.findByStudentId(student.getId()).size() < 5) { // allow only 5 files per student
-                DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
-                dbfile.setStudent(studentRepository.findByLoginToken(loginToken));
-                dbFileRepository.save(dbfile);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @GetMapping("attachments/{studentid}")
