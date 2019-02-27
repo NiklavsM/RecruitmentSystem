@@ -8,12 +8,11 @@ import {environment} from "../../environments/environment";
 export class AuthService {
 
   auth0 = new auth0.WebAuth({
-    clientID: '4IacHPW1T0ALSXDjwcZnhwJNF329347Z',
+    clientID: environment.CLIENT_ID,
     domain: 'niklavs.eu.auth0.com',
     responseType: 'token id_token',
-    audience: 'http://localhost:8080',
-    redirectUri: environment.API_URL + '/logincallback',
-    scope: 'openid recruiter admin'
+    audience: environment.audience,
+    redirectUri: environment.API_URL + '/logincallback'
   });
 
   constructor(public router: Router) {

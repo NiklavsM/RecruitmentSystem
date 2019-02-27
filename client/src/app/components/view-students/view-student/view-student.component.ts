@@ -16,10 +16,10 @@ export class ViewStudentComponent implements OnInit {
 
   public student;
   public editMode = false;
-  private studentId: string;
-  private attachments: any;
+  studentId: string;
+  attachments: any;
 
-  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute, private modalService: NgbModal) {
+  constructor(public studentService: StudentService, public router: Router, public route: ActivatedRoute, public modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -50,21 +50,21 @@ export class ViewStudentComponent implements OnInit {
     this.studentService.deleteStudent(this.studentId).subscribe();
   }
 
-  private deleteAttachment(id: string) {
+  public deleteAttachment(id: string) {
     this.studentService.deleteAttachment(id).subscribe();
     this.attachments = this.attachments.filter(o => o.id != id);
   }
 
-  private editSwitch() {
+  public editSwitch() {
     this.editMode = !this.editMode;
   }
 
-  private openEmailModal() {
+  public openEmailModal() {
     const modalRef = this.modalService.open(SendEmailComponent);
     modalRef.componentInstance.student = this.student;
   }
 
-  private openDeleteModal() {
+  public openDeleteModal() {
     const modalRef = this.modalService.open(ConfirmModalComponent);
     modalRef.result.then(result => {
       this.deleteStudent();
@@ -74,7 +74,7 @@ export class ViewStudentComponent implements OnInit {
     modalRef.componentInstance.students = [this.student];
   }
 
-  private openSaveModal() {
+  public openSaveModal() {
     const modalRef = this.modalService.open(UniversalModalComponent);
     modalRef.componentInstance.bodyText = "Student successfully updated"
   }

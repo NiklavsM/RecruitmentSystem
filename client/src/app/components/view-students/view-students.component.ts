@@ -22,7 +22,7 @@ export class ViewStudentsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private studentService: StudentService, private modalService: NgbModal) {
+  constructor(public studentService: StudentService, public modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class ViewStudentsComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  private applyFilter(filterValue: string) {
+  public applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
@@ -104,20 +104,20 @@ export class ViewStudentsComponent implements OnInit {
   }
 
   // Selects all students if they are not all selected, otherwise clear all.
-  private masterToggle() {
+  public masterToggle() {
     this.allSelected() ?
       this.selection.clear() :
       this.dataSource.filteredData.forEach(row => this.selection.select(row));
   }
 
-  private advancedSearch() {
+  public advancedSearch() {
     this.studentService.getStudents(this.advancedSearchForm.value).subscribe(data => {
       this.initDataSource(data);
     }, error => {
     })
   }
 
-  private advancedOptionsSwitch() {
+  public advancedOptionsSwitch() {
     this.advancedOptions = !this.advancedOptions;
   }
 

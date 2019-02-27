@@ -11,7 +11,7 @@ export class StatsService {
       .set('Authorization', 'Bearer ' + this.token)
   };
 
-  constructor(private http: HttpClient, private gl: Globals) {
+  constructor(public http: HttpClient, public gl: Globals) {
   }
 
   public getGenderStats() {

@@ -12,7 +12,7 @@ export class SettingsService {
       .set('Authorization', 'Bearer ' + this.token)
   };
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
   public getSettings() {

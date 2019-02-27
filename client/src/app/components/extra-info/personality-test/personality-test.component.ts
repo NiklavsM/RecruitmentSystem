@@ -13,9 +13,9 @@ import {UniversalModalComponent} from "../../universal-modal/universal-modal.com
 export class PersonalityTestComponent implements OnInit {
 
   private personalityForm: FormGroup = new FormGroup(this.buildControlsObject());
-  private thankYou = false;
+  public thankYou = false;
 
-  constructor(private studentService: StudentService, private route: ActivatedRoute, private modalService: NgbModal) {
+  constructor(public studentService: StudentService, public route: ActivatedRoute, public modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class PersonalityTestComponent implements OnInit {
     }
   }
 
-  private statements = [
+  public statements = [
     "Am the life of the party"
     , "Feel little concern for others"
     , "Am always prepared"

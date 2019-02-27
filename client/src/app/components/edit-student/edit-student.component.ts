@@ -18,7 +18,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
 
   studentForm: FormGroup;
 
-  constructor(private studentService: StudentService, private gl: Globals) {
+  constructor(public studentService: StudentService, public gl: Globals) {
   }
 
   ngOnInit() {

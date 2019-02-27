@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class EmailService {
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
   sendEmail(email : any) {

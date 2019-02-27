@@ -8,9 +8,9 @@ import {SettingsService} from "./services/settings.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private settings : any;
+  settings : any;
 
-  constructor(public authService: AuthService, private settingsService: SettingsService) {
+  constructor(public authService: AuthService,  public settingsService: SettingsService) {
     authService.handleAuthentication();
   }
 

@@ -26,7 +26,7 @@ export class PeronalityChartComponent implements OnInit {
     }
   };
 
-  constructor(private studentService: StudentService, private modalService: NgbModal) {
+  constructor(public studentService: StudentService, public modalService: NgbModal) {
   }
 
   ngOnInit(): void {

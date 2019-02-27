@@ -16,7 +16,7 @@ export class SendEmailComponent implements OnInit {
 
   emailForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private emailService: EmailService, public activeModal: NgbActiveModal) {
+  constructor(public route: ActivatedRoute,  public emailService: EmailService, public activeModal: NgbActiveModal) {
   }
 
   ngOnInit() {

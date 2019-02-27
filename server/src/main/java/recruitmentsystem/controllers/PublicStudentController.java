@@ -42,7 +42,7 @@ public class PublicStudentController {
                     new Email(
                             student.getEmail(),
                             "Dear " + student.getFirstName() + ",\nThanks for sending your details. To add CV and complete  a personality test please follow the link: " +
-                                    "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/profile/" + student.getLoginToken()));
+                                    "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
         } catch (Exception e) {
             e.printStackTrace();
         }

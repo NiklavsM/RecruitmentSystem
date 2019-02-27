@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   settingsForm: FormGroup;
   settings: any = {companyName: ''};
 
-  constructor(private settingsService: SettingsService) {
+  constructor(public settingsService: SettingsService) {
   }
 
   ngOnInit() {

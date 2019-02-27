@@ -11,7 +11,7 @@ export class GenderChartComponent implements OnInit {
   public pieChartData: number[] = [];
   public pieChartType: string = 'pie'; // TODO maybe allow user to change this?
 
-  constructor(private statsService: StatsService) {
+  constructor(public statsService: StatsService) {
   }
 
   ngOnInit() {

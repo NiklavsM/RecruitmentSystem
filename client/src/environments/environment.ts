@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  CLIENT_ID: '4IacHPW1T0ALSXDjwcZnhwJNF329347Z',
+  audience: 'http://localhost:8080',
   API_URL: 'http://localhost:4200'
 };
 

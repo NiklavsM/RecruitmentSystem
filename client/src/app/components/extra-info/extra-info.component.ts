@@ -10,10 +10,10 @@ import {ActivatedRoute} from "@angular/router";
 export class ExtraInfoComponent {
 
   public uploader: FileUploader = new FileUploader({url: "/server/public/students/attachments"}); // TODO move to service
-  private survey = false;
+  public survey = false;
 
 
-  constructor(private route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute) {
     this.uploader.setOptions({
       authToken: this.route.snapshot.params.token,
       maxFileSize: 10485760, // 10 MB

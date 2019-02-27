@@ -12,7 +12,7 @@ export class StudentService {
       .set('Authorization', 'Bearer ' + this.token)
   };
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
   getStudents(filters?: any) {

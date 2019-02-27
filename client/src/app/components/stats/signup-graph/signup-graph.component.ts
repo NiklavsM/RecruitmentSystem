@@ -8,7 +8,7 @@ import {StatsService} from "../../../services/stats.service";
 })
 export class SignupGraphComponent implements OnInit {
 
-  constructor(private statsService: StatsService) {
+  constructor(public statsService: StatsService) {
   }
 
   ngOnInit() {

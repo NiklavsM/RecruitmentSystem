@@ -12,7 +12,7 @@ export class EthnicityChartComponent implements OnInit {
   public pieChartData: number[] = [];
   public pieChartType: string = 'doughnut'; // TODO maybe allow user to change this?
 
-  constructor(private statsService: StatsService) {
+  constructor(public statsService: StatsService) {
   }
 
   ngOnInit() {

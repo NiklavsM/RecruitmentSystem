@@ -16,9 +16,9 @@ public class SettingsController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Settings getSettings(){
+    public Settings getSettings() {
         List<Settings> s = settingsRepository.findAll();
-        if(!s.isEmpty()){
+        if (!s.isEmpty()) {
             return s.get(0);
         }
         return null;
@@ -26,7 +26,14 @@ public class SettingsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void setSettings(@RequestBody Settings settings){
-        settingsRepository.save(settings);
+    public void setSettings(@RequestBody Settings settings) {
+        List<Settings> sl = settingsRepository.findAll();
+        if (sl.isEmpty()) {
+            settingsRepository.save(settings);
+        } else {
+            Settings s = sl.get(0);
+            s.setCompanyName(settings.getCompanyName());
+            settingsRepository.save(s);
+        }
     }
 }

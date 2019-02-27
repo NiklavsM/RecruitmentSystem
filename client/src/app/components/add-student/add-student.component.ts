@@ -10,10 +10,10 @@ import {UniversalModalComponent} from "../universal-modal/universal-modal.compon
 export class AddStudentComponent {
 
 
-  constructor(private modalService: NgbModal) {
+  constructor(public modalService: NgbModal) {
   }
 
-  private openModal() {
+  public openModal() {
     const modal = this.modalService.open(UniversalModalComponent);
     modal.componentInstance.bodyText = "Details successfully saved";
   }
