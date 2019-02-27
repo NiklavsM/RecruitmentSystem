@@ -52,14 +52,12 @@ export class AuthService {
   }
 
   public logout(): void {
+    this.auth0.logout();
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('roles');
-    this.auth0.logout();
-    // Go back to the home route
-    this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {

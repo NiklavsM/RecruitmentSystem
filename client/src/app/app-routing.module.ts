@@ -25,9 +25,16 @@ const routes: Routes = [
     component: LogoutCallbackComponent
   },
   {
+    path: 'addstudent/qrcode',
+    component: AddStudentComponent,
+  },
+  {
     path: 'addstudent',
     component: AddStudentComponent,
-    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'addstudent/qrcode',
+    component: AddStudentComponent,
   },
   {
     path: 'viewstudents/:id',

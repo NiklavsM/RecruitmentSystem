@@ -8,12 +8,12 @@
     <div class="company" *ngIf="settings">For: {{settings.companyName}}</div>
     <br>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-2" *ngIf="navBarOn">
         <app-navbar></app-navbar>
       </div>
-      <div class="col-md-10 box">
+      <div class="box" [ngClass]="{'col-md-10' : navBarOn, 'col-md-12' : !navBarOn}">
         <div class="m-2">
-        <router-outlet></router-outlet>
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
