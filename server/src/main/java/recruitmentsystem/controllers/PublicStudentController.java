@@ -34,21 +34,27 @@ public class PublicStudentController {
     //Creates student entry and sends a sign-up email
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.OK)
-    public void create(@RequestBody Student student) {
-        studentRepository.save(student);
+    public ResponseEntity create(@RequestBody Student student) {
+        if (studentRepository.findByEmail(student.getEmail()).isEmpty()) {
+            studentRepository.save(student);
+            sendSignupEmail(student);
+            return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Submission was successful");
+        }
+        return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Student with this email already exists");
+    }
+
+    private void sendSignupEmail(Student student) {
         final String[] companyName = {""};
         settingsRepository.findById(1L).ifPresent(setting -> companyName[0] = setting.getCompanyName());
 
         try {
             emailServiceImpl.sendEmail(
-                    new Email(
-                            student.getEmail(), companyName[0],
+                    new Email(student.getEmail(), companyName[0],
                             "Dear " + student.getFirstName() + ",\nThanks for sharing your details. To add relevant attachments and complete a personality test please follow the link: " +
                                     "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @PostMapping("survey")

@@ -1,5 +1,5 @@
 <div class="row" *ngIf="!survey">
-  <div class="col-sm-12 mb-3">
+  <div class="col-md-12 mb-3">
     <div class="header-section">
       <h3>Please upload relevant documents (1/2)</h3>
       <ul>
@@ -15,20 +15,20 @@
            multiple ng2FileSelect [uploader]="uploader" hidden>
     <div class="upload-box" *ngIf="uploader.queue.length>0">
       <div class="row p-1" *ngFor="let item of uploader.queue">
-        <div class="col-sm-4">{{item.file.name}}</div>
-        <div class="col-sm-4">
+        <div class="col-md-4">{{item.file.name}}</div>
+        <div class="col-md-4">
           <div class="progress">
             <div class="progress-bar bg-success"
                  [ngStyle]="{'width':item.progress+'%'}"></div>
           </div>
         </div>
-        <div class="col-sm-4" *ngIf="item.progress<100">
+        <div class="col-md-4" *ngIf="item.progress<100">
           <button type="button" class="btn btn-danger" (click)="item.remove()"><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-md-3">
         <button *ngIf=" uploader.getNotUploadedItems().length!==0 && uploader?.queue?.length > 0" type="button"
                 class="btn btn-primary" (click)="uploader.uploadAll()" [disabled]="uploader.queue.length>5">
           Upload <i class="fas fa-upload"></i>
@@ -42,7 +42,7 @@
   </div>
 </div>
 <div class="row" *ngIf="survey">
-  <div class="col-sm-12">
+  <div class="col-md-12">
     <app-personality-test></app-personality-test>
   </div>
 </div>

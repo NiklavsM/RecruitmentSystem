@@ -36,7 +36,7 @@ export class SendEmailComponent implements OnInit {
           this.activeModal.close();
         },
         error => {
-          return Observable.throw(error); // TODO
+          return console.log('error ', error); //TODO
         }
       );
     } else {

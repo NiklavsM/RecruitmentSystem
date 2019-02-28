@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-sm-6 filter">
+  <div class="col-md-6 filter">
     <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Search..."
            autocomplete="off">
   </div>
-  <div class="col-sm-3">
+  <div class="col-md-3">
     <button class="btn btn-info" (click)="advancedOptionsSwitch()">Advanced filter
       <i *ngIf="!advancedOptions" class="fas fa-angle-down"></i>
       <i *ngIf="advancedOptions" class="fas fa-angle-up"></i>
     </button>
   </div>
-  <div class="col-sm-3">
+  <div class="col-md-3">
     <button *ngIf="selection.hasValue()" class="btn btn-danger" (click)="tryToDelete()">
       Delete <i class="fas fa-trash-alt"></i>
     </button>

@@ -13,9 +13,9 @@ export class AddStudentComponent {
   constructor(public modalService: NgbModal) {
   }
 
-  public openModal() {
+  public openModal(message: string) {
     const modal = this.modalService.open(UniversalModalComponent);
-    modal.componentInstance.bodyText = "Details successfully saved";
+    modal.componentInstance.bodyText = message;
   }
 
 

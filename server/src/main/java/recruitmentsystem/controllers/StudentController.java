@@ -67,6 +67,13 @@ public class StudentController {
         studentRepository.deleteById(id);
     }
 
+    @PostMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity updateStudent(@RequestBody Student student) {
+        studentRepository.save(student);
+        return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Student successfully updated");
+    }
+
     @PostMapping("delete")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudents(@RequestBody List<Long> students) {

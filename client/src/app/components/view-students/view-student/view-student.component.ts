@@ -78,9 +78,9 @@ export class ViewStudentComponent implements OnInit {
     modalRef.componentInstance.students = [this.student];
   }
 
-  public openSaveModal() {
+  public openSaveModal(message: string) {
     const modalRef = this.modalService.open(UniversalModalComponent);
-    modalRef.componentInstance.bodyText = "Student successfully updated"
+    modalRef.componentInstance.bodyText = message;
   }
 
 

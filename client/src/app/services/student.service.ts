@@ -1,16 +1,9 @@
-import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
 
 
 @Injectable()
 export class StudentService {
-
-  private token = localStorage.getItem('access_token');
-  private httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-      .set('Authorization', 'Bearer ' + this.token)
-  };
 
   constructor(public http: HttpClient) {
   }
@@ -18,40 +11,38 @@ export class StudentService {
   getStudents(filters?: any) {
     if (filters) {
       let body = JSON.stringify(filters);
-      return this.http.post('server/secure/students', body, this.httpOptions);
+      return this.http.post('server/secure/students', body, this.getHttpOptions());
     }
-    return this.http.get('server/secure/students', this.httpOptions)
+    return this.http.get('server/secure/students', this.getHttpOptions())
   }
 
   getStudent(id: string) {
-    return this.http.get('server/secure/students/' + id, this.httpOptions
-    );
+    return this.http.get('server/secure/students/' + id, this.getHttpOptions());
   }
 
   deleteStudent(id: string) {
-    return this.http.post('server/secure/students/delete/' + id, this.httpOptions
-    );
+    return this.http.post('server/secure/students/delete/' + id, this.getHttpOptions());
   }
 
   deleteAttachment(id: string) {
-    return this.http.post('server/secure/students/attachments/delete/' + id, this.httpOptions
-    );
+    return this.http.post('server/secure/students/attachments/delete/' + id, this.getHttpOptions());
   }
 
   deleteStudents(ids: string[]) {
     let body = JSON.stringify(ids);
-    return this.http.post('server/secure/students/delete', body, this.httpOptions
-    );
+    return this.http.post('server/secure/students/delete', body, this.getHttpOptions());
   }
 
   createStudent(student: any) {
     let body = JSON.stringify(student);
-    return this.http.post('/server/public/students/create', body, this.httpOptions)
+    if (student.id) {
+      return this.http.post('/server/secure/students/update', body, this.getHttpOptions(true));
+    }
+    return this.http.post('/server/public/students/create', body, this.getHttpOptions(true));
   }
 
   getAttachments(id: string) {
-    return this.http.get('server/secure/students/attachments/' + id, this.httpOptions
-    );
+    return this.http.get('server/secure/students/attachments/' + id, this.getHttpOptions());
   }
 
   uploadSurvey(survey: any, authToken: string) {
@@ -64,8 +55,20 @@ export class StudentService {
   }
 
   getSurvey(id: string) {
-    return this.http.get('server/secure/students/student/survey/' + id, this.httpOptions
+    return this.http.get('server/secure/students/student/survey/' + id, this.getHttpOptions()
     );
+  }
+
+  private getHttpOptions(textResponse?: boolean) {
+    let token = localStorage.getItem('access_token');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+    let httpOptions = {};
+    if (textResponse) {
+      httpOptions = {headers: headers.set('Authorization', 'Bearer ' + token), responseType: 'text' as 'text'}
+    } else {
+      httpOptions = {headers: headers.set('Authorization', 'Bearer ' + token)};
+    }
+    return httpOptions;
   }
 
 }

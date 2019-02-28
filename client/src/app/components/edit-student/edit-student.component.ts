@@ -40,15 +40,14 @@ export class EditStudentComponent implements OnInit, OnChanges {
   }
 
   submitRegistration() {
-    console.log('Student ', this.student);
     if (this.studentForm.valid) {
       this.studentService.createStudent(this.studentForm.value).subscribe(
         data => {
           if (this.clearOnSubmit) this.studentForm.reset();
-          this.onSubmit.emit();
+          this.onSubmit.emit(data);
         },
         error => {
-          return Observable.throw(error); // TODO
+           console.log("errorrrrrr  ", error);// TODO
         }
       );
     } else {
