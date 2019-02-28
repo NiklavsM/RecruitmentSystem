@@ -8,12 +8,12 @@
        *ngIf="authService.hasAccess('recruiter')"><i class="fas fa-address-book"></i> View students</a>
   </li>
   <li class="nav-item nav-pills">
-    <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.hasAccess('admin')"><i
-      class="fas fa-hammer"></i> Admin</a>
+    <a class="nav-link" [routerLink]="['stats']" [routerLinkActive]="['active']"
+       *ngIf="authService.hasAccess('recruiter')"><i class="fas fa-chart-bar"></i> Statistics</a>
   </li>
   <li class="nav-item nav-pills">
-    <a class="nav-link" [routerLink]="['stats']" [routerLinkActive]="['active']"
-       *ngIf="authService.hasAccess('recruiter')"><i class="fas fa-chart-bar"></i> Stats</a>
+    <a class="nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']" *ngIf="authService.hasAccess('admin')"><i
+      class="fas fa-hammer"></i> Admin</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" [routerLink]="['']" *ngIf="!authService.isAuthenticated()"

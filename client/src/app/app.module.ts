@@ -4,7 +4,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {ReactiveFormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
-import {LinkedinComponent} from './components/linkedin/linkedin.component';
 import {LoginCallbackComponent} from './components/login-callback/login-callback.component'
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth.guard';
@@ -53,7 +52,6 @@ import {LogoutCallbackComponent} from './components/logout-callback/logout-callb
   entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent, UniversalModalComponent],
   declarations: [
     AppComponent,
-    LinkedinComponent,
     LoginCallbackComponent,
     AddStudentComponent,
     ViewStudentsComponent,

@@ -1,6 +1,8 @@
 DROP TABLE student;
+DROP TABLE settings;
 
 CREATE TABLE student(id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY, course VARCHAR(255),  cv TINYBLOB,  email VARCHAR(255),  gender VARCHAR(255), ethnicity VARCHAR(255), grad_year DATETIME, last_name VARCHAR(255), first_name  VARCHAR(255), login_token VARCHAR(255), created_at  DATETIME, updated_at DATETIME,  university  VARCHAR(255));
+CREATE TABLE settings(id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY, company_name VARCHAR(255));
 
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (199, 'Nikola', 'Graham', 'nikola.graham@gmail.com', 'Computer Science', 'Female', 'Caucasian', '2018-12-01', 'University of Oxford', 'TOKEN123', '2019-02-17 08:53:04','2019-02-17 08:55:04');
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (200, 'Niklavs', 'Meiers', 'niklavs.meiers@gmail.com', 'Computer Science', 'Female', 'Caucasian', '2018-12-01', 'University of Strathclyde','TESTtOKEN001', '2019-02-17 08:53:04','2019-02-17 08:55:04');
@@ -22,3 +24,5 @@ INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (216, 'Olivia', 'Lee', 'mary.hill@gmail.com', 'Economics', 'Male', 'Caucasian', '2018-12-01', 'University of Strathclyde','TESTtOKEN017', '2018-11-17 08:53:04','2019-02-17 08:55:04');
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (217, 'Amelia', 'Walker', 'mary.hill@gmail.com', 'Economics', 'Male', 'African', '2018-12-01', 'University of Strathclyde','TESTtOKEN018', '2018-10-17 08:53:04','2019-02-17 08:55:04');
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (218, 'Emma', 'White', 'mary.hill@gmail.com', 'Economics', 'Rather not say', 'African', '2018-12-01', 'University of Strathclyde','TESTtOKEN019', '2018-06-17 08:53:04','2019-02-17 08:55:04');
+
+INSERT INTO settings (id, company_name) VALUES (1, 'Northwest Company Test');
