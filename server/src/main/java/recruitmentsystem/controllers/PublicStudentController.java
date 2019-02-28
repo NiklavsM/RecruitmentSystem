@@ -7,11 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import recruitmentsystem.models.DBFile;
-import recruitmentsystem.models.Email;
-import recruitmentsystem.models.Student;
-import recruitmentsystem.models.Survey;
+import recruitmentsystem.models.*;
 import recruitmentsystem.repositories.DBFileRepository;
+import recruitmentsystem.repositories.SettingsRepository;
 import recruitmentsystem.repositories.StudentRepository;
 import recruitmentsystem.repositories.SurveyRepository;
 import recruitmentsystem.services.EmailServiceImpl;
@@ -30,18 +28,22 @@ public class PublicStudentController {
     private DBFileRepository dbFileRepository;
     @Autowired
     private SurveyRepository surveyRepository;
+    @Autowired
+    private SettingsRepository settingsRepository;
 
     //Creates student entry and sends a sign-up email
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Student student) {
         studentRepository.save(student);
+        final String[] companyName = {""};
+        settingsRepository.findById(1L).ifPresent(setting -> companyName[0] = setting.getCompanyName());
 
         try {
             emailServiceImpl.sendEmail(
                     new Email(
-                            student.getEmail(),
-                            "Dear " + student.getFirstName() + ",\nThanks for sending your details. To add CV and complete  a personality test please follow the link: " +
+                            student.getEmail(), companyName[0],
+                            "Dear " + student.getFirstName() + ",\nThanks for sharing your details. To add relevant attachments and complete a personality test please follow the link: " +
                                     "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
         } catch (Exception e) {
             e.printStackTrace();

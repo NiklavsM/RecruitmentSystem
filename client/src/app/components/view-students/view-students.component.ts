@@ -42,10 +42,11 @@ export class ViewStudentsComponent implements OnInit {
       () => console.log('students loaded'));
   }
 
-  private initDataSource(data: any) {
+  private initDataSource(data: any, filter?: any) {
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = filter;
   }
 
   public applyFilter(filterValue: string) {
@@ -71,9 +72,9 @@ export class ViewStudentsComponent implements OnInit {
     this.studentService.deleteStudents(studentsToDelete).subscribe(data => {
     }, error => {
     });
-    this.dataSource = new MatTableDataSource<Element>(this.dataSource.data);
-    this.dataSource.filter = filter;
+    this.initDataSource(this.dataSource.data, filter);
     this.selection = new SelectionModel<Element>(true, []);
+
   }
 
   private tryToDelete() {

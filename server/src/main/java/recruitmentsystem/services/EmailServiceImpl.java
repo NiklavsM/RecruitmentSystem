@@ -18,12 +18,12 @@ public class EmailServiceImpl {
         this.javaMailSender = javaMailSender;
     }
 
-    public void sendEmail(Email email){
+    public void sendEmail(Email email) {
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(email.getEmailTo());
         mail.setFrom(emailFrom);
-        mail.setSubject("Company A");
-        mail.setText(email.getEmailText());
+        mail.setSubject(email.getSubject());
+        mail.setText(email.getBody());
 
         javaMailSender.send(mail);
     }

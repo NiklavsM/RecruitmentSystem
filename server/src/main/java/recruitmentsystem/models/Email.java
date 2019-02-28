@@ -2,11 +2,13 @@ package recruitmentsystem.models;
 
 public class Email {
     private String emailTo;
-    private String emailText;
+    private String subject;
+    private String body;
 
-    public Email(String emailTo, String emailText) {
+    public Email(String emailTo, String subject, String body) {
         this.emailTo = emailTo;
-        this.emailText = emailText;
+        this.subject = subject;
+        this.body = body;
     }
 
     public String getEmailTo() {
@@ -17,11 +19,19 @@ public class Email {
         this.emailTo = emailTo;
     }
 
-    public String getEmailText() {
-        return emailText;
+    public String getBody() {
+        return body;
     }
 
-    public void setEmailText(String emailText) {
-        this.emailText = emailText;
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

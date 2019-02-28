@@ -13,16 +13,19 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class SendEmailComponent implements OnInit {
   @Input()
   student: any;
+  @Input()
+  companyName: string;
 
   emailForm: FormGroup;
 
-  constructor(public route: ActivatedRoute,  public emailService: EmailService, public activeModal: NgbActiveModal) {
+  constructor(public route: ActivatedRoute, public emailService: EmailService, public activeModal: NgbActiveModal) {
   }
 
   ngOnInit() {
     this.emailForm = new FormGroup({
       emailTo: new FormControl(this.student.email, Validators.required),
-      emailText: new FormControl('', Validators.required),
+      subject: new FormControl(this.companyName),
+      body: new FormControl('', Validators.required),
     });
   }
 

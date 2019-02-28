@@ -6,6 +6,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
 import {saveAs} from 'file-saver';
 import {UniversalModalComponent} from "../../universal-modal/universal-modal.component";
+import {SettingsService} from "../../../services/settings.service";
 
 @Component({
   selector: 'app-view-student',
@@ -18,13 +19,15 @@ export class ViewStudentComponent implements OnInit {
   public editMode = false;
   studentId: string;
   attachments: any;
+  companyName: string;
 
-  constructor(public studentService: StudentService, public router: Router, public route: ActivatedRoute, public modalService: NgbModal) {
+  constructor(public studentService: StudentService, public router: Router, public route: ActivatedRoute, public modalService: NgbModal, public settingsService: SettingsService) {
   }
 
   ngOnInit() {
     this.studentId = this.route.snapshot.params.id;
     this.getStudent(this.studentId);
+    this.getCompanyName();
   }
 
   private getStudent(id: string) {
@@ -62,6 +65,7 @@ export class ViewStudentComponent implements OnInit {
   public openEmailModal() {
     const modalRef = this.modalService.open(SendEmailComponent);
     modalRef.componentInstance.student = this.student;
+    modalRef.componentInstance.companyName = this.companyName;
   }
 
   public openDeleteModal() {
@@ -80,4 +84,9 @@ export class ViewStudentComponent implements OnInit {
   }
 
 
+  private getCompanyName() {
+    this.settingsService.getSettings().subscribe(data => {
+      this.companyName = data['companyName'];
+    })
+  }
 }

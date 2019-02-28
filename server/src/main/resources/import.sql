@@ -25,4 +25,4 @@ INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (217, 'Amelia', 'Walker', 'mary.hill@gmail.com', 'Economics', 'Male', 'African', '2018-12-01', 'University of Strathclyde','TESTtOKEN018', '2018-10-17 08:53:04','2019-02-17 08:55:04');
 INSERT INTO student (id, first_name, last_name, email, course, gender, ethnicity, grad_year, university, login_token, created_at, updated_at) values (218, 'Emma', 'White', 'mary.hill@gmail.com', 'Economics', 'Rather not say', 'African', '2018-12-01', 'University of Strathclyde','TESTtOKEN019', '2018-06-17 08:53:04','2019-02-17 08:55:04');
 
-INSERT INTO settings (id, company_name) VALUES (1, 'Northwest Company Test');
+INSERT INTO settings (id, company_name) VALUES (1, 'Northwest Company Example');
