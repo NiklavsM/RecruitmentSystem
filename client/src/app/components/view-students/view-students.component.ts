@@ -5,6 +5,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ConfirmModalComponent} from "./confirm-modal/confirm-modal.component";
 import {SelectionModel} from "@angular/cdk/collections";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Globals} from "../../globals";
 
 @Component({
   selector: 'app-view-students',
@@ -17,12 +18,12 @@ export class ViewStudentsComponent implements OnInit {
   dataSource: any;
   selection = new SelectionModel<Element>(true, []);
   advancedSearchForm: FormGroup;
-  advancedOptions = false;
+  advancedOptions = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public studentService: StudentService, public modalService: NgbModal) {
+  constructor(public studentService: StudentService, public modalService: NgbModal, public  gl: Globals) {
   }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class ViewStudentsComponent implements OnInit {
     this.advancedSearchForm = new FormGroup({
       createdFrom: new FormControl(fromDate),
       createdTo: new FormControl(toDate),
+      courses: new FormControl(),
       attachments: new FormControl(false),
       personalityTest: new FormControl(false)
     });

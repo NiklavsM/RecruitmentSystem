@@ -31,20 +31,32 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
-    //Returns list of filtered students
+    // Returns list of filtered students
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Student> list(@RequestBody Filter filter) {
         List<Student> students = new ArrayList<>();
         for (Student student : studentRepository.getByDate(filter.getCreatedFrom() + " 00:00:00", filter.getCreatedTo() + " 23:59:59")) {
             boolean addStudent = true;
-            if (filter.hasAttachments()) {
+            if (filter.hasAttachments()) { // Does student has attachments linked to its profile
                 if (dbFileRepository.findByStudentId(student.getId()).isEmpty()) {
                     addStudent = false;
                 }
             }
-            if (filter.hasPersonalityTest()) {
+            if (filter.hasPersonalityTest()) { // Does student has personality test linked to its profile
                 if (surveyRepository.findByStudentId(student.getId()).isEmpty()) {
+                    addStudent = false;
+                }
+            }
+            if (filter.getCourses() != null && !filter.getCourses().isEmpty()) { // Does student has completed at least one of the courses selected in the filter
+                boolean hasCourse = false;
+                for (String course : filter.getCourses()) {
+                    if (student.getCourse().equals(course)) {
+                        hasCourse = true;
+                        break;
+                    }
+                }
+                if (!hasCourse) {
                     addStudent = false;
                 }
             }

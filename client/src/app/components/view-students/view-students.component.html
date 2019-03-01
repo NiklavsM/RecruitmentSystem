@@ -1,52 +1,66 @@
 <div class="row">
-  <div class="col-md-6 filter">
-    <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Search..."
-           autocomplete="off">
-  </div>
   <div class="col-md-3">
     <button class="btn btn-info" (click)="advancedOptionsSwitch()">Advanced filter
       <i *ngIf="!advancedOptions" class="fas fa-angle-down"></i>
       <i *ngIf="advancedOptions" class="fas fa-angle-up"></i>
     </button>
   </div>
-  <div class="col-md-3">
-    <button *ngIf="selection.hasValue()" class="btn btn-danger" (click)="tryToDelete()">
-      Delete <i class="fas fa-trash-alt"></i>
-    </button>
+  <div class="col-md-9 filter">
+    <input class="mat-input-element m-1" matInput (keyup)=" applyFilter($event.target.value)" placeholder="Search..."
+           autocomplete="off">
   </div>
 </div>
-<div class="row advancedFilter" *ngIf="advancedOptions">
-  <form [formGroup]="advancedSearchForm" class="form-inline" (ngSubmit)="advancedSearch()">
-    <mat-form-field class="ml-3">
-      <input matInput [matDatepicker]="pickerFrom" formControlName="createdFrom" placeholder="Created from">
-      <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-      <mat-datepicker #pickerFrom></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field class="ml-3">
-      <input matInput [matDatepicker]="pickerTo" formControlName="createdTo" placeholder="Created to">
-      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-      <mat-datepicker #pickerTo></mat-datepicker>
-    </mat-form-field>
-    <div class="form-group ml-3">
-      <mat-checkbox formControlName="personalityTest">Personality test</mat-checkbox>
+<form [formGroup]="advancedSearchForm" (ngSubmit)="advancedSearch()">
+  <div class="row advancedFilter" *ngIf="advancedOptions">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-7">
+          <mat-form-field class="mr-3">
+            <input matInput [matDatepicker]="pickerFrom" formControlName="createdFrom" placeholder="Created from">
+            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFrom></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerTo" formControlName="createdTo" placeholder="Created to">
+            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+            <mat-datepicker #pickerTo></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-5 pl-0">
+          <ng-select class="form-group" multiple="true" [items]="gl.courses"
+                     formControlName="courses" placeholder="Select courses">
+          </ng-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <div class="form-group ml-3">
+          </div>
+          <mat-checkbox formControlName="personalityTest" class="mr-3">Personality test</mat-checkbox>
+          <mat-checkbox  formControlName="attachments">Attachments</mat-checkbox>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-info" style="float: right">
+            Filter <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="form-group ml-3">
-      <mat-checkbox formControlName="attachments">Attachments</mat-checkbox>
-    </div>
-    <button type="submit" class="btn btn-info ml-3">
-      Filter <i class="fas fa-search"></i>
-    </button>
-  </form>
-</div>
+  </div>
+</form>
+
 <div class="table-responsive">
   <table mat-table [dataSource]="dataSource" matSort class="table">
 
     <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
+        <mat-checkbox (change)="$event ? masterToggle() : null" class="mr-3"
                       [checked]="selection.hasValue() && allSelected()"
                       [indeterminate]="selection.hasValue() && !allSelected()">
         </mat-checkbox>
+        <button *ngIf="selection.hasValue()" class="btn btn-danger" (click)="tryToDelete()">
+          Delete
+        </button>
       </mat-header-cell>
       <mat-cell *matCellDef="let row; let student">
         <mat-checkbox (click)="$event.stopPropagation()" class="mr-3"
