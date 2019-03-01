@@ -34,10 +34,10 @@ export class PersonalityTestComponent implements OnInit {
       this.studentService.uploadSurvey(this.personalityForm.value, this.route.snapshot.params.token).subscribe(
         data => {
           const modalRef = this.modalService.open(UniversalModalComponent);
-          modalRef.componentInstance.bodyText = data;
+          modalRef.componentInstance.body = data;
           modalRef.result.then(result => {
           }, reason => {
-            this.thankYou = true;
+            this.thankYou = true; // TODO whaaat
           })
         },
         error => {

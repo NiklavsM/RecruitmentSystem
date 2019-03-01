@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
 import {EmailService} from '../../../../services/email.service';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UniversalModalComponent} from "../../../universal-modal/universal-modal.component";
 
 @Component({
   selector: 'app-send-email',
@@ -18,7 +18,7 @@ export class SendEmailComponent implements OnInit {
 
   emailForm: FormGroup;
 
-  constructor(public route: ActivatedRoute, public emailService: EmailService, public activeModal: NgbActiveModal) {
+  constructor(public route: ActivatedRoute, public emailService: EmailService, public activeModal: NgbActiveModal, public modal: NgbModal) {
   }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class SendEmailComponent implements OnInit {
       this.emailService.sendEmail(this.emailForm.value).subscribe(
         data => {
           this.activeModal.close();
+          this.openSuccessModal();
         },
         error => {
           return console.log('error ', error); //TODO
@@ -42,6 +43,11 @@ export class SendEmailComponent implements OnInit {
     } else {
       // TODO change message
     }
+  }
+
+  openSuccessModal() {
+    const modal = this.modal.open(UniversalModalComponent);
+    modal.componentInstance.body = "Email sent"
   }
 
 }

@@ -80,7 +80,7 @@ export class ViewStudentComponent implements OnInit {
 
   public openSaveModal(message: string) {
     const modalRef = this.modalService.open(UniversalModalComponent);
-    modalRef.componentInstance.bodyText = message;
+    modalRef.componentInstance.body = message;
   }
 
 

@@ -15,7 +15,7 @@ export class AddStudentComponent {
 
   public openModal(message: string) {
     const modal = this.modalService.open(UniversalModalComponent);
-    modal.componentInstance.bodyText = message;
+    modal.componentInstance.body = message;
   }
 
 
