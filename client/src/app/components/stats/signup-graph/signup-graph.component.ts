@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StatsService} from "../../../services/stats.service";
+import {StatsService} from '../../../services/stats.service';
 
 @Component({
   selector: 'app-signup-graph',
@@ -9,12 +9,6 @@ import {StatsService} from "../../../services/stats.service";
 export class SignupGraphComponent implements OnInit {
 
   constructor(public statsService: StatsService) {
-  }
-
-  ngOnInit() {
-    this.statsService.getSignupStats(this.getYearAsDateArray(new Date())).subscribe(data => {
-      this.lineChartData = [{data: this.flipArray(data), label: 'Number of student data collected'}];
-    })
   }
 
   public lineChartData: Array<any> = [{data: []}];
@@ -39,26 +33,32 @@ export class SignupGraphComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend: boolean = true;
-  public lineChartType: string = 'line';
+  public lineChartLegend = true;
+  public lineChartType = 'line';
+
+  ngOnInit() {
+    this.statsService.getSignupStats(this.getYearAsDateArray(new Date())).subscribe(data => {
+      this.lineChartData = [{data: this.flipArray(data), label: 'Number of student data collected'}];
+    });
+  }
 
   private getYearAsDateArray(today: Date) {
-    let dates = [];
+    const dates = [];
     for (let i = 0; i < 12; i++) {
-      let tempDate = new Date(today);
+      const tempDate = new Date(today);
       tempDate.setMonth(today.getMonth() - i);
       dates.push({
         fromDate: tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-01',
         toDate: tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-31'
-      })
+      });
     }
-    return dates
+    return dates;
 
   }
 
   // flips array [1,2,3] - > [3,2,1]
   private flipArray(array: any) {
-    let newArray = [];
+    const newArray = [];
     for (let i = array.length - 1; i >= 0; i--) {
       newArray.push(array[i]);
     }
@@ -67,9 +67,9 @@ export class SignupGraphComponent implements OnInit {
 
   // Create labels so they start at current month
   private getChartLabels() {
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let lineChartLabels = [];
-    let firstMonth = new Date().getMonth() + 1;
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const lineChartLabels = [];
+    const firstMonth = new Date().getMonth() + 1;
     for (let i = 0; i < months.length; i++) {
       lineChartLabels[i] = months[(firstMonth + i) % 12];
     }

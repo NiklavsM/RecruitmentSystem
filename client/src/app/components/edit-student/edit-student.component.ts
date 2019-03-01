@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StudentService} from '../../services/student.service';
-import {Globals} from "../../globals";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
+import {Globals} from '../../globals';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UniversalModalComponent} from '../universal-modal/universal-modal.component';
 
 @Component({
   selector: 'app-edit-student',
@@ -52,7 +52,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
           this.onSubmit.emit(data);
         },
         error => {
-          this.openModal("Failed to connect to the server");
+          this.openModal('Failed to connect to the server');
         }
       );
     }
@@ -61,7 +61,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
 
   enableEdit(enable: boolean) {
     if (this.studentForm) {
-      for (let key of Object.keys(this.studentForm.controls)) {
+      for (const key of Object.keys(this.studentForm.controls)) {
         if (enable) {
           this.studentForm.controls[key].enable();
         } else {

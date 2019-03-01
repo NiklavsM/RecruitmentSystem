@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-universal-modal',
@@ -9,9 +9,9 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class UniversalModalComponent implements OnInit {
 
   @Input()
-  public header : string;
+  public header: string;
   @Input()
-  public body : string;
+  public body: string;
   @Input()
   public footer: string;
 

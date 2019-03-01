@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SettingsService} from "../../services/settings.service";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SettingsService} from '../../services/settings.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UniversalModalComponent} from '../universal-modal/universal-modal.component';
 
 @Component({
   selector: 'app-admin',
@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
           this.settings = data;
         }
       },
-      err => console.error(err))
+      err => console.error(err));
   }
 
   saveSettings() {
@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
           window.location.reload();
         },
         error => {
-          this.openModal("Failed to save settings");
+          this.openModal('Failed to save settings');
         }
       );
     }
@@ -51,7 +51,7 @@ export class AdminComponent implements OnInit {
   }
 
   get f() {
-    return this.settingsForm.controls
+    return this.settingsForm.controls;
   }
 
 }

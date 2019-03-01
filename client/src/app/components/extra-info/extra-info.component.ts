@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {FileUploader} from "ng2-file-upload";
-import {ActivatedRoute} from "@angular/router";
+import {FileUploader} from 'ng2-file-upload';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-extra-info',
@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ExtraInfoComponent {
 
-  public uploader: FileUploader = new FileUploader({url: "/server/public/students/attachments"}); // TODO move to service
+  public uploader: FileUploader = new FileUploader({url: '/server/public/students/attachments'}); // TODO move to service
   public survey = false;
 
 

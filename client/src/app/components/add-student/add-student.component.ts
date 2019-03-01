@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UniversalModalComponent} from '../universal-modal/universal-modal.component';
 
 @Component({
   selector: 'app-student',

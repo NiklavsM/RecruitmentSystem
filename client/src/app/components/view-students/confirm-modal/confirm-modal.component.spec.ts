@@ -1,40 +1,40 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmModalComponent } from './confirm-modal.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {BrowserModule} from "@angular/platform-browser";
-import {AppRoutingModule} from "../../../app-routing.module";
-import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
+import {RouterTestingModule} from '@angular/router/testing';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../../../app-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatPaginatorModule,
   MatSortModule,
   MatTableModule
-} from "@angular/material";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {ChartsModule} from "ng2-charts";
-import {AppComponent} from "../../../app.component";
-import {LinkedinComponent} from "../../linkedin/linkedin.component";
-import {LoginCallbackComponent} from "../../login-callback/login-callback.component";
-import {AddStudentComponent} from "../../add-student/add-student.component";
-import {ViewStudentsComponent} from "../view-students.component";
-import {AdminComponent} from "../../admin/admin.component";
-import {NavbarComponent} from "../../navbar/navbar.component";
-import {ProfileComponent} from "../../profile/profile.component";
-import {ViewStudentComponent} from "../view-student/view-student.component";
-import {SendEmailComponent} from "../view-student/send-email/send-email.component";
-import {EditStudentComponent} from "../../edit-student/edit-student.component";
-import {SignupGraphComponent} from "../../stats/signup-graph/signup-graph.component";
-import {GenderChartComponent} from "../../stats/gender-chart/gender-chart.component";
-import {StatsComponent} from "../../stats/stats.component";
-import {StudentService} from "../../../services/student.service";
-import {AuthService} from "../../../services/auth.service";
-import {AuthGuard} from "../../../services/auth.guard";
-import {APP_BASE_HREF} from "@angular/common";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+} from '@angular/material';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ChartsModule} from 'ng2-charts';
+import {AppComponent} from '../../../app.component';
+import {LinkedinComponent} from '../../linkedin/linkedin.component';
+import {LoginCallbackComponent} from '../../login-callback/login-callback.component';
+import {AddStudentComponent} from '../../add-student/add-student.component';
+import {ViewStudentsComponent} from '../view-students.component';
+import {AdminComponent} from '../../admin/admin.component';
+import {NavbarComponent} from '../../navbar/navbar.component';
+import {ProfileComponent} from '../../profile/profile.component';
+import {ViewStudentComponent} from '../view-student/view-student.component';
+import {SendEmailComponent} from '../view-student/send-email/send-email.component';
+import {EditStudentComponent} from '../../edit-student/edit-student.component';
+import {SignupGraphComponent} from '../../stats/signup-graph/signup-graph.component';
+import {GenderChartComponent} from '../../stats/gender-chart/gender-chart.component';
+import {StatsComponent} from '../../stats/stats.component';
+import {StudentService} from '../../../services/student.service';
+import {AuthService} from '../../../services/auth.service';
+import {AuthGuard} from '../../../services/auth.guard';
+import {APP_BASE_HREF} from '@angular/common';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 describe('ConfirmModalComponent', () => {
   let component: ConfirmModalComponent;

@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmailService} from '../../../../services/email.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {UniversalModalComponent} from "../../../universal-modal/universal-modal.component";
+import {UniversalModalComponent} from '../../../universal-modal/universal-modal.component';
 
 @Component({
   selector: 'app-send-email',
@@ -35,10 +35,10 @@ export class SendEmailComponent implements OnInit {
       this.emailService.sendEmail(this.emailForm.value).subscribe(
         data => {
           this.activeModal.close();
-          this.openModal("Email sent");
+          this.openModal('Email sent');
         },
         error => {
-          this.openModal("Failed to send the email");
+          this.openModal('Failed to send the email');
         }
       );
     }

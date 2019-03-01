@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
-import {environment} from "../../environments/environment";
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -38,7 +38,7 @@ export class AuthService {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
-      localStorage.setItem('roles', user["https://recruitmentapp.com/roles"]);
+      localStorage.setItem('roles', user['https://recruitmentapp.com/roles']);
     });
   }
 
@@ -59,7 +59,7 @@ export class AuthService {
   }
 
   public hasAccess(role: string): boolean {
-    let roles = localStorage.getItem('roles');
+    const roles = localStorage.getItem('roles');
     if (roles) {
       return roles.indexOf(role) > -1 && this.isAuthenticated();
     } else {

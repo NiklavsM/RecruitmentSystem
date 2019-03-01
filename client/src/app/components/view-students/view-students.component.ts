@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {StudentService} from "../../services/student.service";
+import {StudentService} from '../../services/student.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ConfirmModalComponent} from "./confirm-modal/confirm-modal.component";
-import {SelectionModel} from "@angular/cdk/collections";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Globals} from "../../globals";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ConfirmModalComponent} from './confirm-modal/confirm-modal.component';
+import {SelectionModel} from '@angular/cdk/collections';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Globals} from '../../globals';
 
 @Component({
   selector: 'app-view-students',
@@ -27,9 +27,9 @@ export class ViewStudentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    let today = new Date();
-    let fromDate = new Date(today.getFullYear() - 1, today.getMonth(), 0).toISOString().slice(0, 10);
-    let toDate = new Date().toISOString().slice(0, 10);
+    const today = new Date();
+    const fromDate = new Date(today.getFullYear() - 1, today.getMonth(), 0).toISOString().slice(0, 10);
+    const toDate = new Date().toISOString().slice(0, 10);
     this.advancedSearchForm = new FormGroup({
       createdFrom: new FormControl(fromDate),
       createdTo: new FormControl(toDate),
@@ -60,11 +60,11 @@ export class ViewStudentsComponent implements OnInit {
   }
 
   private deleteStudents() {
-    let studentsToDelete = [];
-    let filter = this.dataSource.filter;
+    const studentsToDelete = [];
+    const filter = this.dataSource.filter;
     this.selection.selected.forEach(item => {
       if (this.filteredDataContains(item.id)) {
-        let index: number = this.dataSource.data.findIndex(d => d === item);
+        const index: number = this.dataSource.data.findIndex(d => d === item);
         this.dataSource.data.splice(index, 1);
         studentsToDelete.push(item.id);
       }
@@ -78,7 +78,7 @@ export class ViewStudentsComponent implements OnInit {
   }
 
   private tryToDelete() {
-    let tryToDelete = [];
+    const tryToDelete = [];
     this.selection.selected.forEach(item => {
       if (this.filteredDataContains(item.id)) {
         tryToDelete.push(item);
@@ -93,7 +93,7 @@ export class ViewStudentsComponent implements OnInit {
       this.deleteStudents();
     }, reason => {
     });
-    modalRef.componentInstance.students = students
+    modalRef.componentInstance.students = students;
   }
 
   private filteredDataContains(id: any) {
@@ -115,7 +115,7 @@ export class ViewStudentsComponent implements OnInit {
     this.studentService.getStudents(this.advancedSearchForm.value).subscribe(data => {
       this.initDataSource(data);
     }, error => {
-    })
+    });
   }
 
   public advancedOptionsSwitch() {

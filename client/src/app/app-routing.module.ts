@@ -7,9 +7,9 @@ import {ViewStudentsComponent} from './components/view-students/view-students.co
 import {AdminComponent} from './components/admin/admin.component';
 import {ViewStudentComponent} from './components/view-students/view-student/view-student.component';
 import {SendEmailComponent} from './components/view-students/view-student/send-email/send-email.component';
-import {StatsComponent} from "./components/stats/stats.component";
-import {ExtraInfoComponent} from "./components/extra-info/extra-info.component";
-import {LogoutCallbackComponent} from "./components/logout-callback/logout-callback.component";
+import {StatsComponent} from './components/stats/stats.component';
+import {ExtraInfoComponent} from './components/extra-info/extra-info.component';
+import {LogoutCallbackComponent} from './components/logout-callback/logout-callback.component';
 
 const routes: Routes = [
   {

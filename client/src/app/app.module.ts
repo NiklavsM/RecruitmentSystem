@@ -1,10 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {LoginCallbackComponent} from './components/login-callback/login-callback.component'
+import {LoginCallbackComponent} from './components/login-callback/login-callback.component';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth.guard';
 import {AddStudentComponent} from './components/add-student/add-student.component';
@@ -35,17 +35,17 @@ import {GenderChartComponent} from './components/stats/gender-chart/gender-chart
 import {MatTableModule} from '@angular/material/table';
 import {StatsComponent} from './components/stats/stats.component';
 import {ExtraInfoComponent} from './components/extra-info/extra-info.component';
-import {FileUploadModule} from "ng2-file-upload";
+import {FileUploadModule} from 'ng2-file-upload';
 import {FileUploadComponent} from './components/file-upload/file-upload.component';
 import {PersonalityTestComponent} from './components/extra-info/personality-test/personality-test.component';
-import {StatsService} from "./services/stats.service";
+import {StatsService} from './services/stats.service';
 import {PeronalityChartComponent} from './components/view-students/view-student/peronality-chart/peronality-chart.component';
 import {PersonalityTraitDescriptionComponent} from './components/view-students/view-student/peronality-chart/personality-trait-description/personality-trait-description.component';
-import {Globals} from "./globals";
+import {Globals} from './globals';
 import {EthnicityChartComponent} from './components/stats/ethnicity-chart/ethnicity-chart.component';
 import {UniversalModalComponent} from './components/universal-modal/universal-modal.component';
-import {ConfirmationPopoverModule} from "angular-confirmation-popover";
-import {NgSelectModule} from "@ng-select/ng-select";
+import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+import {NgSelectModule} from '@ng-select/ng-select';
 import {LogoutCallbackComponent} from './components/logout-callback/logout-callback.component';
 
 @NgModule({

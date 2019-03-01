@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {PersonalityTraitDescriptionComponent} from "./personality-trait-description/personality-trait-description.component";
-import {StudentService} from "../../../../services/student.service";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PersonalityTraitDescriptionComponent} from './personality-trait-description/personality-trait-description.component';
+import {StudentService} from '../../../../services/student.service';
 
 @Component({
   selector: 'app-peronality-chart',
@@ -15,7 +15,7 @@ export class PeronalityChartComponent implements OnInit {
   public radarChartLabels: string[] = ['Extroversion', 'Agreeableness', 'Conscientiousness', 'Neuroticism', 'Openness'];
 
   public radarChartData = [];
-  public radarChartType: string = 'radar';
+  public radarChartType = 'radar';
   public radarChartOptions = {
     scale: {
       ticks: {
@@ -36,17 +36,17 @@ export class PeronalityChartComponent implements OnInit {
       }
     }, error => {
 
-    })
+    });
   }
 
   private populateChart(data) {
-    let dataArray = [];
+    const dataArray = [];
     this.radarChartLabels = Object.keys(data).sort();
 
-    for (let key of this.radarChartLabels) {
-      dataArray.push(data[key])
+    for (const key of this.radarChartLabels) {
+      dataArray.push(data[key]);
     }
-    this.radarChartData.push({data: dataArray, label: 'Personality'})
+    this.radarChartData.push({data: dataArray, label: 'Personality'});
   }
 
   public openInfo() {

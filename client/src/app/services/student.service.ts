@@ -1,5 +1,5 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Injectable} from "@angular/core";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
 
 @Injectable()
@@ -10,10 +10,10 @@ export class StudentService {
 
   getStudents(filters?: any) {
     if (filters) {
-      let body = JSON.stringify(filters);
+      const body = JSON.stringify(filters);
       return this.http.post('server/secure/students', body, this.getHttpOptions());
     }
-    return this.http.get('server/secure/students', this.getHttpOptions())
+    return this.http.get('server/secure/students', this.getHttpOptions());
   }
 
   getStudent(id: string) {
@@ -29,12 +29,12 @@ export class StudentService {
   }
 
   deleteStudents(ids: string[]) {
-    let body = JSON.stringify(ids);
+    const body = JSON.stringify(ids);
     return this.http.post('server/secure/students/delete', body, this.getHttpOptions());
   }
 
   createStudent(student: any) {
-    let body = JSON.stringify(student);
+    const body = JSON.stringify(student);
     if (student.id) {
       return this.http.post('/server/secure/students/update', body, this.getHttpOptions(true));
     }
@@ -46,12 +46,12 @@ export class StudentService {
   }
 
   uploadSurvey(survey: any, authToken: string) {
-    let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json',}).set('Authorization', authToken),
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json', }).set('Authorization', authToken),
       responseType: 'text' as 'text'
     };
-    let body = JSON.stringify(survey);
-    return this.http.post('/server/public/students/survey/', body, httpOptions)
+    const body = JSON.stringify(survey);
+    return this.http.post('/server/public/students/survey/', body, httpOptions);
   }
 
   getSurvey(id: string) {
@@ -60,11 +60,11 @@ export class StudentService {
   }
 
   private getHttpOptions(textResponse?: boolean) {
-    let token = localStorage.getItem('access_token');
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
     let httpOptions = {};
     if (textResponse) {
-      httpOptions = {headers: headers.set('Authorization', 'Bearer ' + token), responseType: 'text' as 'text'}
+      httpOptions = {headers: headers.set('Authorization', 'Bearer ' + token), responseType: 'text' as 'text'};
     } else {
       httpOptions = {headers: headers.set('Authorization', 'Bearer ' + token)};
     }

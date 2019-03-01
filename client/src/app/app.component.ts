@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "./services/auth.service";
-import {SettingsService} from "./services/settings.service";
-import {Router} from "@angular/router";
+import {AuthService} from './services/auth.service';
+import {SettingsService} from './services/settings.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +23,12 @@ export class AppComponent implements OnInit {
         this.navBarOn = this.showNavBar();
         this.settings = data;
       }, error => {
-      })
+      });
   }
 
   private showNavBar() {
-    let noNavBarLinks = ['extrainfo', 'qrcode'];
-    for (let i in noNavBarLinks) {
+    const noNavBarLinks = ['extrainfo', 'qrcode'];
+    for (const i in noNavBarLinks) {
       if (this.router.url.includes(noNavBarLinks[i])) {
         return false;
       }

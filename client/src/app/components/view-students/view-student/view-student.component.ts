@@ -3,10 +3,10 @@ import {StudentService} from '../../../services/student.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SendEmailComponent} from './send-email/send-email.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ConfirmModalComponent} from "../confirm-modal/confirm-modal.component";
+import {ConfirmModalComponent} from '../confirm-modal/confirm-modal.component';
 import {saveAs} from 'file-saver';
-import {UniversalModalComponent} from "../../universal-modal/universal-modal.component";
-import {SettingsService} from "../../../services/settings.service";
+import {UniversalModalComponent} from '../../universal-modal/universal-modal.component';
+import {SettingsService} from '../../../services/settings.service';
 
 @Component({
   selector: 'app-view-student',
@@ -81,6 +81,6 @@ export class ViewStudentComponent implements OnInit {
   private getCompanyName() {
     this.settingsService.getSettings().subscribe(data => {
       this.companyName = data['companyName'];
-    })
+    });
   }
 }
