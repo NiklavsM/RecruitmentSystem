@@ -34,18 +34,12 @@ export class ViewStudentComponent implements OnInit {
     this.studentService.getStudent(id).subscribe(
       data => {
         this.student = data;
-        console.log("Student: ", this.student);
       },
-      err => console.error(err),
-      () => console.log('student loaded')
     );
     this.studentService.getAttachments(id).subscribe(
       data => {
         this.attachments = data;
-        console.log("Attachments: ", this.attachments);
-      },
-      err => console.error(err),
-      () => console.log('student loaded')
+      }
     );
   }
 

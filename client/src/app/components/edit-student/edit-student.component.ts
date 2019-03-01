@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
 import {StudentService} from '../../services/student.service';
 import {Globals} from "../../globals";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
 
 @Component({
   selector: 'app-edit-student',
@@ -17,8 +18,9 @@ export class EditStudentComponent implements OnInit, OnChanges {
   @Output() onSubmit = new EventEmitter();
 
   studentForm: FormGroup;
+  submitted = false;
 
-  constructor(public studentService: StudentService, public gl: Globals) {
+  constructor(public studentService: StudentService, public gl: Globals, public modal: NgbModal) {
   }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
       id: new FormControl(this.student.id),
       firstName: new FormControl(this.student.firstName, Validators.required),
       lastName: new FormControl(this.student.lastName, Validators.required),
-      email: new FormControl(this.student.email, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]), // TODO write about pattern matching
+      email: new FormControl(this.student.email, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
       university: new FormControl(this.student.university, Validators.required),
       gradYear: new FormControl(this.student.gradYear, Validators.required),
       course: new FormControl(this.student.course, Validators.required),
@@ -41,18 +43,20 @@ export class EditStudentComponent implements OnInit, OnChanges {
 
   submitRegistration() {
     if (this.studentForm.valid) {
-      this.studentService.createStudent(this.studentForm.value).subscribe(
+      this.studentService.createStudent(this.student).subscribe(
         data => {
-          if (this.clearOnSubmit) this.studentForm.reset();
+          if (this.clearOnSubmit) {
+            this.studentForm.reset();
+            this.submitted = false;
+          }
           this.onSubmit.emit(data);
         },
         error => {
-           console.log("errorrrrrr  ", error);// TODO
+          this.openModal("Failed to connect to the server");
         }
       );
-    } else {
-      // TODO change message
     }
+    this.submitted = true;
   }
 
   enableEdit(enable: boolean) {
@@ -65,6 +69,15 @@ export class EditStudentComponent implements OnInit, OnChanges {
         }
       }
     }
+  }
+
+  get f() {
+    return this.studentForm.controls;
+  }
+
+  openModal(text: string) {
+    const modal = this.modal.open(UniversalModalComponent);
+    modal.componentInstance.body = text;
   }
 
 

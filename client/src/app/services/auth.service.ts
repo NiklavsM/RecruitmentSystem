@@ -27,8 +27,6 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-      } else if (err) {
-        console.log(err);
       }
     });
   }
@@ -42,13 +40,6 @@ export class AuthService {
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       localStorage.setItem('roles', user["https://recruitmentapp.com/roles"]);
     });
-    console.log("Result ", authResult);
-    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
-      if (profile) {
-        console.log("Profile ", profile, profile.nickname);
-      }
-    })
-
   }
 
   public logout(): void {

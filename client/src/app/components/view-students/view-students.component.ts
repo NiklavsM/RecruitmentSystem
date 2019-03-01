@@ -36,10 +36,8 @@ export class ViewStudentsComponent implements OnInit {
       personalityTest: new FormControl(false)
     });
     this.studentService.getStudents(this.advancedSearchForm.value).subscribe(data => {
-        this.initDataSource(data);
-      },
-      err => console.error(err),
-      () => console.log('students loaded'));
+      this.initDataSource(data);
+    });
   }
 
   private initDataSource(data: any, filter?: any) {

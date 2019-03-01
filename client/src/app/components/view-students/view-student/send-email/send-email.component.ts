@@ -17,14 +17,15 @@ export class SendEmailComponent implements OnInit {
   companyName: string;
 
   emailForm: FormGroup;
+  submitted = false;
 
   constructor(public route: ActivatedRoute, public emailService: EmailService, public activeModal: NgbActiveModal, public modal: NgbModal) {
   }
 
   ngOnInit() {
     this.emailForm = new FormGroup({
-      emailTo: new FormControl(this.student.email, Validators.required),
-      subject: new FormControl(this.companyName),
+      emailTo: new FormControl(this.student.email, [Validators.required, Validators.email]),
+      subject: new FormControl(this.companyName, Validators.required),
       body: new FormControl('', Validators.required),
     });
   }
@@ -34,20 +35,23 @@ export class SendEmailComponent implements OnInit {
       this.emailService.sendEmail(this.emailForm.value).subscribe(
         data => {
           this.activeModal.close();
-          this.openSuccessModal();
+          this.openModal("Email sent");
         },
         error => {
-          return console.log('error ', error); //TODO
+          this.openModal("Failed to send the email");
         }
       );
-    } else {
-      // TODO change message
     }
+    this.submitted = true;
   }
 
-  openSuccessModal() {
+  get f() {
+    return this.emailForm.controls;
+  }
+
+  openModal(text: string) {
     const modal = this.modal.open(UniversalModalComponent);
-    modal.componentInstance.body = "Email sent"
+    modal.componentInstance.body = text;
   }
 
 }

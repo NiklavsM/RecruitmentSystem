@@ -77,7 +77,7 @@ import {LogoutCallbackComponent} from './components/logout-callback/logout-callb
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
     NgbModalModule,
     MatDatepickerModule,

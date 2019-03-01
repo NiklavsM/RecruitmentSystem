@@ -10,7 +10,7 @@ import javax.persistence.*;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DBFile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // TODO make IDs nicer Maybe longer
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String fileName;

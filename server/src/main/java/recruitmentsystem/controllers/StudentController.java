@@ -88,7 +88,7 @@ public class StudentController {
         Map<String, Integer> traits = new HashMap<>();
         List<Survey> surveys = surveyRepository.findByStudentId(id);
         if (!surveys.isEmpty()) {
-            Survey survey = surveys.get(0); // TODO get one instead of List
+            Survey survey = surveys.get(0);
             traits.put("Agreeableness", survey.getAgreeableness());
             traits.put("Conscientiousness", survey.getConscientiousness());
             traits.put("Extroversion", survey.getExtroversion());

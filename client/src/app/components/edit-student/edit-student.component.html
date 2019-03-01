@@ -1,28 +1,37 @@
 <form [formGroup]="studentForm" novalidate (ngSubmit)="submitRegistration()" [attr.disabled]="editMode ? null : true">
   <div class="form-row mb-3">
     <div class="col">
-      <input type="text" class="form-control" formControlName="firstName" required value="{{student.firstName}}"
+      <input type="text" class="form-control" [ngClass]="{ 'is-invalid': f.firstName.errors && submitted}"
+             formControlName="firstName" [(ngModel)]="student.firstName" required value="{{student.firstName}}"
              autofocus placeholder="First name"/>
     </div>
     <div class="col">
-      <input type="text" class="form-control" formControlName="lastName" required value="{{student.lastName}}"
+      <input type="text" class="form-control" [ngClass]="{ 'is-invalid': f.lastName.errors && submitted}"
+             formControlName="lastName" [(ngModel)]="student.lastName" required value="{{student.lastName}}"
              placeholder="Last name"/>
     </div>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" formControlName="email" required value="{{student.email}}"
+    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': f.email.errors && submitted}"
+           formControlName="email" [(ngModel)]="student.email" required value="{{student.email}}"
            placeholder="Email"/>
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
+    </div>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" formControlName="university" required value="{{student.university}}"
+    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': f.university.errors && submitted}"
+           formControlName="university" [(ngModel)]="student.university" required value="{{student.university}}"
            placeholder="University"/>
   </div>
   <div class="form-group">
     <label>Year of graduation</label>
-    <input type="date" class="form-control" formControlName="gradYear" required value="{{student.gradYear}}"/>
+    <input type="date" class="form-control" [ngClass]="{ 'is-invalid': f.gradYear.errors && submitted}"
+           formControlName="gradYear" [(ngModel)]="student.gradYear" required value="{{student.gradYear}}"/>
   </div>
   <div class="form-group">
-    <ng-select [items]="gl.courses" formControlName="course" required bindValue="student.course"
+    <ng-select [ngClass]="{ 'invalid': f.course.errors && submitted}" [items]="gl.courses" formControlName="course"
+               required bindValue="student.course"
                placeholder="Select course"></ng-select>
   </div>
   <hr>
@@ -30,19 +39,18 @@
   <hr>
   <div class="form-group">
     <label>Please choose one option that best describes your ethnic group or background</label>
-    <ng-select formControlName="ethnicity" bindValue="student.ethnicity" [items]="gl.ethnicities"
+    <ng-select formControlName="ethnicity" bindValue="student.ethnicity" [(ngModel)]="student.ethnicity" [items]="gl.ethnicities"
                placeholder="Select ethnicity"></ng-select>
   </div>
   <div class="form-group">
-    <ng-select formControlName="gender" bindValue="student.gender" [items]="gl.genders"
+    <ng-select formControlName="gender" bindValue="student.gender" [(ngModel)]="student.gender" [items]="gl.genders"
                placeholder="Select gender"></ng-select>
   </div>
-  <div class="mt-1">
-    <div class="btn btn-warning" (click)="studentForm.reset(student)" *ngIf="studentForm.dirty">
+  <div class="mt-1" *ngIf="studentForm.dirty">
+    <button class="btn btn-warning" (click)="studentForm.reset(student)">
       <i class="fas fa-redo-alt"></i> Reset
-    </div>
-    <button type="submit" *ngIf="editMode && studentForm.dirty" class="btn btn-info float-right"
-            [disabled]="studentForm.invalid">
+    </button>
+    <button type="submit" class="btn btn-info float-right">
       <i class="fas fa-check"></i> Submit
     </button>
   </div>

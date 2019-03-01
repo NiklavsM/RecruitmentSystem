@@ -15,6 +15,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findByEmail(String email);
 
-    @Query(value = "SELECT s FROM Student s WHERE created_at BETWEEN ?1 AND ?2")
+    @Query(value = "SELECT s FROM Student s WHERE created_at BETWEEN ?1 AND ?2 ORDER BY updated_at DESC")
     List<Student> getByDate(String from, String to);
 }

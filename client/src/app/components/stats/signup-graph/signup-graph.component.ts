@@ -42,16 +42,6 @@ export class SignupGraphComponent implements OnInit {
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
-  //
   private getYearAsDateArray(today: Date) {
     let dates = [];
     for (let i = 0; i < 12; i++) {
@@ -62,7 +52,6 @@ export class SignupGraphComponent implements OnInit {
         toDate: tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-31'
       })
     }
-    console.log("dates ", dates);
     return dates
 
   }
@@ -84,7 +73,6 @@ export class SignupGraphComponent implements OnInit {
     for (let i = 0; i < months.length; i++) {
       lineChartLabels[i] = months[(firstMonth + i) % 12];
     }
-    console.log("lineChartLabels ", lineChartLabels);
     return lineChartLabels;
   }
 

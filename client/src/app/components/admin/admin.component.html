@@ -1,7 +1,7 @@
 <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
   <div class="form-group">
     <label>Company name</label>
-    <input type="text" class="form-control" formControlName="companyName" required value="{{settings.companyName}}"
+    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': f.companyName.errors && submitted}" formControlName="companyName"  required value="{{settings.companyName}}"
            autofocus/>
   </div>
   <button type="submit" class="btn btn-success m-1"><i class="fas fa-save"></i> Save</button>

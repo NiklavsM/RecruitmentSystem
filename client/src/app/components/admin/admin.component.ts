@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SettingsService} from "../../services/settings.service";
-import {Observable} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
 
 @Component({
   selector: 'app-admin',
@@ -12,8 +13,9 @@ export class AdminComponent implements OnInit {
 
   settingsForm: FormGroup;
   settings: any = {companyName: ''};
+  submitted = false;
 
-  constructor(public settingsService: SettingsService) {
+  constructor(public settingsService: SettingsService, public modal: NgbModal) {
   }
 
   ngOnInit() {
@@ -34,15 +36,22 @@ export class AdminComponent implements OnInit {
       this.settingsService.setSettings(this.settingsForm.value).subscribe(
         data => {
           window.location.reload();
-          console.log("Settings submitted "); // TODO make a popup
-          return true;
         },
         error => {
-          return Observable.throw(error); // TODO
+          this.openModal("Failed to save settings");
         }
       );
-    } else {
-      // TODO change message
     }
+    this.submitted = true;
   }
+
+  openModal(text: string) {
+    const modal = this.modal.open(UniversalModalComponent);
+    modal.componentInstance.body = text;
+  }
+
+  get f() {
+    return this.settingsForm.controls
+  }
+
 }
