@@ -31,7 +31,7 @@
   </div>
   <div class="form-group">
     <ng-select [ngClass]="{ 'invalid': f.course.errors && submitted}" [items]="gl.courses" formControlName="course"
-               required bindValue="student.course"
+               required [(ngModel)]="student.course"
                placeholder="Select course"></ng-select>
   </div>
   <hr>
