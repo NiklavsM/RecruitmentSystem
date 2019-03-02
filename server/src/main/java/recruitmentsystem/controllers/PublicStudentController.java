@@ -46,15 +46,10 @@ public class PublicStudentController {
     private void sendSignupEmail(Student student) {
         final String[] companyName = {""};
         settingsRepository.findById(1L).ifPresent(setting -> companyName[0] = setting.getCompanyName());
-
-        try {
-            emailServiceImpl.sendEmail(
-                    new Email(student.getEmail(), companyName[0],
-                            "Dear " + student.getFirstName() + ",\nThanks for sharing your details. To add relevant attachments and complete a personality test please follow the link: " +
-                                    "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        emailServiceImpl.sendEmail(
+                new Email(student.getEmail(), companyName[0],
+                        "Dear " + student.getFirstName() + ",\nThanks for sharing your details. To add relevant attachments and complete a personality test please follow the link: " +
+                                "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
     }
 
     @PostMapping("survey")
@@ -71,19 +66,14 @@ public class PublicStudentController {
 
     @PostMapping("attachments")
     @ResponseStatus(HttpStatus.OK)
-    public void uploadAttachments(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) {
+    public void uploadAttachments(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) throws IOException {
 
-        try {
-            Student student = studentRepository.findByLoginToken(loginToken);
-            if (dbFileRepository.findByStudentId(student.getId()).size() < 5) { // allow only 5 files per student
-                DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
-                dbfile.setStudent(studentRepository.findByLoginToken(loginToken));
-                dbFileRepository.save(dbfile);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        Student student = studentRepository.findByLoginToken(loginToken);
+        if (dbFileRepository.findByStudentId(student.getId()).size() < 5) { // allow only 5 files per student
+            DBFile dbfile = new DBFile(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+            dbfile.setStudent(studentRepository.findByLoginToken(loginToken));
+            dbFileRepository.save(dbfile);
         }
-
     }
 
 }

@@ -457,4 +457,61 @@ public class Survey {
     public void setS50(int s50) {
         this.s50 = s50;
     }
+
+    public Survey() {
+    }
+
+    public Survey(int s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9, int s10, int s11, int s12, int s13, int s14, int s15, int s16, int s17, int s18, int s19, int s20, int s21, int s22, int s23, int s24, int s25, int s26, int s27, int s28, int s29, int s30, int s31, int s32, int s33, int s34, int s35, int s36, int s37, int s38, int s39, int s40, int s41, int s42, int s43, int s44, int s45, int s46, int s47, int s48, int s49, int s50) {
+        this.s1 = s1;
+        this.s2 = s2;
+        this.s3 = s3;
+        this.s4 = s4;
+        this.s5 = s5;
+        this.s6 = s6;
+        this.s7 = s7;
+        this.s8 = s8;
+        this.s9 = s9;
+        this.s10 = s10;
+        this.s11 = s11;
+        this.s12 = s12;
+        this.s13 = s13;
+        this.s14 = s14;
+        this.s15 = s15;
+        this.s16 = s16;
+        this.s17 = s17;
+        this.s18 = s18;
+        this.s19 = s19;
+        this.s20 = s20;
+        this.s21 = s21;
+        this.s22 = s22;
+        this.s23 = s23;
+        this.s24 = s24;
+        this.s25 = s25;
+        this.s26 = s26;
+        this.s27 = s27;
+        this.s28 = s28;
+        this.s29 = s29;
+        this.s30 = s30;
+        this.s31 = s31;
+        this.s32 = s32;
+        this.s33 = s33;
+        this.s34 = s34;
+        this.s35 = s35;
+        this.s36 = s36;
+        this.s37 = s37;
+        this.s38 = s38;
+        this.s39 = s39;
+        this.s40 = s40;
+        this.s41 = s41;
+        this.s42 = s42;
+        this.s43 = s43;
+        this.s44 = s44;
+        this.s45 = s45;
+        this.s46 = s46;
+        this.s47 = s47;
+        this.s48 = s48;
+        this.s49 = s49;
+        this.s50 = s50;
+    }
+
 }

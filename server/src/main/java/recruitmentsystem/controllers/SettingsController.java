@@ -14,16 +14,6 @@ public class SettingsController {
     @Autowired
     SettingsRepository settingsRepository;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public Settings getSettings() {
-        List<Settings> s = settingsRepository.findAll();
-        if (!s.isEmpty()) {
-            return s.get(0);
-        }
-        return null;
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void setSettings(@RequestBody Settings settings) {

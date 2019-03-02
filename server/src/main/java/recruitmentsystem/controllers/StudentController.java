@@ -26,6 +26,7 @@ public class StudentController {
     @Autowired
     private SurveyRepository surveyRepository;
 
+    // Returns a list of all the students
     @GetMapping
     public List<Student> list() {
         return studentRepository.findAll();
@@ -38,12 +39,12 @@ public class StudentController {
         List<Student> students = new ArrayList<>();
         for (Student student : studentRepository.getByDate(filter.getCreatedFrom() + " 00:00:00", filter.getCreatedTo() + " 23:59:59")) {
             boolean addStudent = true;
-            if (filter.hasAttachments()) { // Does student has attachments linked to its profile
+            if (filter.isAttachments()) { // Does student has attachments linked to its profile
                 if (dbFileRepository.findByStudentId(student.getId()).isEmpty()) {
                     addStudent = false;
                 }
             }
-            if (filter.hasPersonalityTest()) { // Does student has personality test linked to its profile
+            if (filter.isPersonalityTest()) { // Does student has personality test linked to its profile
                 if (surveyRepository.findByStudentId(student.getId()).isEmpty()) {
                     addStudent = false;
                 }
@@ -67,18 +68,21 @@ public class StudentController {
         return students;
     }
 
+    // Returns student with specified id
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Student get(@PathVariable("id") long id) {
         return studentRepository.getOne(id);
     }
 
+    // Deletes student with specified id
     @PostMapping("delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudent(@PathVariable("id") long id) {
         studentRepository.deleteById(id);
     }
 
+    // Updates student
     @PostMapping("/update")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity updateStudent(@RequestBody Student student) {
@@ -86,6 +90,7 @@ public class StudentController {
         return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Student successfully updated");
     }
 
+    // Deletes students with specified Ids
     @PostMapping("delete")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudents(@RequestBody List<Long> students) {
@@ -94,6 +99,7 @@ public class StudentController {
         }
     }
 
+    // Returns students personality trait scores
     @GetMapping("student/survey/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Integer> getSurvey(@PathVariable("id") long id) {
@@ -110,12 +116,14 @@ public class StudentController {
         return traits;
     }
 
+    // Returns all the student attachemnts
     @GetMapping("attachments/{studentid}")
     @ResponseStatus(HttpStatus.OK)
     public List<DBFile> getAttachments(@PathVariable("studentid") Long studentid) {
         return dbFileRepository.findByStudentId(studentid);
     }
 
+    // Returns attachment with a specific id
     @GetMapping("attachment/{id}")
     public ResponseEntity getAttachment(@PathVariable("id") Long id) {
         Optional<DBFile> fileOptional = dbFileRepository.findById(id);
@@ -127,10 +135,11 @@ public class StudentController {
                     .body(file.getData());
         }
 
-        return ResponseEntity.status(404).body(null);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION).body(null);
 
     }
 
+    // Deletes attachment with a specific id
     @PostMapping("attachments/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAttachments(@PathVariable("id") long id) {

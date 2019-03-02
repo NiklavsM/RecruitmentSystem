@@ -12,6 +12,7 @@ public class Filter {
     public Filter(String createdFrom, String createdTo, List<String> courses, boolean attachments, boolean personalityTest) {
         this.createdFrom = createdFrom;
         this.createdTo = createdTo;
+        this.courses = courses;
         this.attachments = attachments;
         this.personalityTest = personalityTest;
     }
@@ -35,16 +36,8 @@ public class Filter {
         this.createdTo = createdTo;
     }
 
-    public boolean hasAttachments() {
-        return attachments;
-    }
-
     public void setAttachments(boolean attachments) {
         this.attachments = attachments;
-    }
-
-    public boolean hasPersonalityTest() {
-        return personalityTest;
     }
 
     public void setPersonalityTest(boolean personalityTest) {
@@ -57,5 +50,13 @@ public class Filter {
 
     public void setCourses(List<String> courses) {
         this.courses = courses;
+    }
+
+    public boolean isAttachments() {
+        return attachments;
+    }
+
+    public boolean isPersonalityTest() {
+        return personalityTest;
     }
 }

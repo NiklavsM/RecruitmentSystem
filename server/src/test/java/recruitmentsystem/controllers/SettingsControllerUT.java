@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import recruitmentsystem.models.DatePair;
+import recruitmentsystem.models.Settings;
+import recruitmentsystem.repositories.SettingsRepository;
 import recruitmentsystem.repositories.StudentRepository;
 
 import java.util.Collections;
@@ -26,17 +28,17 @@ import java.util.List;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(StatsController.class)
+@WebMvcTest(SettingsController.class)
 
 @AutoConfigureMockMvc(secure = false)
-public class StatsControllerUT {
+public class SettingsControllerUT {
 
 
     @Autowired
     MockMvc mockMvc;
 
     @MockBean
-    StudentRepository studentRepository;
+    SettingsRepository settingsRepository;
 
     ObjectMapper mapper;
     ObjectWriter ow;
@@ -50,44 +52,28 @@ public class StatsControllerUT {
 
 
     @Test
-    public void genderStatsOk() throws Exception {
-        Mockito.when(studentRepository.findAll()).thenReturn(Collections.emptyList());
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/server/secure/stats/genderstats/")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("[ \"Male\", \"Female\", \"Rather Not Say\" ]")
-                .characterEncoding("utf-8")).andExpect(status().is(200))
-                .andReturn();
-    }
-
-    @Test
-    public void signupStatsOk() throws Exception {
-
-        List<DatePair> body = new LinkedList<>();
-        body.add(new DatePair("2019-2-01", "2019-2-31"));
+    public void settingsPostOk() throws Exception {
+        Settings body = new Settings();
         String requestJson = ow.writeValueAsString(body);
-
-        Mockito.when(studentRepository.findAll()).thenReturn(Collections.emptyList());
+        Mockito.when(settingsRepository.findAll()).thenReturn(Collections.emptyList());
         mockMvc.perform(MockMvcRequestBuilders
-                .post("/server/secure/stats/signupstats/")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(requestJson)
-                .characterEncoding("utf-8")).andExpect(status().is(200))
+                .post("/server/secure/settings/")
+                .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(requestJson)).andExpect(status().is(200))
                 .andReturn();
     }
 
     @Test
-    public void ethnicityStatsOk() throws Exception {
-        Mockito.when(studentRepository.findAll()).thenReturn(Collections.emptyList());
+    public void settingsPostSettingsPresentOk() throws Exception {
+        List<Settings> settings = new LinkedList<>();
+        Settings body = new Settings();
+        settings.add(body);
+        String requestJson = ow.writeValueAsString(body);
+        Mockito.when(settingsRepository.findAll()).thenReturn(settings);
         mockMvc.perform(MockMvcRequestBuilders
-                .post("/server/secure/stats/ethnicitystats/")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("[ \"Caucasian\", \"Mixed\", \"Other\" ]")
-                .characterEncoding("utf-8")).andExpect(status().is(200))
+                .post("/server/secure/settings/")
+                .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(requestJson)).andExpect(status().is(200))
                 .andReturn();
     }
+
 
 }
