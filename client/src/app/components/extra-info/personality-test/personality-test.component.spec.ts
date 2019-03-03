@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PersonalityTestComponent } from './personality-test.component';
+import {declarations} from "../../../appDeclarations";
+import {imports} from "../../../appImports";
+import {providers} from "../../../appProviders";
 
 describe('PersonalityTestComponent', () => {
   let component: PersonalityTestComponent;
@@ -8,7 +11,9 @@ describe('PersonalityTestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonalityTestComponent ]
+      declarations: declarations,
+      imports: imports,
+      providers: providers
     })
     .compileComponents();
   }));

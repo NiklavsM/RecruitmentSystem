@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SignupGraphComponent } from './signup-graph.component';
+import {SignupGraphComponent} from './signup-graph.component';
+import {declarations} from "../../../appDeclarations";
+import {imports} from "../../../appImports";
+import {providers} from "../../../appProviders";
 
 describe('SignupGraphComponent', () => {
   let component: SignupGraphComponent;
@@ -8,7 +11,9 @@ describe('SignupGraphComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupGraphComponent ]
+      declarations: declarations,
+      imports: imports,
+      providers: providers
     })
     .compileComponents();
   }));

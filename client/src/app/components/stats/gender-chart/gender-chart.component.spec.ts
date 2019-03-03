@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenderChartComponent } from './gender-chart.component';
+import {declarations} from "../../../appDeclarations";
+import {imports} from "../../../appImports";
+import {providers} from "../../../appProviders";
 
 describe('GenderChartComponent', () => {
   let component: GenderChartComponent;
@@ -8,7 +11,9 @@ describe('GenderChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenderChartComponent ]
+      declarations: declarations,
+      imports: imports,
+      providers: providers
     })
     .compileComponents();
   }));

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UniversalModalComponent } from './universal-modal.component';
+import {declarations} from "../../appDeclarations";
+import {imports} from "../../appImports";
+import {providers} from "../../appProviders";
 
 describe('UniversalModalComponent', () => {
   let component: UniversalModalComponent;
@@ -8,7 +11,9 @@ describe('UniversalModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UniversalModalComponent ]
+      declarations: declarations,
+      imports: imports,
+      providers: providers
     })
     .compileComponents();
   }));

@@ -11,17 +11,17 @@
       {{student.firstName + " " + student.lastName}}
       <br>
     </span>
-    <ng-container *ngIf="students.length==1">
+    <ng-container *ngIf="students?.length==1">
       profile?
     </ng-container>
-    <ng-container *ngIf="students.length>1">
+    <ng-container *ngIf="students?.length>1">
       profiles?
     </ng-container>
   </p>
   <p>
     All information associated with
-    <ng-container *ngIf="students.length==1">this user profile</ng-container>
-    <ng-container *ngIf="students.length>1">these user profiles</ng-container>
+    <ng-container *ngIf="students?.length==1">this user profile</ng-container>
+    <ng-container *ngIf="students?.length>1">these user profiles</ng-container>
     will be permanently deleted.
     <span class="text-danger">This operation can not be undone.</span>
   </p>

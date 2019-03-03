@@ -18,7 +18,7 @@ export class ViewStudentsComponent implements OnInit {
   dataSource: any;
   selection = new SelectionModel<Element>(true, []);
   advancedSearchForm: FormGroup;
-  advancedOptions = true;
+  advancedOptions = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

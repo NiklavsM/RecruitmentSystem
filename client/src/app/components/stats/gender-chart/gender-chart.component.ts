@@ -9,7 +9,7 @@ import {StatsService} from '../../../services/stats.service';
 export class GenderChartComponent implements OnInit {
   public pieChartLabels: string[] = [];
   public pieChartData: number[] = [];
-  public pieChartType = 'pie'; // TODO maybe allow user to change this?
+  public pieChartType = 'pie';
 
   constructor(public statsService: StatsService) {
   }

@@ -10,7 +10,7 @@ export class EthnicityChartComponent implements OnInit {
 
   public pieChartLabels: string[] = [];
   public pieChartData: number[] = [];
-  public pieChartType = 'doughnut'; // TODO maybe allow user to change this?
+  public pieChartType = 'doughnut';
 
   constructor(public statsService: StatsService) {
   }

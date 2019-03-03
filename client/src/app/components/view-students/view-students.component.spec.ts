@@ -1,25 +1,23 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {LogoutCallbackComponent} from './logout-callback.component';
+import {ViewStudentsComponent} from './view-students.component';
 import {declarations} from "../../appDeclarations";
 import {imports} from "../../appImports";
 import {providers} from "../../appProviders";
 
-describe('LogoutCallbackComponent', () => {
-  let component: LogoutCallbackComponent;
-  let fixture: ComponentFixture<LogoutCallbackComponent>;
+describe('ViewStudentsComponent', () => {
+  let component: ViewStudentsComponent;
+  let fixture: ComponentFixture<ViewStudentsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: declarations,
       imports: imports,
       providers: providers
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LogoutCallbackComponent);
+    fixture = TestBed.createComponent(ViewStudentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -27,4 +25,10 @@ describe('LogoutCallbackComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('edit switch enables edit mode', () => {
+  //   component.editSwitch();
+  //   expect(component.editMode).toBe(true);
+  // })
+
 });
