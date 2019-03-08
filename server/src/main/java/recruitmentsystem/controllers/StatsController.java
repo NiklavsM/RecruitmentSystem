@@ -16,6 +16,7 @@ public class StatsController {
     @Autowired
     private StudentRepository studentRepository;
 
+    // Returns gender chart data
     @PostMapping("/genderstats")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Integer> getGenderChartInfo(@RequestBody List<String> genders) {
@@ -26,6 +27,7 @@ public class StatsController {
         return genderMap;
     }
 
+    // Returns signup graph data
     @PostMapping("/signupstats")
     @ResponseStatus(HttpStatus.OK)
     public List<Integer> getSignupChartInfo(@RequestBody List<DatePair> dates) {
@@ -36,6 +38,7 @@ public class StatsController {
         return stats;
     }
 
+    // Returns ethnicity chart data
     @PostMapping("/ethnicitystats")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Integer> getEthnicityInfo(@RequestBody List<String> ethnicities) {

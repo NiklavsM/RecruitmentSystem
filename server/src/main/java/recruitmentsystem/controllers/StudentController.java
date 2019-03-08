@@ -32,7 +32,7 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
-    // Returns list of filtered students
+    // Returns a list of the filtered students
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Student> list(@RequestBody Filter filter) {
@@ -68,21 +68,21 @@ public class StudentController {
         return students;
     }
 
-    // Returns student with specified id
+    // Returns the student with the specified id
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Student get(@PathVariable("id") long id) {
         return studentRepository.getOne(id);
     }
 
-    // Deletes student with specified id
+    // Deletes the student with the specified id
     @PostMapping("delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudent(@PathVariable("id") long id) {
         studentRepository.deleteById(id);
     }
 
-    // Updates student
+    // Updates the student
     @PostMapping("/update")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity updateStudent(@RequestBody Student student) {
@@ -90,7 +90,7 @@ public class StudentController {
         return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Student successfully updated");
     }
 
-    // Deletes students with specified Ids
+    // Deletes students with the specified Ids
     @PostMapping("delete")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudents(@RequestBody List<Long> students) {
@@ -116,14 +116,14 @@ public class StudentController {
         return traits;
     }
 
-    // Returns all the student attachemnts
+    // Returns all the student attachments
     @GetMapping("attachments/{studentid}")
     @ResponseStatus(HttpStatus.OK)
     public List<DBFile> getAttachments(@PathVariable("studentid") Long studentid) {
         return dbFileRepository.findByStudentId(studentid);
     }
 
-    // Returns attachment with a specific id
+    // Returns attachment with the specific id
     @GetMapping("attachment/{id}")
     public ResponseEntity getAttachment(@PathVariable("id") Long id) {
         Optional<DBFile> fileOptional = dbFileRepository.findById(id);
@@ -139,7 +139,7 @@ public class StudentController {
 
     }
 
-    // Deletes attachment with a specific id
+    // Deletes attachment with the specific id
     @PostMapping("attachments/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAttachments(@PathVariable("id") long id) {

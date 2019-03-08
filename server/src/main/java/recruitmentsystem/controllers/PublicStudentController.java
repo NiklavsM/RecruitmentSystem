@@ -43,6 +43,7 @@ public class PublicStudentController {
         return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Student with this email already exists");
     }
 
+    // Sends signup email
     private void sendSignupEmail(Student student) {
         final String[] companyName = {""};
         settingsRepository.findById(1L).ifPresent(setting -> companyName[0] = setting.getCompanyName());
@@ -52,6 +53,7 @@ public class PublicStudentController {
                                 "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
     }
 
+    // Saves the survey submitted by the student
     @PostMapping("survey")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity uploadSurvey(@RequestHeader("Authorization") String loginToken, @RequestBody Survey survey) {
@@ -64,6 +66,7 @@ public class PublicStudentController {
         return ResponseEntity.ok().header(HttpHeaders.ACCEPT).body("Submission failed: survey already submitted");
     }
 
+    // Saves the attachment submitted by the student
     @PostMapping("attachments")
     @ResponseStatus(HttpStatus.OK)
     public void uploadAttachments(@RequestHeader("Authorization") String loginToken, @RequestParam("file") MultipartFile file) throws IOException {

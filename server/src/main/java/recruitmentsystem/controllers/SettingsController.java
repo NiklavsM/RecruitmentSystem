@@ -14,6 +14,7 @@ public class SettingsController {
     @Autowired
     SettingsRepository settingsRepository;
 
+    // Updates the system settings
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void setSettings(@RequestBody Settings settings) {

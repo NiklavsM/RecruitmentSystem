@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/server/secure/settings").hasAnyRole("admin") // Allows only user with admin role to call this endpoint
                 .antMatchers("/server/secure/**").hasAnyRole("recruiter admin") // All other endpoints under secure/ can be called by both recruiters and admins
-                .antMatchers("**/**").permitAll(); // all other endpoints are public
+                .antMatchers("**/**").permitAll(); // All other endpoints are public
     }
 
 }

@@ -14,6 +14,7 @@ public class PublicSettingsController {
     @Autowired
     SettingsRepository settingsRepository;
 
+    // Returns system front-end settings
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Settings getSettings(){

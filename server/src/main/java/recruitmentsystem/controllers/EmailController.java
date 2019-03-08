@@ -13,6 +13,7 @@ public class EmailController {
     @Autowired
     private EmailServiceImpl emailServiceImpl;
 
+    // Sends the email
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void sendEmail(@RequestBody Email email) {
