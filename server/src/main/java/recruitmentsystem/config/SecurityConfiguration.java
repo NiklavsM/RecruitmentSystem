@@ -23,7 +23,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .forRS256(apiAudience, issuer)
                 .configure(http)
                 .authorizeRequests()
-                .antMatchers("/server/secure/**").authenticated() // Allows only authenticated users to call endpoints that start with server/secure
+                .antMatchers("/server/secure/settings").hasAnyRole("admin") // Allows only user with admin role to call this endpoint
+                .antMatchers("/server/secure/**").hasAnyRole("recruiter admin") // All other endpoints under secure/ can be called by both recruiters and admins
                 .antMatchers("**/**").permitAll(); // all other endpoints are public
     }
 

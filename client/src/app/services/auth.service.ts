@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 import {environment} from '../../environments/environment';
@@ -14,9 +13,6 @@ export class AuthService {
     audience: environment.audience,
     redirectUri: environment.API_URL + '/logincallback'
   });
-
-  constructor(public router: Router) {
-  }
 
   public login(): void {
     this.auth0.authorize();
