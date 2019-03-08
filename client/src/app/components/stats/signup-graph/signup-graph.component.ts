@@ -42,6 +42,7 @@ export class SignupGraphComponent implements OnInit {
     });
   }
 
+  // Gets current date and returns array of months, starting from current month and going backwards
   private getYearAsDateArray(today: Date) {
     const dates = [];
     for (let i = 0; i < 12; i++) {

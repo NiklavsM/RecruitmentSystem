@@ -6,15 +6,12 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './confirm-modal.component.html',
   styleUrls: ['./confirm-modal.component.scss']
 })
-export class ConfirmModalComponent implements OnInit {
+export class ConfirmModalComponent {
 
   @Input()
   students: any[];
 
   constructor(public modal: NgbActiveModal) {
-  }
-
-  ngOnInit() {
   }
 
 }

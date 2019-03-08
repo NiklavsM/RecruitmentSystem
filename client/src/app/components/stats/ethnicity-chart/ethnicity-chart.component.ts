@@ -18,8 +18,6 @@ export class EthnicityChartComponent implements OnInit {
   ngOnInit() {
     this.statsService.getEthnicityStats().subscribe(data => {
         this.populateChart(data);
-      },
-      error => {
       }
     );
   }

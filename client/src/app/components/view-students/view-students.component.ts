@@ -118,6 +118,7 @@ export class ViewStudentsComponent implements OnInit {
     });
   }
 
+  // Shows or hides advanced filter options
   public advancedOptionsSwitch() {
     this.advancedOptions = !this.advancedOptions;
   }

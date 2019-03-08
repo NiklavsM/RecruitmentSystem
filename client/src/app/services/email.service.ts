@@ -9,6 +9,7 @@ export class EmailService {
   constructor(public http: HttpClient) {
   }
 
+  // Sends email to the backend to be sent to the recipient
   sendEmail(email: any) {
     const token = localStorage.getItem('access_token');
     const httpOptions = {

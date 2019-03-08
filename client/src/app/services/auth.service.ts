@@ -14,10 +14,12 @@ export class AuthService {
     redirectUri: environment.API_URL + '/logincallback'
   });
 
+  // Opens login section
   public login(): void {
     this.auth0.authorize();
   }
 
+  // Tries to authenticate the user
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -27,6 +29,7 @@ export class AuthService {
     });
   }
 
+  // On successful authentication stores the login data
   private setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
@@ -38,6 +41,7 @@ export class AuthService {
     });
   }
 
+  // Logs out the user both locally and from auth0 server
   public logout(): void {
     this.auth0.logout();
     // Remove tokens and expiry time from localStorage
@@ -47,6 +51,7 @@ export class AuthService {
     localStorage.removeItem('roles');
   }
 
+  // Checks if user is authenticated
   public isAuthenticated(): boolean {
     // Check whether the current time is past the access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
@@ -54,6 +59,7 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+  // Checks if user has a given role
   public hasAccess(role: string): boolean {
     const roles = localStorage.getItem('roles');
     if (roles) {

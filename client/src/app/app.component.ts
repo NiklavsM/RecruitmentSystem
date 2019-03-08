@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
       });
   }
 
+  // Checks the route to see if to show the navigation bar
   private showNavBar() {
     const noNavBarLinks = ['extrainfo', 'qrcode'];
     for (const i in noNavBarLinks) {

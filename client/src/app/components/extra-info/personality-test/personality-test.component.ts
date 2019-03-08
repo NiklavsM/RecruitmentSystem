@@ -10,7 +10,7 @@ import {UniversalModalComponent} from '../../universal-modal/universal-modal.com
   templateUrl: './personality-test.component.html',
   styleUrls: ['./personality-test.component.scss']
 })
-export class PersonalityTestComponent implements OnInit {
+export class PersonalityTestComponent {
 
   constructor(public studentService: StudentService, public route: ActivatedRoute, public modalService: NgbModal) {
   }
@@ -70,9 +70,6 @@ export class PersonalityTestComponent implements OnInit {
     , 'Often feel blue'
     , 'Am full of ideas'
   ];
-
-  ngOnInit(): void {
-  }
 
   private buildControlsObject() {
     const controlsObject = {};

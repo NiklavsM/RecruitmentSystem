@@ -52,6 +52,7 @@ export class ViewStudentComponent implements OnInit {
     this.attachments = this.attachments.filter(o => o.id != id);
   }
 
+  // Switches between editable form and locked form
   public editSwitch() {
     this.editMode = !this.editMode;
   }

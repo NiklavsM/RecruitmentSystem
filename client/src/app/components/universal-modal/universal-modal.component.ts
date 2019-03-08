@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,7 +6,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './universal-modal.component.html',
   styleUrls: ['./universal-modal.component.scss']
 })
-export class UniversalModalComponent implements OnInit {
+export class UniversalModalComponent {
 
   @Input()
   public header: string;
@@ -16,10 +16,6 @@ export class UniversalModalComponent implements OnInit {
   public footer: string;
 
   constructor(public activeModal: NgbActiveModal) {
-  }
-
-  ngOnInit() {
-
   }
 
 }
