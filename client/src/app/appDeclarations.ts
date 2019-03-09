@@ -18,6 +18,7 @@ import {PersonalityTraitDescriptionComponent} from "./components/view-students/v
 import {EthnicityChartComponent} from "./components/stats/ethnicity-chart/ethnicity-chart.component";
 import {UniversalModalComponent} from "./components/universal-modal/universal-modal.component";
 import {LogoutCallbackComponent} from "./components/logout-callback/logout-callback.component";
+import {HomeComponent} from "./components/home/home.component";
 
 export const declarations = [
   AppComponent,
@@ -39,5 +40,6 @@ export const declarations = [
   PersonalityTraitDescriptionComponent,
   EthnicityChartComponent,
   UniversalModalComponent,
-  LogoutCallbackComponent
+  LogoutCallbackComponent,
+  HomeComponent
 ];

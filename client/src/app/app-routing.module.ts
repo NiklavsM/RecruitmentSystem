@@ -10,6 +10,7 @@ import {SendEmailComponent} from './components/view-students/view-student/send-e
 import {StatsComponent} from './components/stats/stats.component';
 import {ExtraInfoComponent} from './components/extra-info/extra-info.component';
 import {LogoutCallbackComponent} from './components/logout-callback/logout-callback.component';
+import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
   {
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'extrainfo/:token',
     component: ExtraInfoComponent,
+  },
+  {
+    path: '',
+    component: HomeComponent,
   }];
 
 @NgModule({

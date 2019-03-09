@@ -87,12 +87,9 @@ export class PersonalityTestComponent {
           modalRef.componentInstance.body = data;
           modalRef.result.then(result => {
           }, reason => {
-            this.thankYou = true; // TODO whaaat
+            this.thankYou = true;
           });
         },
-        error => {
-          // TODO
-        }
       );
     }
   }
