@@ -8,7 +8,7 @@ export class StudentService {
   constructor(public http: HttpClient) {
   }
 
-  // Gets students that passes the filter
+  // Gets the students that fits the filter properties
   getStudents(filters?: any) {
     if (filters) {
       const body = JSON.stringify(filters);

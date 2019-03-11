@@ -47,7 +47,7 @@
                placeholder="Select gender"></ng-select>
   </div>
   <div class="mt-1" *ngIf="studentForm.dirty">
-    <button class="btn btn-warning" (click)="studentForm.reset(student)">
+    <button class="btn btn-warning" (click)="studentForm.reset(studentOriginal)">
       <i class="fas fa-redo-alt"></i> Reset
     </button>
     <button type="submit" class="btn btn-info float-right">

@@ -80,10 +80,10 @@ public class StudentControllerUT {
         students.add(s);
         List<String> courses = new LinkedList<>();
         courses.add("Computer Science");
-        Filter body = new Filter("from", "to", courses, true, true);
+        Filter body = new Filter("", "", courses, true, true);
         String requestJson = ow.writeValueAsString(body);
         System.out.println("requestJson " + requestJson);
-        Mockito.when(studentRepository.getByDate("from 00:00:00", "to 23:59:59")).thenReturn(students);
+        Mockito.when(studentRepository.getByDate(" 00:00:00", " 23:59:59")).thenReturn(students);
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/server/secure/students/")
                 .accept(MediaType.APPLICATION_JSON)
@@ -100,10 +100,10 @@ public class StudentControllerUT {
         students.add(s);
         List<String> courses = new LinkedList<>();
         courses.add("Computer Science");
-        Filter body = new Filter("from", "to", courses, false, false);
+        Filter body = new Filter("", "", courses, false, false);
         String requestJson = ow.writeValueAsString(body);
         System.out.println("requestJson " + requestJson);
-        Mockito.when(studentRepository.getByDate("from 00:00:00", "to 23:59:59")).thenReturn(students);
+        Mockito.when(studentRepository.getByDate(" 00:00:00", " 23:59:59")).thenReturn(students);
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/server/secure/students/")
                 .accept(MediaType.APPLICATION_JSON)
@@ -120,10 +120,10 @@ public class StudentControllerUT {
         students.add(s);
         List<String> courses = new LinkedList<>();
         courses.add("Architecture");
-        Filter body = new Filter("from", "to", courses, false, false);
+        Filter body = new Filter("", "", courses, false, false);
         String requestJson = ow.writeValueAsString(body);
         System.out.println("requestJson " + requestJson);
-        Mockito.when(studentRepository.getByDate("from 00:00:00", "to 23:59:59")).thenReturn(students);
+        Mockito.when(studentRepository.getByDate(" 00:00:00", " 23:59:59")).thenReturn(students);
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/server/secure/students/")
                 .accept(MediaType.APPLICATION_JSON)

@@ -43,7 +43,8 @@ export class SignupGraphComponent implements OnInit {
   }
 
   // Gets current date and returns array of months, starting from current month and going backwards
-  private getYearAsDateArray(today: Date) {
+  getYearAsDateArray(today: Date) {
+    console.log('Today ', today);
     const dates = [];
     for (let i = 0; i < 12; i++) {
       const tempDate = new Date(today);
@@ -53,12 +54,13 @@ export class SignupGraphComponent implements OnInit {
         toDate: tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-31'
       });
     }
+    console.log('Return date array ', dates);
     return dates;
 
   }
 
   // flips array [1,2,3] - > [3,2,1]
-  private flipArray(array: any) {
+  flipArray(array: any) {
     const newArray = [];
     for (let i = array.length - 1; i >= 0; i--) {
       newArray.push(array[i]);
@@ -67,7 +69,7 @@ export class SignupGraphComponent implements OnInit {
   }
 
   // Create labels so they start at current month
-  private getChartLabels() {
+  getChartLabels() {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const lineChartLabels = [];
     const firstMonth = new Date().getMonth() + 1;

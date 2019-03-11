@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExtraInfoComponent } from './extra-info.component';
-import {declarations} from "../../appDeclarations";
-import {imports} from "../../appImports";
-import {providers} from "../../appProviders";
+import {declarations} from '../../appDeclarations';
+import {imports} from '../../appImports';
+import {providers} from '../../appProviders';
 
 describe('ExtraInfoComponent', () => {
   let component: ExtraInfoComponent;

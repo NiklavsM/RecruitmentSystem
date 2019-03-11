@@ -7,9 +7,9 @@ import {MatCheckboxModule} from '@angular/material';
 import {ConfirmModalComponent} from './components/view-students/confirm-modal/confirm-modal.component';
 import {PersonalityTraitDescriptionComponent} from './components/view-students/view-student/peronality-chart/personality-trait-description/personality-trait-description.component';
 import {UniversalModalComponent} from './components/universal-modal/universal-modal.component';
-import {imports} from "./appImports";
-import {declarations} from "./appDeclarations";
-import {providers} from "./appProviders";
+import {imports} from './appImports';
+import {declarations} from './appDeclarations';
+import {providers} from './appProviders';
 
 @NgModule({
   entryComponents: [SendEmailComponent, ConfirmModalComponent, PersonalityTraitDescriptionComponent, UniversalModalComponent],

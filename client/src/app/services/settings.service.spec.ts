@@ -1,9 +1,9 @@
 import {TestBed} from '@angular/core/testing';
 
 import {SettingsService} from './settings.service';
-import {providers} from "../appProviders";
-import {imports} from "../appImports";
-import {declarations} from "../appDeclarations";
+import {providers} from '../appProviders';
+import {imports} from '../appImports';
+import {declarations} from '../appDeclarations';
 
 describe('SettingsService', () => {
   beforeEach(() => TestBed.configureTestingModule({

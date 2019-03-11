@@ -1,9 +1,9 @@
 
 import { StudentService } from './student.service';
 import {TestBed} from '@angular/core/testing';
-import {providers} from "../appProviders";
-import {imports} from "../appImports";
-import {declarations} from "../appDeclarations";
+import {providers} from '../appProviders';
+import {imports} from '../appImports';
+import {declarations} from '../appDeclarations';
 
 describe('StudentService', () => {
   beforeEach(() => TestBed.configureTestingModule({

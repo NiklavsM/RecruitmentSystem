@@ -49,7 +49,7 @@ public class PublicStudentController {
         settingsRepository.findById(1L).ifPresent(setting -> companyName[0] = setting.getCompanyName());
         emailServiceImpl.sendEmail(
                 new Email(student.getEmail(), companyName[0],
-                        "Dear " + student.getFirstName() + ",\nThanks for sharing your details. To add relevant attachments and complete a personality test please follow the link: " +
+                        "Dear " + student.getFirstName() + ",\nThanks you for sharing your details. To add relevant attachments and complete the personality test please follow the link: " +
                                 "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
     }
 

@@ -19,6 +19,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
 
   studentForm: FormGroup;
   submitted = false;
+  studentOriginal: any;
 
   constructor(public studentService: StudentService, public gl: Globals, public modal: NgbModal) {
   }
@@ -31,13 +32,14 @@ export class EditStudentComponent implements OnInit, OnChanges {
       id: new FormControl(this.student.id),
       firstName: new FormControl(this.student.firstName, Validators.required),
       lastName: new FormControl(this.student.lastName, Validators.required),
-      email: new FormControl(this.student.email, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+      email: new FormControl(this.student.email, [Validators.required, Validators.email]),
       university: new FormControl(this.student.university, Validators.required),
       gradYear: new FormControl(this.student.gradYear, Validators.required),
       course: new FormControl(this.student.course, Validators.required),
       gender: new FormControl(this.student.gender),
       ethnicity: new FormControl(this.student.ethnicity)
     });
+    this.studentOriginal = JSON.parse(JSON.stringify(this.student));
     this.enableEdit(this.editMode);
   }
 
