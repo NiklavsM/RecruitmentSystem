@@ -7,12 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import recruitmentsystem.models.*;
+import recruitmentsystem.models.DBFile;
+import recruitmentsystem.models.Email;
+import recruitmentsystem.models.Student;
+import recruitmentsystem.models.Survey;
 import recruitmentsystem.repositories.DBFileRepository;
 import recruitmentsystem.repositories.SettingsRepository;
 import recruitmentsystem.repositories.StudentRepository;
 import recruitmentsystem.repositories.SurveyRepository;
-import recruitmentsystem.services.EmailServiceImpl;
+import recruitmentsystem.services.EmailService;
 
 import java.io.IOException;
 
@@ -23,7 +26,7 @@ public class PublicStudentController {
     @Autowired
     private StudentRepository studentRepository;
     @Autowired
-    private EmailServiceImpl emailServiceImpl;
+    private EmailService emailService;
     @Autowired
     private DBFileRepository dbFileRepository;
     @Autowired
@@ -47,10 +50,10 @@ public class PublicStudentController {
     private void sendSignupEmail(Student student) {
         final String[] companyName = {""};
         settingsRepository.findById(1L).ifPresent(setting -> companyName[0] = setting.getCompanyName());
-        emailServiceImpl.sendEmail(
+        emailService.sendEmail(
                 new Email(student.getEmail(), companyName[0],
-                        "Dear " + student.getFirstName() + ",\nThanks you for sharing your details. To add relevant attachments and complete the personality test please follow the link: " +
-                                "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken()));
+                        "Dear " + student.getFirstName() + ",\n\nThank you for sharing your details. To add any relevant attachments and complete the personality test please follow the link: " +
+                                "http://recruitmentapp-env.zufas2d86p.eu-west-2.elasticbeanstalk.com/extrainfo/" + student.getLoginToken() + "\n\nAll the best,\n" + companyName[0]));
     }
 
     // Saves the survey submitted by the student

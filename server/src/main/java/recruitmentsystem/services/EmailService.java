@@ -8,13 +8,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmailServiceImpl {
+public class EmailService {
     private JavaMailSender javaMailSender;
     @Value("${spring.mail.username}")
     private String emailFrom;
 
     @Autowired
-    public EmailServiceImpl(JavaMailSender javaMailSender) {
+    public EmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
@@ -27,6 +27,5 @@ public class EmailServiceImpl {
 
         javaMailSender.send(mail);
     }
-
 
 }

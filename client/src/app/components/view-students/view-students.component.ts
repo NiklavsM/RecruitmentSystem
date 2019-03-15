@@ -49,8 +49,9 @@ export class ViewStudentsComponent implements OnInit {
     this.dataSource.filter = filter;
   }
 
-  public applyFilter(filterValue: string) {
+  public applySearch(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.selection = new SelectionModel<Element>(true, []);
   }
 
   private allSelected() {
@@ -116,6 +117,7 @@ export class ViewStudentsComponent implements OnInit {
       this.initDataSource(data);
     }, error => {
     });
+    this.selection = new SelectionModel<Element>(true, []);
   }
 
   // Shows or hides advanced filter options

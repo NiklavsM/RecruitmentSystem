@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 export class Globals {
   public genders = ['Male', 'Female', 'Rather not say'];
   public ethnicities = [
-    'Caucasian', 'Latino/Hispanic',
+    'White', 'Latino/Hispanic',
     'Middle Eastern', 'African',
     'Caribbean', 'South Asian',
     'East Asian', 'Mixed',

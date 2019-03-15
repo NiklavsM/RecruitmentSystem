@@ -16,21 +16,18 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.multipart.MultipartFile;
-import recruitmentsystem.models.DBFile;
-import recruitmentsystem.models.Filter;
 import recruitmentsystem.models.Student;
 import recruitmentsystem.models.Survey;
 import recruitmentsystem.repositories.DBFileRepository;
 import recruitmentsystem.repositories.SettingsRepository;
 import recruitmentsystem.repositories.StudentRepository;
 import recruitmentsystem.repositories.SurveyRepository;
-import recruitmentsystem.services.EmailServiceImpl;
+import recruitmentsystem.services.EmailService;
 
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -48,7 +45,7 @@ public class PublicStudentControllerUT {
     @MockBean
     SurveyRepository surveyRepository;
     @MockBean
-    EmailServiceImpl emailServiceImpl;
+    EmailService emailService;
     @MockBean
     SettingsRepository settingsRepository;
 

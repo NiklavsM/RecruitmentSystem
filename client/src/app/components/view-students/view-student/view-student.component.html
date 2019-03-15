@@ -39,7 +39,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let attachment of attachments">
-            <td><a href="server/api/students/attachment/{{attachment.id}}">{{attachment.fileName}} </a></td>
+            <td><a href="server/secure/students/attachment/{{attachment.id}}">{{attachment.fileName}} </a></td>
             <td>{{attachment.size / 1024 | number:'1.1-1'}} KB</td>
             <td>
               <button class="btn btn-danger" mwlConfirmationPopover

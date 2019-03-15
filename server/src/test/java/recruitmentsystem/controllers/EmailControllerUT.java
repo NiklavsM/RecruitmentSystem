@@ -15,9 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import recruitmentsystem.models.Email;
-import recruitmentsystem.services.EmailServiceImpl;
+import recruitmentsystem.services.EmailService;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -31,7 +30,7 @@ public class EmailControllerUT {
     MockMvc mockMvc;
 
     @MockBean
-    EmailServiceImpl emailServiceImpl;
+    EmailService emailService;
 
     ObjectMapper mapper;
     ObjectWriter ow;
