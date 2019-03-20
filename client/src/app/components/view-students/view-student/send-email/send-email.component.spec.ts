@@ -1,9 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SendEmailComponent } from './send-email.component';
-import {declarations} from '../../../../appDeclarations';
-import {imports} from '../../../../appImports';
-import {providers} from '../../../../appProviders';
+import {SendEmailComponent} from './send-email.component';
+import {EmailService} from "../../../../services/email.service";
+import {ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('SendEmailComponent', () => {
   let component: SendEmailComponent;
@@ -11,9 +13,9 @@ describe('SendEmailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [SendEmailComponent],
+      imports: [HttpClientTestingModule, ReactiveFormsModule, RouterModule.forRoot([])],
+      providers: [EmailService, NgbActiveModal]
     })
     .compileComponents();
   }));
@@ -21,10 +23,11 @@ describe('SendEmailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SendEmailComponent);
     component = fixture.componentInstance;
+    component.student = {email: "email@email.com"};
     fixture.detectChanges();
   });
 
-  // xit('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

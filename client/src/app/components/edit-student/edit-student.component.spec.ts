@@ -1,9 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EditStudentComponent } from './edit-student.component';
-import {declarations} from '../../appDeclarations';
-import {imports} from '../../appImports';
-import {providers} from '../../appProviders';
+import {EditStudentComponent} from './edit-student.component';
+import {StudentService} from "../../services/student.service";
+import {ReactiveFormsModule} from "@angular/forms";
+import {Globals} from "../../globals";
+import {NgSelectModule} from "@ng-select/ng-select";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('EditStudentComponent', () => {
   let component: EditStudentComponent;
@@ -11,9 +13,9 @@ describe('EditStudentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [EditStudentComponent],
+      imports: [HttpClientTestingModule, ReactiveFormsModule, NgSelectModule],
+      providers: [Globals, StudentService]
     })
     .compileComponents();
   }));

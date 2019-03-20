@@ -1,9 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PersonalityTraitDescriptionComponent } from './personality-trait-description.component';
-import {declarations} from '../../../../../appDeclarations';
-import {imports} from '../../../../../appImports';
-import {providers} from '../../../../../appProviders';
+import {PersonalityTraitDescriptionComponent} from './personality-trait-description.component';
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 describe('PersonalityTraitDescriptionComponent', () => {
   let component: PersonalityTraitDescriptionComponent;
@@ -11,11 +9,10 @@ describe('PersonalityTraitDescriptionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [PersonalityTraitDescriptionComponent],
+      providers: [NgbActiveModal]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

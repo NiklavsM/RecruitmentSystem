@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GenderChartComponent } from './gender-chart.component';
-import {declarations} from '../../../appDeclarations';
-import {imports} from '../../../appImports';
-import {providers} from '../../../appProviders';
+import {GenderChartComponent} from './gender-chart.component';
+import {ChartsModule} from "ng2-charts";
+import {StatsService} from "../../../services/stats.service";
+import {Globals} from "../../../globals";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('GenderChartComponent', () => {
   let component: GenderChartComponent;
@@ -11,11 +12,11 @@ describe('GenderChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [GenderChartComponent],
+      imports: [HttpClientTestingModule, ChartsModule],
+      providers: [StatsService, Globals]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

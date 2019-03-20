@@ -1,19 +1,29 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AddStudentComponent} from './add-student.component';
-import {declarations} from '../../appDeclarations';
-import {imports} from '../../appImports';
-import {providers} from '../../appProviders';
+import {EditStudentComponent} from "../edit-student/edit-student.component";
+import {ReactiveFormsModule} from "@angular/forms";
+import {NgSelectModule} from "@ng-select/ng-select";
+import {StudentService} from "../../services/student.service";
+import {Globals} from "../../globals";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
+import {NgbModal, NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
+import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
 
-describe('AddStudentComponent', () => {
+fdescribe('AddStudentComponent', () => {
   let component: AddStudentComponent;
   let fixture: ComponentFixture<AddStudentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [AddStudentComponent, EditStudentComponent, UniversalModalComponent],
+      imports: [HttpClientTestingModule, ReactiveFormsModule, NgSelectModule, NgbModalModule],
+      providers: [StudentService, Globals]
+    }).overrideModule(BrowserDynamicTestingModule, {
+      set: {
+        entryComponents: [UniversalModalComponent],
+      }
     }).compileComponents();
   }));
 
@@ -23,7 +33,11 @@ describe('AddStudentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Open modal', () => {
+    expect(component.openModal("Hello"))
   });
 });

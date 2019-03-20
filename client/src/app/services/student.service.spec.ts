@@ -1,15 +1,11 @@
-
-import { StudentService } from './student.service';
+import {StudentService} from './student.service';
 import {TestBed} from '@angular/core/testing';
-import {providers} from '../appProviders';
-import {imports} from '../appImports';
-import {declarations} from '../appDeclarations';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('StudentService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: declarations,
-    imports: imports,
-    providers : providers
+    imports: [HttpClientTestingModule],
+    providers: [StudentService]
   }));
 
   it('should be created', () => {

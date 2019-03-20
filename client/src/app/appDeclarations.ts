@@ -13,7 +13,7 @@ import {GenderChartComponent} from './components/stats/gender-chart/gender-chart
 import {StatsComponent} from './components/stats/stats.component';
 import {ExtraInfoComponent} from './components/extra-info/extra-info.component';
 import {PersonalityTestComponent} from './components/extra-info/personality-test/personality-test.component';
-import {PeronalityChartComponent} from './components/view-students/view-student/peronality-chart/peronality-chart.component';
+import {PersonalityChartComponent} from './components/view-students/view-student/peronality-chart/personality-chart.component';
 import {PersonalityTraitDescriptionComponent} from './components/view-students/view-student/peronality-chart/personality-trait-description/personality-trait-description.component';
 import {EthnicityChartComponent} from './components/stats/ethnicity-chart/ethnicity-chart.component';
 import {UniversalModalComponent} from './components/universal-modal/universal-modal.component';
@@ -36,7 +36,7 @@ export const declarations = [
   StatsComponent,
   ExtraInfoComponent,
   PersonalityTestComponent,
-  PeronalityChartComponent,
+  PersonalityChartComponent,
   PersonalityTraitDescriptionComponent,
   EthnicityChartComponent,
   UniversalModalComponent,

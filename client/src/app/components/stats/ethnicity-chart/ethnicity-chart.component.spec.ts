@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EthnicityChartComponent } from './ethnicity-chart.component';
-import {declarations} from '../../../appDeclarations';
-import {imports} from '../../../appImports';
-import {providers} from '../../../appProviders';
+import {EthnicityChartComponent} from './ethnicity-chart.component';
+import {ChartsModule} from "ng2-charts";
+import {StatsService} from "../../../services/stats.service";
+import {Globals} from "../../../globals";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('EthnicityChartComponent', () => {
   let component: EthnicityChartComponent;
@@ -11,11 +12,11 @@ describe('EthnicityChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [EthnicityChartComponent],
+      imports: [HttpClientTestingModule, ChartsModule],
+      providers: [StatsService, Globals]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

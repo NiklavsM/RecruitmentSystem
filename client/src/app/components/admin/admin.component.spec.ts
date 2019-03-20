@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminComponent } from './admin.component';
-import {declarations} from '../../appDeclarations';
-import {imports} from '../../appImports';
-import {providers} from '../../appProviders';
+import {AdminComponent} from './admin.component';
+import {SettingsService} from "../../services/settings.service";
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -11,11 +11,11 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [AdminComponent],
+      imports: [HttpClientTestingModule, ReactiveFormsModule],
+      providers: [SettingsService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

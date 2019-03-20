@@ -4,11 +4,11 @@ import {PersonalityTraitDescriptionComponent} from './personality-trait-descript
 import {StudentService} from '../../../../services/student.service';
 
 @Component({
-  selector: 'app-peronality-chart',
-  templateUrl: './peronality-chart.component.html',
-  styleUrls: ['./peronality-chart.component.scss']
+  selector: 'app-personality-chart',
+  templateUrl: './personality-chart.component.html',
+  styleUrls: ['./personality-chart.component.scss']
 })
-export class PeronalityChartComponent implements OnInit {
+export class PersonalityChartComponent implements OnInit {
 
   @Input()
   studentId: string;

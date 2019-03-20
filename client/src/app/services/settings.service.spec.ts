@@ -1,15 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 
 import {SettingsService} from './settings.service';
-import {providers} from '../appProviders';
-import {imports} from '../appImports';
-import {declarations} from '../appDeclarations';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('SettingsService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: declarations,
-    imports: imports,
-    providers: providers
+    imports: [HttpClientTestingModule],
+    providers: [SettingsService]
   }));
 
   it('should be created', () => {

@@ -1,15 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 
 import {EmailService} from './email.service';
-import {imports} from '../appImports';
-import {providers} from '../appProviders';
-import {declarations} from '../appDeclarations';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('EmailService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: declarations,
-    imports: imports,
-    providers: providers
+    imports: [HttpClientTestingModule],
+    providers: [EmailService]
   }));
 
   it('should be created', () => {
