@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
-import {declarations} from '../../appDeclarations';
-import {imports} from '../../appImports';
-import {providers} from '../../appProviders';
+import {NavbarComponent} from './navbar.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {RouterModule} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -11,11 +11,11 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: declarations,
-      imports: imports,
-      providers: providers
+      declarations: [NavbarComponent],
+      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+      providers: [AuthService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

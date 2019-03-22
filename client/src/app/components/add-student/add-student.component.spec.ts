@@ -11,7 +11,7 @@ import {UniversalModalComponent} from "../universal-modal/universal-modal.compon
 import {NgbModal, NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
 
-fdescribe('AddStudentComponent', () => {
+describe('AddStudentComponent', () => {
   let component: AddStudentComponent;
   let fixture: ComponentFixture<AddStudentComponent>;
 
