@@ -1,13 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {StatsComponent} from './stats.component';
-import {SignupGraphComponent} from "./signup-graph/signup-graph.component";
-import {GenderChartComponent} from "./gender-chart/gender-chart.component";
-import {EthnicityChartComponent} from "./ethnicity-chart/ethnicity-chart.component";
-import {ChartsModule} from "ng2-charts";
-import {StatsService} from "../../services/stats.service";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {Globals} from "../../globals";
+import {SignupGraphComponent} from './signup-graph/signup-graph.component';
+import {GenderChartComponent} from './gender-chart/gender-chart.component';
+import {EthnicityChartComponent} from './ethnicity-chart/ethnicity-chart.component';
+import {ChartsModule} from 'ng2-charts';
+import {StatsService} from '../../services/stats.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {Globals} from '../../globals';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;

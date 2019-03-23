@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PersonalityTraitDescriptionComponent} from './personality-trait-description.component';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 describe('PersonalityTraitDescriptionComponent', () => {
   let component: PersonalityTraitDescriptionComponent;

@@ -1,6 +1,6 @@
 import {StudentService} from './student.service';
 import {TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('StudentService', () => {
 
@@ -20,15 +20,15 @@ describe('StudentService', () => {
   });
 
   it('Delete student works', () => {
-    service.deleteStudent("1");
+    service.deleteStudent('1');
   });
 
   it('Delete students works', () => {
-    service.deleteStudents(["1", "2"]);
+    service.deleteStudents(['1', '2']);
   });
 
   it('Get student works', () => {
-    service.getStudent("1");
+    service.getStudent('1');
   });
 
   it('Get students no filter works', () => {
@@ -40,11 +40,11 @@ describe('StudentService', () => {
   });
 
   it('Delete attachment works', () => {
-    service.deleteAttachment("1");
+    service.deleteAttachment('1');
   });
 
   it('Get attachments works', () => {
-    service.getAttachments("1");
+    service.getAttachments('1');
   });
 
   it('Create student works', () => {
@@ -56,11 +56,11 @@ describe('StudentService', () => {
   });
 
   it('Get survey works', () => {
-    service.getSurvey("1");
+    service.getSurvey('1');
   });
 
   it('Upload survey works', () => {
-    service.uploadSurvey({}, "token");
+    service.uploadSurvey({}, 'token');
   });
 
 });

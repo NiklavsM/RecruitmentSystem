@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {AuthService} from "./auth.service";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {AuthService} from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -15,11 +15,11 @@ describe('AuthService', () => {
       authorize: () => {
       }, logout: () => {
       }, parseHash: (callback) => {
-        callback("err", {accessToken: "token", idToken: "idToken"})
+        callback('err', {accessToken: 'token', idToken: 'idToken'});
       },
       client: {
         userInfo: (token, callback) => {
-          callback("err", {'https://recruitmentapp.com/roles': 'role'});
+          callback('err', {'https://recruitmentapp.com/roles': 'role'});
         }
       }
     };
@@ -43,13 +43,13 @@ describe('AuthService', () => {
   });
 
   it('Check Access with non existent role', () => {
-    expect(service.hasAccess("FakeRole")).toBeFalsy();
+    expect(service.hasAccess('FakeRole')).toBeFalsy();
   });
 
   it('Check Access with valid role fails if not authenticated', () => {
     localStorage.removeItem('roles');
     localStorage.setItem('roles', 'admin');
-    expect(service.hasAccess("admin")).toBeFalsy();
+    expect(service.hasAccess('admin')).toBeFalsy();
   });
 
   it('Handle authentication works', () => {

@@ -1,9 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavbarComponent} from './navbar.component';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {RouterModule} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterModule} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;

@@ -1,13 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AdminComponent} from './admin.component';
-import {SettingsService} from "../../services/settings.service";
-import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {of} from "rxjs";
-import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
-import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
-import {NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
+import {SettingsService} from '../../services/settings.service';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {of} from 'rxjs';
+import {UniversalModalComponent} from '../universal-modal/universal-modal.component';
+import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -49,7 +49,7 @@ describe('AdminComponent', () => {
   });
 
   it('Open modal should work', () => {
-    component.openModal("Test1");
+    component.openModal('Test1');
   });
 
 

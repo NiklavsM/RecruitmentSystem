@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 
 import {SettingsService} from './settings.service';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('SettingsService', () => {
   let service: SettingsService;
@@ -24,7 +24,7 @@ describe('SettingsService', () => {
   });
 
   it('Set settings works', () => {
-    service.setSettings({companyName: "EastCompany"});
+    service.setSettings({companyName: 'EastCompany'});
   });
 
 

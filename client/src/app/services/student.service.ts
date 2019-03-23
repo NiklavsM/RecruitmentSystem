@@ -55,7 +55,7 @@ export class StudentService {
   // Uploads survey
   uploadSurvey(survey: any, authToken: string) {
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json',}).set('Authorization', authToken),
+      headers: new HttpHeaders({'Content-Type': 'application/json', }).set('Authorization', authToken),
       responseType: 'text' as 'text'
     };
     const body = JSON.stringify(survey);

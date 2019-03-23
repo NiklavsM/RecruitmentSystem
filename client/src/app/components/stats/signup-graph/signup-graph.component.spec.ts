@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SignupGraphComponent} from './signup-graph.component';
-import {StatsService} from "../../../services/stats.service";
-import {ChartsModule} from "ng2-charts";
-import {Globals} from "../../../globals";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {of} from "rxjs";
+import {StatsService} from '../../../services/stats.service';
+import {ChartsModule} from 'ng2-charts';
+import {Globals} from '../../../globals';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {of} from 'rxjs';
 
 describe('SignupGraphComponent', () => {
   let component: SignupGraphComponent;
@@ -26,7 +26,7 @@ describe('SignupGraphComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     statsService = TestBed.get(StatsService);
-    spyOn(statsService, 'getSignupStats').and.returnValue(of({}))
+    spyOn(statsService, 'getSignupStats').and.returnValue(of({}));
   });
 
   it('Should create', () => {

@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {SettingsService} from "./services/settings.service";
-import {NavbarComponent} from "./components/navbar/navbar.component";
-import {RouterModule} from "@angular/router";
-import {AuthService} from "./services/auth.service";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {of} from "rxjs";
+import {SettingsService} from './services/settings.service';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {RouterModule} from '@angular/router';
+import {AuthService} from './services/auth.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {of} from 'rxjs';
 
 
 describe('AppComponent', () => {

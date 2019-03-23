@@ -1,14 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PersonalityTestComponent} from './personality-test.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {StudentService} from "../../../services/student.service";
-import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
-import {of} from "rxjs";
-import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
-import {UniversalModalComponent} from "../../universal-modal/universal-modal.component";
-import {NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
+import {ReactiveFormsModule} from '@angular/forms';
+import {StudentService} from '../../../services/student.service';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {of} from 'rxjs';
+import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
+import {UniversalModalComponent} from '../../universal-modal/universal-modal.component';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('PersonalityTestComponent', () => {
   let component: PersonalityTestComponent;
@@ -33,7 +33,7 @@ describe('PersonalityTestComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     studentService = TestBed.get(StudentService);
-    spyOn(studentService, 'uploadSurvey').and.returnValue(of({}))
+    spyOn(studentService, 'uploadSurvey').and.returnValue(of({}));
   });
 
   it('should create', () => {

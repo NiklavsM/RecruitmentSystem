@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
       if (data) {
         this.settings = data;
       }
-    })
+    });
   }
 
   saveSettings() {

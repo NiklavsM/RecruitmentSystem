@@ -1,15 +1,15 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AddStudentComponent} from './add-student.component';
-import {EditStudentComponent} from "../edit-student/edit-student.component";
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgSelectModule} from "@ng-select/ng-select";
-import {StudentService} from "../../services/student.service";
-import {Globals} from "../../globals";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {UniversalModalComponent} from "../universal-modal/universal-modal.component";
-import {NgbModal, NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
-import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
+import {EditStudentComponent} from '../edit-student/edit-student.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {StudentService} from '../../services/student.service';
+import {Globals} from '../../globals';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {UniversalModalComponent} from '../universal-modal/universal-modal.component';
+import {NgbModal, NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
 
 describe('AddStudentComponent', () => {
   let component: AddStudentComponent;
@@ -38,6 +38,6 @@ describe('AddStudentComponent', () => {
   });
 
   it('Open modal', () => {
-    expect(component.openModal("Hello"))
+    expect(component.openModal('Hello'));
   });
 });

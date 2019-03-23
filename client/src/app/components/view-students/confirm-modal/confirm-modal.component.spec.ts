@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ConfirmModalComponent} from './confirm-modal.component';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 describe('ConfirmModalComponent', () => {
   let component: ConfirmModalComponent;
