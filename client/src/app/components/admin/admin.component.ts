@@ -24,11 +24,10 @@ export class AdminComponent implements OnInit {
       companyName: new FormControl(this.settings.companyName, Validators.required)
     });
     this.settingsService.getSettings().subscribe(data => {
-        if (data) {
-          this.settings = data;
-        }
-      },
-      err => console.error(err));
+      if (data) {
+        this.settings = data;
+      }
+    })
   }
 
   saveSettings() {

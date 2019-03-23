@@ -34,8 +34,6 @@ export class PersonalityChartComponent implements OnInit {
       if (Object.keys(data).length > 0) {
         this.populateChart(data);
       }
-    }, error => {
-
     });
   }
 

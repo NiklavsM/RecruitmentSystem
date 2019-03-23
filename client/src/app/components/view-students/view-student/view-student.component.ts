@@ -68,7 +68,6 @@ export class ViewStudentComponent implements OnInit {
     modalRef.result.then(result => {
       this.deleteStudent();
       this.router.navigateByUrl('/viewstudents');
-    }, reason => {
     });
     modalRef.componentInstance.students = [this.student];
   }

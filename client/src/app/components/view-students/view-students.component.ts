@@ -71,14 +71,13 @@ export class ViewStudentsComponent implements OnInit {
       }
     });
     this.studentService.deleteStudents(studentsToDelete).subscribe(data => {
-    }, error => {
     });
     this.initDataSource(this.dataSource.data, filter);
     this.selection = new SelectionModel<Element>(true, []);
 
   }
 
-  private tryToDelete() {
+  public tryToDelete() {
     const tryToDelete = [];
     this.selection.selected.forEach(item => {
       if (this.filteredDataContains(item.id)) {
@@ -115,7 +114,6 @@ export class ViewStudentsComponent implements OnInit {
   public advancedSearch() {
     this.studentService.getStudents(this.advancedSearchForm.value).subscribe(data => {
       this.initDataSource(data);
-    }, error => {
     });
     this.selection = new SelectionModel<Element>(true, []);
   }

@@ -4,13 +4,22 @@ import {EmailService} from './email.service';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('EmailService', () => {
+  let service: EmailService;
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule],
     providers: [EmailService]
   }));
 
+  beforeEach(() => {
+    service = TestBed.get(EmailService);
+  });
+
   it('should be created', () => {
-    const service: EmailService = TestBed.get(EmailService);
     expect(service).toBeTruthy();
   });
+
+  it('Send email works', () => {
+    service.sendEmail({});
+  });
+
 });

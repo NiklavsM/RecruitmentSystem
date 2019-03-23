@@ -5,6 +5,7 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {RouterModule} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {of} from "rxjs";
 
 
 describe('AppComponent', () => {
@@ -20,17 +21,12 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  // {
-  //   provide: SettingsService,
-  //     useValue: { getSettings: of({}) }
-  // }
-
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     settingsService = TestBed.get(SettingsService);
-    // spyOn(settingsService, 'getSettings').and.returnValue(Observable.);
+    spyOn(settingsService, 'getSettings').and.returnValue(of({}));
   });
 
 
@@ -43,7 +39,7 @@ describe('AppComponent', () => {
   });
 
   it('NavBar should return false', () => {
-    // expect(component.navBarOn()).toEqual(false);
+    expect(component.navBarOn).toEqual(false);
   });
 
 });

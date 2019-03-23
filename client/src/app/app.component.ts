@@ -13,16 +13,14 @@ export class AppComponent implements OnInit {
   public navBarOn = false;
 
   constructor(public authService: AuthService, public settingsService: SettingsService, public router: Router) {
-
-    authService.handleAuthentication();
   }
 
   ngOnInit(): void {
+    this.authService.handleAuthentication();
     this.settingsService.getSettings().subscribe(
       data => {
         this.navBarOn = this.showNavBar();
         this.settings = data;
-      }, error => {
       });
   }
 

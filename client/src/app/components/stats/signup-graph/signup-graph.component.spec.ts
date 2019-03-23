@@ -5,10 +5,12 @@ import {StatsService} from "../../../services/stats.service";
 import {ChartsModule} from "ng2-charts";
 import {Globals} from "../../../globals";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {of} from "rxjs";
 
 describe('SignupGraphComponent', () => {
   let component: SignupGraphComponent;
   let fixture: ComponentFixture<SignupGraphComponent>;
+  let statsService: StatsService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,6 +25,8 @@ describe('SignupGraphComponent', () => {
     fixture = TestBed.createComponent(SignupGraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    statsService = TestBed.get(StatsService);
+    spyOn(statsService, 'getSignupStats').and.returnValue(of({}))
   });
 
   it('Should create', () => {
@@ -56,4 +60,8 @@ describe('SignupGraphComponent', () => {
       ]);
     });
 
+
+  it('ngOnInit works', () => {
+    component.ngOnInit();
+  });
 });
